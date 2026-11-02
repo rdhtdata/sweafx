@@ -1,0 +1,856 @@
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+SweafEx
+TRUCKING SIMPLIFIED
+BUSINESS REQUIREMENTS DOCUMENT
+CRM Platform
+Outsource Trip Lifecycle — Enquiry to Payment
+Document Title Business Requirements Document — SweafEx CRM Platform
+Company Whooosh Networks Pvt Ltd (SweafEx)
+Product SweafEx CRM — Outsource Trip Management
+Version 1.0
+Date March 2026
+Prepared For Software Engineers / Zoho CRM Implementers
+Based On Live SOP documentation — 15-step workflow (March 2026)
+Classification Confidential — Engineering & Implementation Only
+Confidential — For Engineering & Implementation Teams Only Page 1
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+1 Executive Summary
+SweafEx (Whooosh Networks Pvt Ltd) is a tech-enabled freight brokerage operating across South India, arranging
+Full Truck Load (FTL) movements using outsourced vendor fleets. The company currently manages its entire
+operation — enquiry to payment — across 8 WhatsApp groups, multiple Excel sheets, and Zoho Books (for PO only).
+This BRD defines requirements for a unified CRM platform that digitises and owns the complete trip lifecycle. Every
+requirement in this document is derived directly from the live 15-step SOP documented in March 2026.
+Business Objectives
+Objective What It Solves
+Replace 8 WhatsApp groups Structured workflows replace group chats as operational systems. Groups remain for
+human conversation only.
+One Trip ID, everywhere System-generated EXP number auto-populates all records. Manual Trip ID entry
+eliminated — the single biggest source of current errors.
+Single source of truth Zoho is the record. WhatsApp is communication. Any data that exists only in WhatsApp
+does not officially exist.
+Customer self-service Customers view trip status, download TCN, and receive updates without calling — via
+portal or WhatsApp API.
+Vendor digital onboarding Vendors submit documents, confirm trips, update milestones, and upload POD via a
+simple portal link — no app install.
+Payment compliance All vendor payments via registered bank accounts. TDS deduction automated. UPI to
+personal accounts eliminated.
+Margin visibility Every trip shows: customer rate, vendor cost, gross margin. Currently invisible to
+management in real time.
+Scope
+In Scope — Phase 1:
+• Enquiry capture from all channels (WhatsApp, Website, Instagram, Facebook, Phone)
+• Internal quote management and rate board
+• Order creation and vehicle arrangement workflow
+• Vendor master with document management
+• Trip management — full milestone tracking
+• Purchase Order generation and approval
+• Trip Confirmation Note (TCN) auto-generation
+• POD collection, tracking and submission
+• Vendor payment — advance and balance with TDS
+• Customer invoicing and payment collection
+• WhatsApp Business API integration for all customer-facing messages
+• Customer portal — trip status and document access
+• Reporting dashboards
+Confidential — For Engineering & Implementation Teams Only Page 2
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+Out of Scope — Phase 1:
+• Own fleet management (GPS, fuel, maintenance)
+• Customer mobile app
+• Automated route optimisation or load matching
+• Driver mobile app (vendor portal is web-based)
+Confidential — For Engineering & Implementation Teams Only Page 3
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+2 Stakeholders & User Roles
+5 internal roles + 2 external portal users. Each role has a defined access scope — no role sees data outside its lane.
+Role Co
+unt
+CRM Access WhatsApp Access Can Call
+Customers?
+Sales Coordinator 1 Enquiries, Orders, Customer records,
+Trip status view
+Customer Group only YES — primary
+Purchase
+Coordinator
+1 Enquiries, Vendor Master, Trips, PO,
+Trip status updates
+Internal Ops, Finance, POD
+channels
+No — internal
+only
+Sales Backend 1 Full internal access — all modules.
+Shared Company WhatsApp Business
+account
+Company WA Business (shared)
+for customer messages. Own
+WA for internal only.
+NO —
+messages only
+via Company
+WA
+Accounts /
+Finance
+1 PO approval, Payment processing,
+Invoice approval, Reconciliation
+Finance channel only No
+Operations
+Manager
+1 Full access — all modules + reports +
+approvals
+All internal channels YES —
+escalation only
+Customer
+(External)
+Ma
+ny
+Customer Portal: own trips only —
+status, TCN download, invoice view
+Customer Group (receives
+updates)
+N/A
+Vendor / Driver
+(External)
+Ma
+ny
+Vendor Portal: own assigned trips only
+— confirm trip, update milestones,
+upload POD
+Receives placement message
+and payment receipt
+N/A
+Key Rule — WhatsApp Business Access
+Sales Backend shares the Company WhatsApp Business number with Sales Coordinator. Sales Backend sends all
+document-based and routine messages (TCN, invoice, POD, payment reminders) directly to customers. Sales
+Coordinator handles all inbound calls and outbound calls. Sales Backend's personal phone never contacts
+customers. This keeps the Sales Coordinator free for negotiation and relationship work while routine communication
+runs without interruption.
+Confidential — For Engineering & Implementation Teams Only Page 4
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+3 Current State — Pain Points
+Every requirement in this BRD exists to solve one of these problems. Documented from live operations.
+Pain Point Root Cause Business Impact CRM Fix
+Trip ID typed manually —
+mismatches across 5+
+records per trip
+No system — ID copied
+by hand into each
+WhatsApp message and
+Excel sheet
+Wrong vehicle details sent
+to customer, payment
+against wrong trip
+System-generated EXP
+number — auto-populates
+everywhere
+8 WhatsApp groups —
+operational data lives in chat
+history
+No CRM — WhatsApp
+used as workflow tool
+Data lost, no search, no
+audit trail, impossible to
+train new staff
+4 consolidated channels for
+communication only — CRM
+owns all data
+Vendor payments via
+personal UPI — TDS
+compliance gap
+No payment system —
+finance uses UPI QR
+codes shared in
+WhatsApp
+Section 194C TDS violation
+risk, no verifiable payment
+trail
+Payment only to registered
+bank account via NEFT
+through Zoho
+PO approved by WhatsApp
+'Kindly Approve' tag — no
+formal record
+No approval workflow in
+system
+Payments made without
+documented authorisation
+— audit risk
+Mandatory Zoho PO approval
+button — no payment without
+system approval
+Verbal phone call spec
+changes not recorded —
+disputes possible
+No process for
+documenting call
+outcomes
+Customer claims different
+vehicle was agreed — no
+evidence either way
+Mandatory written
+confirmation to customer after
+every spec change call
+12+ trips with pending POD
+hard copies — vendor
+balance held indefinitely
+No central POD tracking
+system — managed via
+WhatsApp lists
+Cash flow blocked, vendor
+relationship damage,
+billing disputes
+Live POD dashboard — status
+per trip, automated alerts on
+overdue
+No real-time margin visibility
+per trip
+Customer rate and
+vendor rate in separate
+Excel sheets
+Management cannot see
+profitability until month
+end
+Every trip record shows:
+customer rate, vendor cost,
+gross margin
+Sales Coordinator
+interrupted for routine
+messages (TCN, invoice,
+reminders)
+No shared WhatsApp
+access — all messages
+go through one person
+Sales Coordinator
+overloaded, routine tasks
+delayed
+Sales Backend sends routine
+messages via shared
+Company WA Business
+Enquiry closure reasons not
+recorded
+Failed enquiries simply
+dropped in WhatsApp —
+no log
+Cannot analyse lost
+business — rate gaps,
+route gaps invisible
+Mandatory closure reason
+dropdown on every
+non-converted enquiry
+Confidential — For Engineering & Implementation Teams Only Page 5
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+4 System Modules
+13 modules. Each maps to a specific step in the SOP. Sequence reflects the order of first use in the trip lifecycle.
+M01
+Enquiry Management
+Captures all inbound freight enquiries from every channel. Auto-generates ENQ number. Routes to Purchase
+Coordinator. Stores closure reason on non-conversion.
+Owner: Sales Coordinator + Sales Backend
+M02
+Customer Master
+Stores all customer profiles: company name, billing address, GSTIN, contact persons, payment terms, POD
+requirement (Yes/No), invoicing preference. Linked to all enquiries, orders and invoices.
+Owner: Sales Backend
+M03
+Vendor Master
+Stores all vendor/carrier profiles: name, type (broker/agent/owner/owner-driver), vehicle details, PAN, GSTIN, bank
+account, TDS status, document repository with expiry alerts, trip history, ratings. Documents: RC, DL, PAN,
+Passbook, Photo.
+Owner: Purchase Coordinator
+M04
+Quote & Rate Board
+Purchase Coordinator logs vendor quotes against each enquiry (up to 4 vendors). Operations Manager sets
+customer rate range on the Rate Board. Sales Coordinator uses Rate Board guidance to negotiate. All quote history
+stored against ENQ record.
+Owner: Purchase Coordinator + Operations Manager
+M05
+Order Management
+Converts confirmed enquiries to Orders (ORD number). Records confirmed customer rate. Links to vehicle
+arrangement. Status pipeline: Pending > Arranged > In Transit > Delivered > Invoiced > Paid > Closed.
+Owner: Sales Coordinator + Purchase Coordinator
+M06
+Trip Management
+Core operational module. Auto-generates EXP Trip ID on vehicle placement. Stores all trip data: vehicle, driver,
+route, dates, status milestones with timestamps. Links vendor, customer, order, PO, TCN, POD, and payments in
+one record.
+Owner: Purchase Coordinator
+Confidential — For Engineering & Implementation Teams Only Page 6
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+M07
+Document Management
+Stores and tracks all trip and vendor documents. Vendor docs: RC, DL, PAN, Passbook, vehicle photo. Trip docs:
+pre/post loading photos, signed TCN (POD), material bill, e-way bill. Alerts on document expiry (RC, DL validity).
+Owner: Purchase Coordinator + Sales Backend
+M08
+Trip Confirmation Note (TCN)
+Auto-generates TCN PDF from trip data when Loading Started milestone is triggered. Pre-fills all sections including
+goods description from enquiry. Sales Backend sends to customer via Company WhatsApp Business. Signed TCN
+returned by driver becomes the POD.
+Owner: Sales Backend
+M09
+Purchase Order & Payments
+Generates URPM purchasing memo in Zoho against Trip ID. Approval workflow: Purchase Coordinator creates >
+Accounts approves in system > Finance pays to registered bank account. Records advance (90%) and balance
+(10%) separately. TDS deduction automated per vendor setting. Payment receipts auto-generated.
+Owner: Purchase Coordinator + Accounts
+M10
+POD Management
+Tracks POD through 5 statuses: Not Collected > Soft Copy Received > Hard Copy In Transit > Hard Copy at Office
+> Submitted to Customer. POD-NA flag set at order stage. Balance payment triggered by POD status change.
+Overdue POD dashboard for management.
+Owner: Purchase Coordinator + Sales Backend
+M11
+Customer Portal
+External web interface for customers (no app required). Features: real-time trip status, trip milestone timeline, TCN
+download, invoice view and download, POD acknowledgement. Accessible via WhatsApp link — no login friction for
+field customers.
+Owner: Sales Backend
+M12
+Vendor Portal
+External web interface for vendors and drivers (no app required). Features: document upload for onboarding, trip
+confirmation, milestone updates (Started / Loading / Unloading / Completed), POD photo upload. Accessible via
+WhatsApp link.
+Owner: Purchase Coordinator
+Confidential — For Engineering & Implementation Teams Only Page 7
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+M13
+Billing, Invoicing & Reporting
+Daily trip billing sheet auto-built from completed trips. Operations Manager approves. Sales Backend generates
+GST invoice in Zoho — Accounts approves — Zoho auto-emails customer. Payment tracking with automated Day 7
+/ Day 14 / Day 21 reminders via WhatsApp. Dashboard: active trips, pending PODs, overdue payments, route
+margin, vendor performance, enquiry conversion rate.
+Owner: Sales Backend + Accounts + Operations Manager
+Confidential — For Engineering & Implementation Teams Only Page 8
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+5 Detailed Functional Requirements
+5.1 Enquiry Management (M01)
+Req ID Requirement ENQ-01 System captures enquiries from: WhatsApp Business API, Website form, Instagram DM API,
+Facebook Messenger API, Manual entry by Sales Coordinator
+ENQ-02 Auto-generate ENQ number (format: ENQ001, ENQ002…) on creation — never editable ENQ-03 Mandatory fields: Loading City+Pincode, Unloading City+Pincode, Vehicle Size, Vehicle Type,
+Weight, Material, Loading Date, Party Name, Source Channel
+ENQ-04 Status pipeline: New > Sent to Purchase > Quotes Received > Rate Set > Confirmed (Order
+Created) > Closed
+ENQ-05 Closure reason mandatory dropdown when status = Closed: Rate Difference / Customer
+Arranged Own Vehicle / Vehicle Not Available / Customer Unresponsive / Other
+ENQ-06 Edit log: every field change recorded with who changed it, what changed, and timestamp ENQ-07 Auto-acknowledge: WhatsApp reply sent to customer within 60 seconds of enquiry receipt
+from WhatsApp channel
+ENQ-08 Party name visible internally but not included in vendor-facing messages generated by system 5.2 Quote & Rate Board (M04)
+Req ID Requirement QRB-01 Purchase Coordinator logs up to 4 vendor quotes per enquiry: Vendor Name, Quoted Rate,
+Availability, Vehicle Number (optional), Quote Expiry
+QRB-02 System identifies best rate automatically from logged quotes QRB-03 Operations Manager sets Customer Rate Min and Max on Rate Board — visible to Sales
+Coordinator only, not Purchase team or vendors
+QRB-04 Rate Board shows all active enquiries with: route, vehicle spec, vendor best rate, customer
+rate range, margin %
+QRB-05 Confirmed customer rate logged at order creation — system calculates and stores gross
+margin per trip
+QRB-06 Alert if Sales attempts to confirm order at rate below Rate Board minimum — requires
+Operations Manager override
+5.3 Vehicle Arrangement & Vendor Verification (M03 + M06)
+Req ID Requirement VEH-01 Vendor Master stores: Name, Type, PAN, GSTIN, Bank Account (Name + IFSC + Account
+No), TDS status, all documents with upload date and expiry date
+Confidential — For Engineering & Implementation Teams Only Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+MUST
+SHOULD
+MUST
+Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+MUST
+Priority
+MUST
+Page 9
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+Req ID Requirement VEH-02 Document checklist enforced before vehicle placement: RC, DL, PAN, Bank details, Vehicle
+Photo all required. System blocks placement if any item missing
+VEH-03 Driver confirmation log: date, time, confirmed by, verbal confirmation of trip details. Truck
+owner confirmation logged separately
+VEH-04 EXP Trip ID auto-generated when vehicle is placed — system assigned, never manually
+entered, never editable
+VEH-05 Auto-generate vehicle placement WhatsApp message from trip data — driver number
+replaced with Logistics Coordinator number in customer-facing version
+VEH-06 Alert when vendor documents expire within 30 days (RC, DL, insurance) VEH-07 Vehicle substitution log: if vehicle changed after placement, reason and timestamp recorded
+— both old and new vehicle details stored
+VEH-08 Vendor portal: vendors submit documents via link — no app install required 5.4 Trip Management & Status Tracking (M06)
+Req ID Requirement TRP-01 Trip record links: ENQ > ORD > EXP > PO (URPM) > TCN > POD > Invoice > Payment — all
+in one view
+TRP-02 13 milestone statuses with timestamp: Started / Loading Transit 1 / Loading Transit 2 /
+Reached Loading / Loading Started / Bills Received / Unloading Transit 1-3 / Reached
+Unloading / Unloading Completed / POD Soft Received / Trip Completed
+TRP-03 Each milestone update triggers WhatsApp notification to customer via Company WhatsApp
+Business — auto-sent, no manual action required from Sales Backend
+TRP-04 Unloading contact details (name, number, Google Maps link) stored on trip record —
+auto-shared with driver on Loading Completed milestone
+TRP-05 TCN auto-generated when Loading Started milestone triggered — pre-filled from trip +
+enquiry data. Sales Backend sends via Company WhatsApp to customer
+TRP-06 Pre and post loading photos uploaded to trip record — mandatory before Loading Completed
+milestone can be set
+TRP-07 Customer portal shows live trip milestone timeline — accessible via WhatsApp link, no login
+required
+TRP-08 Vendor portal: driver updates milestones and uploads POD photos via link — no app required 5.5 Purchase Order & Vendor Payments (M09)
+Req ID Requirement PO-01 PO auto-generated from trip data: vendor details from Vendor Master, vehicle/driver from Trip,
+route from Order, amount from agreed vendor rate
+PO-02 Approval workflow: Purchase Coordinator creates > Accounts must click Approve in system >
+Finance processes payment. No payment without system-level approval
+Confidential — For Engineering & Implementation Teams Only Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+MUST
+SHOULD
+Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+MUST
+SHOULD
+SHOULD
+Priority
+MUST
+MUST
+Page 10
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+Req ID Requirement PO-03 Payment processed to bank account registered in Vendor Master only. UPI or personal
+account payments blocked by system
+PO-04 Advance (90%) triggered by: Loading Completed + signed TCN received + Accounts
+approval. Balance (10%) triggered by: POD Hard Copy Received or POD-NA confirmed
+PO-05 TDS: if vendor TDS flag = Yes in Vendor Master — system deducts 2% automatically. If No —
+Non-TDS certificate upload mandatory before payment
+PO-06 Payment receipt (PDF) auto-generated in Zoho and sent to vendor via WhatsApp after
+payment
+PO-07 POD-NA flag set at Order Creation stage — if set, balance payment triggered automatically at
+Unloading Completed milestone without waiting for hard copy
+PO-08 Multiple POs cannot be batch-approved — each PO requires individual approval action 5.6 POD Management (M10)
+Req ID Requirement POD-01 POD status field on every trip: Not Collected / Soft Copy Received / Hard Copy In Transit /
+Hard Copy at Office / Submitted to Customer / Not Applicable
+POD-02 Driver uploads POD photo via Vendor Portal — auto-files to trip record, updates status to Soft
+Copy Received, triggers customer notification
+POD-03 Hard Copy Received status update triggers balance payment workflow automatically POD-04 Management dashboard: all trips where POD Hard Copy overdue > 7 days — with vendor
+contact and trip details
+POD-05 POD submitted to customer — Sales Backend marks status, system records date and method
+(courier/in person)
+POD-06 Each department (Operations, Purchase, Accounts, Sales Backend) has their own POD
+acknowledgement action — system records who acknowledged and when
+5.7 Customer Billing & Payment Collection (M13)
+Req ID Requirement BIL-01 Daily billing sheet auto-built from trips where status = Trip Completed — one row per trip,
+grouped by customer
+BIL-02 Billing sheet sent to Operations Manager for approval — approval in system required before
+invoice generation
+BIL-03 GST invoice auto-generated in Zoho Books on billing sheet approval — Accounts approves —
+Zoho auto-emails invoice to customer
+BIL-04 Automated payment reminders via Company WhatsApp Business: Day 7 (first reminder), Day
+14 (second reminder + flag to Sales Coordinator to call)
+BIL-05 Day 21+ overdue: alert escalated to Operations Manager in system dashboard Confidential — For Engineering & Implementation Teams Only Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+MUST
+Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+SHOULD
+Priority
+MUST
+MUST
+MUST
+MUST
+MUST
+Page 11
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+Req ID Requirement Priority
+BIL-06 Customer payment recorded in Zoho on receipt — invoice status: Draft > Sent >
+Acknowledged > Paid. Bank notification auto-posted to Finance channel
+MUST
+BIL-07 Trip profitability: every trip record shows Customer Rate, Vendor Cost, Gross Margin (INR and
+%). Aggregated in management dashboard by route, customer, period
+MUST
+Confidential — For Engineering & Implementation Teams Only Page 12
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+6 Integrations
+Integration Directio
+n
+Used In Purpose Priority
+WhatsApp
+Business API
+In + Out All steps Inbound enquiry capture. Outbound: placement
+message, TCN, milestones, POD, invoice, payment
+reminders — all via Company WA Business number
+MUST
+Website Enquiry
+Form
+Inbound Step 1 Enquiry form submissions auto-create ENQ record in
+CRM
+MUST
+Instagram DM API Inbound Step 1 DM enquiries captured as ENQ records SHOULD
+Facebook
+Messenger API
+Inbound Step 1 Messenger enquiries captured as ENQ records SHOULD
+Zoho Books Bidirecti
+onal
+Steps 8,
+10, 13
+PO creation and approval, vendor payments, customer
+invoice generation, payment reconciliation
+MUST
+Email (SMTP) Outboun
+d
+Steps 9,
+13
+Invoice email to customer, TCN as attachment, payment
+receipts
+MUST
+FR8 / Blackbuck Outboun
+d
+Step 2 Post enquiry to freight platforms for vendor quotes NICE TO HAVE
+GST / E-way Bill
+API
+Outboun
+d
+Steps 5,
+13
+GSTIN validation, e-way bill reference lookup SHOULD
+Bank / Payment
+Gateway
+Outboun
+d
+Steps 7,
+10
+NEFT/IMPS vendor payments from Zoho — bank
+account validation before payment
+MUST
+WhatsApp Business — Sending Rules
+Message Type Sent By From Number Trigger
+Enquiry acknowledgement System auto Company WA Business Enquiry received from WA channel
+Vehicle placement details Sales Coordinator Company WA Business Vehicle placed — manual send
+Trip Confirmation Note Sales Backend Company WA Business Loading Started milestone
+Trip milestone updates System auto Company WA Business Each milestone status change
+POD soft copy + Trip
+Completed
+Sales Backend Company WA Business POD Soft Received status
+Invoice Zoho auto + Sales
+Backend
+Company WA Business +
+Email
+Invoice approved in Zoho
+Payment reminder (Day 7,
+14)
+System auto Company WA Business Invoice age triggers
+Vendor payment receipt Purchase Coordinator Company WA Business /
+Direct
+Payment processed in Zoho
+Confidential — For Engineering & Implementation Teams Only Page 13
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+7 Core Data Model
+Key entities and their relationships. Every record traces back to one Trip ID (EXP).
+Entity Key Fields Links To
+Customer Name, billing address, GSTIN, contact, payment terms, POD
+required (Y/N), invoicing preference
+Enquiry, Order, Invoice
+Enquiry (ENQ) ENQ number, date, party, route, vehicle spec, weight, material,
+loading date, source channel, status, closure reason
+Customer, Order, Quotes
+Quote Vendor, quoted rate, availability, expiry — up to 4 per ENQ Enquiry, Vendor
+Rate Board ENQ reference, customer rate min, customer rate max, set by,
+Enquiry
+set at
+Order (ORD) ORD number, confirmed customer rate, loading date confirmed,
+arrange status, POD-NA flag
+Enquiry, Trip
+Vendor Name, type, PAN, GSTIN, bank account, TDS flag, docs
+(RC/DL/PAN/passbook/photo) with expiry, rating
+Trip, PO
+Trip (EXP) EXP number, vehicle reg, vehicle type, driver name/number/DL,
+transporter GSTIN, milestones with timestamps,
+loading/unloading contacts, POD status
+Order, Vendor, PO, TCN, POD,
+Invoice
+Purchase Order
+(URPM)
+URPM number, EXP reference, vendor, amount, advance,
+balance, TDS, approval status, payment status
+Trip, Vendor
+TCN EXP reference, auto-filled from Trip + Order, dispatch log, goods
+description, hire terms, signed status
+Trip, Customer
+POD EXP reference, soft copy (photo), hard copy received date,
+submitted to customer date, POD-NA flag
+Trip, PO (balance trigger)
+Invoice Invoice number, customer, trip line items, GST, total, status,
+payment received date
+Trip, Customer, Order
+Payment
+(Vendor)
+URPM reference, advance/balance flag, amount, TDS deducted,
+bank ref, date, receipt PDF
+PO, Vendor
+Payment
+(Customer)
+Invoice reference, amount received, bank ref, date, recorded by Invoice, Customer
+Confidential — For Engineering & Implementation Teams Only Page 14
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+8 Automation & Workflow Rules
+Every automation listed here directly replaces a manual WhatsApp message or Excel update. Priority = MUST unless
+noted.
+Trigger Automated Action Who Benefits
+Enquiry created from any
+channel
+WhatsApp acknowledgement to customer within 60
+seconds. ENQ number assigned. Notification to Sales
+Coordinator.
+Customer, Sales
+Enquiry forwarded to
+Purchase
+Purchase Coordinator notified. Vendor outreach template
+generated with route details (party name excluded).
+Purchase
+Order confirmed ORD number created. Purchase Coordinator notified. Rate
+Board entry archived.
+Sales, Purchase
+Vehicle placed (EXP created) EXP Trip ID auto-generated and locked. Vehicle placement
+message auto-generated (two versions: internal with driver
+number, customer-facing with coordinator number). PO draft
+auto-created in Zoho.
+All teams, Customer
+Loading Started milestone TCN PDF auto-generated and sent to customer via
+Company WhatsApp Business by Sales Backend.
+Customer, Sales Backend
+Any trip milestone updated Customer receives WhatsApp update via Company WA.
+Internal ops channel updated. Trip timeline updated in
+customer portal.
+Customer, All teams
+Loading Completed + TCN
+received
+Advance payment PO sent for approval to Accounts. Alert to
+Finance team.
+Finance, Purchase
+PO approved in Zoho Finance notified to process payment. Payment blocked until
+this approval exists.
+Finance
+POD Soft Copy uploaded POD status updated. Customer notified via Company
+WhatsApp. Trip Completed message sent. Accounts
+alerted.
+Customer, Finance
+POD Hard Copy Received at
+office / POD-NA confirmed
+Balance payment PO sent for approval. Alert to Finance. Finance, Purchase
+Trip Completed milestone Trip added to daily billing sheet. Sales Backend alerted to
+prepare invoice.
+Sales Backend, Finance
+Billing sheet approved GST invoice auto-generated in Zoho. Accounts notified for
+approval.
+Accounts
+Invoice approved in Zoho Invoice auto-emailed to customer. WhatsApp notification to
+customer via Company WA.
+Customer
+Invoice age = Day 7 Automated payment reminder sent to customer via
+Company WhatsApp Business.
+Customer, Sales Backend
+Invoice age = Day 14 Second WhatsApp reminder sent. Sales Coordinator
+flagged in dashboard to make follow-up call.
+Sales Coordinator
+Invoice age = Day 21+ Escalation alert to Operations Manager dashboard. Operations Manager
+Confidential — For Engineering & Implementation Teams Only Page 15
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+Trigger Automated Action Who Benefits
+Vendor document expiring
+within 30 days
+Alert to Purchase Coordinator. Vendor also notified via
+WhatsApp to renew.
+Purchase
+POD hard copy overdue > 7
+days
+Alert on Operations Manager dashboard. Purchase
+Coordinator flagged.
+Operations Manager
+Confidential — For Engineering & Implementation Teams Only Page 16
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+9 Non-Functional Requirements
+Category Requirement Performance Dashboard and trip status page load time Performance WhatsApp notification delivery after trigger Performance Concurrent users supported without degradation Availability System uptime (ops run 7 days/week) Availability Maintenance window Security Role-based access control Security Customer portal data isolation Security Vendor portal data isolation Security Audit log Security Document storage Mobile All interfaces — mobile browser functional Mobile Customer and vendor portals Data Export to Excel/PDF from any list view Data Historical data migration from Excel Compliance TDS deduction records Compliance GST invoice format Compliance Payment trail Confidential — For Engineering & Implementation Teams Only Target
+< 3 seconds
+< 60 seconds
+Minimum 20
+99.5% minimum
+2 AM – 5 AM IST only
+Each role sees only their
+module scope
+Customer sees only own trips
+Vendor sees only assigned trips
+All data changes: who, what,
+when — non-deletable
+Encrypted at rest
+100% — field staff use phones
+WhatsApp link access — no
+app install
+All modules
+All records before go-live
+Section 194C compliant
+GST Act compliant
+Full bank reference for every
+vendor payment
+Page 17
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+10 Zoho Implementation Mapping
+Recommended module mapping for Zoho CRM + Zoho Books + Zoho Creator implementation.
+BRD Module Zoho Product Zoho Module / Approach
+Enquiry Management
+(M01)
+Zoho CRM Custom Module: Enquiries. Leads module not recommended — lacks
+custom status pipeline needed.
+Customer Master (M02) Zoho CRM Accounts module — standard with custom fields: POD Required,
+Invoicing Preference, Payment Terms.
+Vendor Master (M03) Zoho CRM Custom Module: Vendors. Document attachments via Zoho WorkDrive.
+Expiry date fields with workflow alerts.
+Quote & Rate Board (M04) Zoho CRM Custom Module: Quotes (linked to Enquiry). Rate Board as a custom view
+with restricted visibility.
+Order Management (M05) Zoho CRM Custom Module: Orders (ORD). Linked to Enquiry. POD-NA flag field
+mandatory.
+Trip Management (M06) Zoho CRM Custom Module: Trips (EXP). Auto-number field for EXP ID (read-only
+after creation). 13 milestone fields each with DateTime.
+Document Management
+(M07)
+Zoho WorkDrive Folder per Trip ID. Document type tags. Expiry date tracking via CRM
+fields.
+TCN Generation (M08) Zoho CRM + Writer Zoho Writer template linked to Trip record. Mail merge auto-fills all fields.
+PDF generated and sent via WhatsApp API on workflow trigger.
+Purchase Order &
+Payments (M09)
+Zoho Books Vendor Bills module for PO (URPM). Custom approval workflow.
+Advance + Balance as separate bill line items or two separate bills.
+POD Management (M10) Zoho CRM POD Status field on Trip record. POD photos as attachments. Workflow:
+status change triggers payment and notification automations.
+Customer Portal (M11) Zoho CRM Portal Customer Portal with Trip module access. Read-only for customers.
+WhatsApp link = portal login link.
+Vendor Portal (M12) Zoho Creator Zoho Creator app for vendor/driver milestone updates and POD upload.
+Simple form-based — no login friction.
+Billing & Invoicing (M13) Zoho Books Customer Invoices module. Approval workflow before send. Automated
+payment reminders via Zoho Books + WhatsApp API via Zoho Flow.
+Reporting (M13) Zoho Analytics Connected to Zoho CRM + Books. Dashboards: active trips, pending
+PODs, overdue payments, route margin, vendor performance.
+WhatsApp Automation Zoho Flow + WA
+API
+Zoho Flow connects CRM workflow triggers to WhatsApp Business API.
+All automated customer messages route through Company WA Business
+number.
+Custom Automations Required in Zoho
+Automation Trigger Action
+EXP number lock Trip record created Auto-number assigned, field set to read-only —
+no edits ever
+Confidential — For Engineering & Implementation Teams Only Page 18
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+Automation Trigger Action
+Vendor outreach template Enquiry status = Sent to Purchase WhatsApp template generated without party
+name
+TCN PDF generation Trip milestone = Loading Started Zoho Writer generates PDF, Sales Backend
+notified to send
+Advance PO alert Loading Completed + TCN
+attachment received
+PO status changes to Pending Approval,
+Accounts notified
+Balance PO alert POD status = Hard Copy Received
+OR POD-NA confirmed
+Balance PO sent for approval
+Payment reminder Day 7 Invoice age = 7 days, status != Paid WhatsApp reminder sent via Company WA
+Business
+Payment reminder Day 14 Invoice age = 14 days, status !=
+Paid
+WhatsApp reminder + flag on Sales Coordinator
+dashboard
+Document expiry alert Vendor doc expiry = 30 days from
+today
+Alert to Purchase Coordinator + WhatsApp to
+vendor
+POD overdue alert Trip Completed > 7 days, POD
+Hard Copy != Received
+Alert on Operations Manager dashboard
+Confidential — For Engineering & Implementation Teams Only Page 19
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+11 Acceptance Criteria
+System is accepted when all of the following can be demonstrated end-to-end in a live test with real data.
+# Test Scenario Expected Result
+AC-01 Customer sends enquiry via WhatsApp ENQ record created in CRM within 60 seconds.
+Auto-acknowledgement sent to customer.
+AC-02 Purchase Coordinator logs 3 vendor quotes Best rate identified. Rate Board updated. Party name
+absent from vendor-facing content.
+AC-03 Sales confirms order below Rate Board minimum System blocks confirmation. Operations Manager override
+required.
+AC-04 Vehicle placed for order EXP number auto-generated. Two placement messages
+ready: internal (with driver number) and customer-facing
+(with coordinator number). PO draft created.
+AC-05 Vehicle placed without all 7 documents in Vendor
+Master
+System blocks placement until all mandatory documents
+uploaded.
+AC-06 Loading Started milestone set TCN PDF auto-generated with all fields pre-filled. Sales
+Backend notified to send to customer.
+AC-07 Any trip milestone updated Customer receives WhatsApp notification within 60
+seconds. Customer portal updated.
+AC-08 Finance attempts to pay vendor via personal UPI System only allows payment to bank account registered in
+Vendor Master.
+AC-09 PO submitted without Accounts approval in Zoho Payment blocked. System requires approval click —
+WhatsApp message alone insufficient.
+AC-10 Driver uploads POD photo via vendor portal link POD status updated. Customer notified. Accounts alerted
+for balance payment.
+AC-11 Invoice age reaches Day 7 with no payment Automated WhatsApp reminder sent to customer via
+Company WA Business.
+AC-12 Operations Manager opens dashboard Sees: active trips, pending PODs, overdue invoices, today's
+trip margins — all current.
+AC-13 New staff member logs in Sees only modules relevant to their role. Cannot access
+other departments' data.
+AC-14 End-to-end trip run Single Trip ID (EXP) appears correctly on: internal ops,
+customer WA, TCN, PO, POD, invoice, payment receipt —
+no manual entry, no mismatch.
+Confidential — For Engineering & Implementation Teams Only Page 20
+SweafEx | Business Requirements Document — CRM Platform Whooosh Networks Pvt Ltd | v1.0 | March 2026
+12 Glossary
+Term Full Form Definition
+ENQ Enquiry Number Unique ID for each inbound freight enquiry — system generated
+ORD Order Number Created when customer confirms booking — linked to ENQ
+EXP Expedition / Trip ID System-generated ID when vehicle is placed — never manually typed
+URPM Unloading/Route
+Purchase Memo
+Vendor Purchase Order document — generated in Zoho Books
+TCN Trip Confirmation Note Document signed by customer at loading — doubles as POD instrument
+POD Proof of Delivery Signed TCN + material bill returned from unloading site — confirms delivery
+FTL Full Truck Load Entire truck capacity hired for one customer shipment
+TDS Tax Deducted at Source 2% deduction on vendor payments under Section 194C
+RC Registration Certificate Vehicle registration document — mandatory vendor doc
+DL Driving Licence Driver's licence — mandatory, must be valid and correct class
+GSTIN GST Identification
+Number
+Tax registration number for GST compliance
+Rate Board— Internal view showing Operations Manager's approved customer rate range per
+enquiry
+POD-NA POD Not Applicable Flag set at order stage — balance payment released at unloading, no hard copy
+required
+Company
+WA Business
+Company WhatsApp
+Business
+The single company WhatsApp number — shared by Sales Coordinator and
+Sales Backend
+Vendor
+Portal
+— Web link for vendors/drivers — document upload, milestone updates, POD
+upload. No app required.
+Customer
+Portal
+— Web link for customers — trip status, TCN download, invoice view. No app
+required.
+This BRD is based on the live SOP documented in March 2026 through real workflow observation across all 15 steps of the SweafEx
+outsource trip lifecycle. It is a living document — update when process changes are made. Owner: Operations Manager, Whooosh
+Networks Pvt Ltd.
+Confidential — For Engineering & Implementation Teams Only Page 21

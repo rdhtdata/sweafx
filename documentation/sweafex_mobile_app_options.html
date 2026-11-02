@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>SweafEx | Mobile App Options & Estimated Costs</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+    @page {
+      size: 297mm 167.0625mm;
+      margin: 0;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+
+    @media print {
+      body {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .slide {
+        page-break-after: always !important;
+        page-break-inside: avoid !important;
+      }
+    }
+
+    body {
+      background-color: #040711;
+      color: #e2e8f0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.45;
+      margin: 0;
+      padding: 0;
+    }
+
+    .slide {
+      width: 297mm;
+      height: 167.0625mm;
+      max-height: 167.0625mm;
+      page-break-after: always;
+      position: relative;
+      background: #060913;
+      padding: 16mm 20mm;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Ambient background textures */
+    .slide::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(circle at 90% 10%, rgba(56, 189, 248, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 10% 90%, rgba(99, 102, 241, 0.04) 0%, transparent 40%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .slide-content {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Headers */
+    .slide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 5mm;
+    }
+
+    .header-left {
+      max-width: 80%;
+    }
+
+    .eyebrow {
+      font-size: 8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2mm;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background: #38bdf8;
+      border-radius: 2px;
+    }
+
+    .slide-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 20pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 1.5mm;
+    }
+
+    .slide-subtitle {
+      font-size: 9.5pt;
+      color: #94a3b8;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .header-badge {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 3mm 5mm;
+      border-radius: 8px;
+      text-align: right;
+    }
+
+    .header-badge-label {
+      font-size: 6.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      font-weight: 600;
+      margin-bottom: 1px;
+    }
+
+    .header-badge-val {
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #e2e8f0;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 3.5mm;
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      margin-top: auto;
+      font-size: 7.5pt;
+      color: #64748b;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-pill {
+      background: rgba(56, 189, 248, 0.1);
+      color: #38bdf8;
+      padding: 1px 7px;
+      border-radius: 4px;
+      font-weight: 600;
+      font-size: 7pt;
+    }
+
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* SLIDE 1: COVER */
+    .cover-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+      padding: 2mm 0;
+    }
+
+    .cover-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6mm;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-logo-badge {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      color: #ffffff;
+      font-size: 15pt;
+      box-shadow: 0 8px 24px rgba(56, 189, 248, 0.25);
+    }
+
+    .brand-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13pt;
+      font-weight: 700;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .client-tag {
+      font-size: 8.5pt;
+      color: #94a3b8;
+    }
+
+    .cover-badge-consultative {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #38bdf8;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .cover-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 32pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 3.5mm;
+    }
+
+    .cover-title span {
+      color: #38bdf8;
+    }
+
+    .cover-subtitle {
+      font-size: 13pt;
+      color: #94a3b8;
+      font-weight: 400;
+      max-width: 85%;
+      line-height: 1.4;
+      margin-bottom: 7mm;
+    }
+
+    .cover-path-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 5mm;
+    }
+
+    .cover-path-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.2s ease;
+    }
+
+    .path-card-opt {
+      font-size: 7.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      margin-bottom: 2px;
+    }
+
+    .path-card-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11.5pt;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+    }
+
+    .path-meta-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 6px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .path-time {
+      font-size: 8.5pt;
+      color: #94a3b8;
+      font-weight: 500;
+    }
+
+    .path-cost {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+
+    .cover-disclaimer-bar {
+      background: rgba(30, 41, 59, 0.45);
+      border: 1px dashed rgba(148, 163, 184, 0.25);
+      border-radius: 8px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 8pt;
+      color: #94a3b8;
+    }
+
+    .cover-disclaimer-icon {
+      color: #f59e0b;
+      font-size: 11pt;
+      font-weight: bold;
+    }
+
+    /* SLIDE 2: WHY CONSIDER MOBILE */
+    .s2-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 4mm;
+    }
+
+    .persona-card {
+      background: rgba(15, 23, 42, 0.55);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .persona-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .persona-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11pt;
+      font-weight: 700;
+    }
+
+    .persona-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .persona-subtitle {
+      font-size: 7.5pt;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .persona-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 8.5pt;
+      color: #cbd5e1;
+    }
+
+    .persona-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.35;
+    }
+
+    .bullet-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #38bdf8;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+
+    .s2-bottom-bar {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 12px;
+    }
+
+    .strategy-note {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .strategy-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 3px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .strategy-desc {
+      font-size: 8pt;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    .prereq-card {
+      background: rgba(245, 158, 11, 0.07);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .prereq-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 3px;
+    }
+
+    .prereq-desc {
+      font-size: 8pt;
+      color: #e2e8f0;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    /* SLIDE 3: COMPARISON OF THREE OPTIONS */
+    .s3-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 3.5mm;
+    }
+
+    .compare-card {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .compare-card.highlight-pwa {
+      border-top: 3px solid #38bdf8;
+    }
+
+    .compare-card.highlight-android {
+      border-top: 3px solid #34d399;
+    }
+
+    .compare-card.highlight-cross {
+      border-top: 3px solid #c084fc;
+    }
+
+    .opt-tag-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .opt-pill {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      padding: 2px 7px;
+      border-radius: 4px;
+    }
+
+    .pill-pwa { background: rgba(56, 189, 248, 0.12); color: #38bdf8; }
+    .pill-android { background: rgba(52, 211, 153, 0.12); color: #34d399; }
+    .pill-cross { background: rgba(192, 132, 252, 0.12); color: #c084fc; }
+
+    .pricing-strip {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      padding: 6px 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .strip-price {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 13pt;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+    }
+
+    .strip-time {
+      font-size: 8pt;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+
+    .card-h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11pt;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+
+    .card-attr-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .card-attr {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .attr-label {
+      font-size: 6.8pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+    }
+
+    .attr-val {
+      font-size: 8pt;
+      color: #cbd5e1;
+      line-height: 1.35;
+    }
+
+    .s3-disclaimer-callout {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(245, 158, 11, 0.3);
+      border-left: 3px solid #f59e0b;
+      border-radius: 8px;
+      padding: 8px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .callout-badge {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 7.5pt;
+      font-weight: 800;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      white-space: nowrap;
+    }
+
+    .callout-text {
+      font-size: 7.8pt;
+      color: #cbd5e1;
+      line-height: 1.35;
+    }
+
+    /* SLIDE 4: WHAT WORK IS INVOLVED */
+    .s4-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 3.5mm;
+    }
+
+    .work-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .work-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 8px;
+    }
+
+    .work-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .work-badge {
+      font-size: 7.5pt;
+      font-weight: 700;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    .work-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 5.5px;
+      font-size: 7.8pt;
+      color: #cbd5e1;
+      margin-bottom: 8px;
+      flex-grow: 1;
+    }
+
+    .work-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+      line-height: 1.3;
+    }
+
+    .work-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: #38bdf8;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .work-focus-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 6px;
+      padding: 6px 8px;
+      border-left: 2px solid #38bdf8;
+      font-size: 7.2pt;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+
+    .s4-bottom-logic {
+      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 10px;
+      padding: 9px 14px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .logic-label {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      white-space: nowrap;
+    }
+
+    .logic-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      width: 100%;
+    }
+
+    .logic-item {
+      font-size: 7.5pt;
+      color: #cbd5e1;
+      line-height: 1.3;
+    }
+
+    .logic-item strong {
+      color: #ffffff;
+      font-weight: 600;
+    }
+
+    /* SLIDE 5: ASSUMPTIONS & EXCLUSIONS */
+    .s5-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 3.5mm;
+    }
+
+    .assumptions-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(56, 189, 248, 0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .exclusions-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(244, 63, 94, 0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .section-h3 {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 10pt;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .color-blue { color: #38bdf8; }
+    .color-rose { color: #f43f5e; }
+
+    .check-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6.5px;
+      font-size: 7.8pt;
+      color: #cbd5e1;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.35;
+    }
+
+    .check-icon {
+      color: #38bdf8;
+      font-weight: bold;
+      font-size: 8.5pt;
+      flex-shrink: 0;
+    }
+
+    .cross-icon {
+      color: #f43f5e;
+      font-weight: bold;
+      font-size: 8.5pt;
+      flex-shrink: 0;
+    }
+
+    .s5-warning-box {
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.25);
+      border-radius: 10px;
+      padding: 9px 14px;
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .warning-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8pt;
+      font-weight: 700;
+      color: #fbbf24;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    .warning-text {
+      font-size: 7.6pt;
+      color: #cbd5e1;
+      line-height: 1.35;
+    }
+
+    /* SLIDE 6: PLANNING FOR THE FUTURE */
+    .s6-recap-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 3.5mm;
+    }
+
+    .recap-item {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 10px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .recap-name {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 9.5pt;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .recap-meta {
+      text-align: right;
+    }
+
+    .recap-cost {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 11pt;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .recap-time {
+      font-size: 7.2pt;
+      color: #94a3b8;
+    }
+
+    .roadmap-container {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 3.5mm;
+    }
+
+    .roadmap-heading {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .steps-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      position: relative;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 8px;
+      padding: 8px 10px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .step-badge {
+      font-size: 6.5pt;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #38bdf8;
+      margin-bottom: 3px;
+    }
+
+    .step-title {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 3px;
+    }
+
+    .step-desc {
+      font-size: 7.2pt;
+      color: #94a3b8;
+      line-height: 1.3;
+    }
+
+    .s6-consultative-close {
+      background: linear-gradient(90deg, rgba(56, 189, 248, 0.08), rgba(99, 102, 241, 0.05));
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 10px;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .close-icon-star {
+      width: 28px;
+      height: 28px;
+      background: rgba(56, 189, 248, 0.15);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #38bdf8;
+      font-size: 11pt;
+      flex-shrink: 0;
+    }
+
+    .close-quote {
+      font-size: 8.5pt;
+      color: #e2e8f0;
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .close-quote strong {
+      font-style: normal;
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 1: COVER                             -->
+  <!-- ========================================== -->
+  <div class="slide">
+    <div class="slide-content">
+      <div class="cover-body">
+        
+        <div class="cover-brand-row">
+          <div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14pt; font-weight: 800; letter-spacing: -0.02em; color: #ffffff;">
+              OCTAGRAM<span style="color: #38bdf8;"> AI &amp; SOFTWARE SOLUTIONS</span>
+            </div>
+            <div class="client-tag" style="margin-top: 3px;">Prepared for SweafEx &middot; Whooosh Networks Pvt Ltd</div>
+          </div>
+          <div class="cover-badge-consultative">Future Planning &amp; Budgeting Guide</div>
+        </div>
+
+        <h1 class="cover-title">SweafEx | <span>Mobile App Options</span></h1>
+        
+        <p class="cover-subtitle">
+          Future Development Pathways, Delivery Timelines &amp; Estimated Investments for Mobile Transport Operations
+        </p>
+
+        <div class="cover-path-grid">
+          <div class="cover-path-card">
+            <div>
+              <div class="path-card-opt">Option A</div>
+              <div class="path-card-title">Progressive Web App (PWA)</div>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-time">2 Weeks Delivery</span>
+              <span class="path-cost">₹50,000</span>
+            </div>
+          </div>
+
+          <div class="cover-path-card">
+            <div>
+              <div class="path-card-opt" style="color: #34d399;">Option B</div>
+              <div class="path-card-title">Dedicated Android App</div>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-time">4 Weeks Delivery</span>
+              <span class="path-cost" style="color: #34d399;">₹1,00,000</span>
+            </div>
+          </div>
+
+          <div class="cover-path-card">
+            <div>
+              <div class="path-card-opt" style="color: #c084fc;">Option C</div>
+              <div class="path-card-title">Dedicated Android + iOS Apps</div>
+            </div>
+            <div class="path-meta-row">
+              <span class="path-time">6 Weeks Delivery</span>
+              <span class="path-cost" style="color: #c084fc;">₹2,00,000</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cover-disclaimer-bar">
+          <span class="cover-disclaimer-icon" style="display: inline-flex; align-items: center;"><svg width="15" height="15" viewBox="0 0 20 20" fill="none" stroke="#f59e0b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="8"/><line x1="10" y1="10" x2="10" y2="14"/><circle cx="10" cy="6.5" r="0.5" fill="#f59e0b"/></svg></span>
+          <div>
+            <strong>Exploring the next stage of mobile access:</strong> All estimates are tentative for planning and budgeting. They depend upon the completed core web application backend and APIs being ready for direct reuse.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>Octagram AI &amp; Software Solutions</span>
+          <span class="footer-pill">Commercial Planning Brief</span>
+          <span>Core Web System Prerequisite</span>
+        </div>
+        <div class="footer-right">
+          <span>Confidential &middot; For SweafEx Management Review</span>
+          <span>Slide 1 / 6</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 2: WHY CONSIDER A MOBILE SOLUTION    -->
+  <!-- ========================================== -->
+  <div class="slide">
+    <div class="slide-content">
+      
+      <div class="slide-header">
+        <div class="header-left">
+          <div class="eyebrow">Operational Mobility &amp; Practical Value</div>
+          <h2 class="slide-title">Why Consider a Mobile Solution?</h2>
+          <div class="slide-subtitle">
+            Evaluating how handheld access can streamline day-to-day coordination across internal teams, field drivers, and clients.
+          </div>
+        </div>
+        <div class="header-badge">
+          <div class="header-badge-label">Phase</div>
+          <div class="header-badge-val">Future Extension</div>
+        </div>
+      </div>
+
+      <div class="s2-grid">
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="persona-icon-box">01</div>
+            <div>
+              <div class="persona-title">Internal Operations Staff</div>
+              <div class="persona-subtitle">Deskless Coordination</div>
+            </div>
+          </div>
+          <ul class="persona-list">
+            <li>
+              <div class="bullet-dot"></div>
+              <span><strong>Away-from-desk management:</strong> View live trip status, vehicle placements, and urgent alerts without being tied to a laptop.</span>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <span><strong>Faster approvals:</strong> Review vendor spot rates, approve vehicle indents, and handle exceptions directly from mobile.</span>
+            </li>
+            <li>
+              <div class="bullet-dot"></div>
+              <span><strong>Reduced phone dependency:</strong> Operational data is accessible immediately without calling back-office colleagues.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="persona-icon-box" style="background: rgba(52, 211, 153, 0.12); border-color: rgba(52, 211, 153, 0.25); color: #34d399;">02</div>
+            <div>
+              <div class="persona-title">Field Drivers &amp; Vendors</div>
+              <div class="persona-subtitle">Zero-Friction Updates</div>
+            </div>
+          </div>
+          <ul class="persona-list">
+            <li>
+              <div class="bullet-dot" style="background: #34d399;"></div>
+              <span><strong>Simplified trip assignment:</strong> Drivers access pickup addresses, contact numbers, and delivery instructions instantly.</span>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #34d399;"></div>
+              <span><strong>One-touch milestone reporting:</strong> Report Arrival, Loading, Transit, and Unloading with single taps.</span>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #34d399;"></div>
+              <span><strong>Immediate POD capture:</strong> Photograph and upload Proof of Delivery receipts at the delivery dock, speeding up billing cycles.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="persona-card">
+          <div class="persona-header">
+            <div class="persona-icon-box" style="background: rgba(192, 132, 252, 0.12); border-color: rgba(192, 132, 252, 0.25); color: #c084fc;">03</div>
+            <div>
+              <div class="persona-title">Shippers &amp; Clients</div>
+              <div class="persona-subtitle">Self-Serve Visibility</div>
+            </div>
+          </div>
+          <ul class="persona-list">
+            <li>
+              <div class="bullet-dot" style="background: #c084fc;"></div>
+              <span><strong>On-demand shipment tracking:</strong> Clients inspect live trip progress and vehicle coordinates without chasing via phone calls.</span>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #c084fc;"></div>
+              <span><strong>Instant document access:</strong> View e-way bills, vehicle documents, and verified POD copies as soon as they are uploaded.</span>
+            </li>
+            <li>
+              <div class="bullet-dot" style="background: #c084fc;"></div>
+              <span><strong>Professional customer experience:</strong> Reinforces SweafEx's reputation as a digitally enabled freight partner.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="s2-bottom-bar">
+        <div class="strategy-note">
+          <div class="strategy-title">
+            <span style="display: inline-flex; align-items: center; color: #38bdf8;"><svg width="8" height="8" viewBox="0 0 10 10" fill="#38bdf8"><rect x="2" y="2" width="6" height="6" rx="1"/></svg></span> Strategic Purpose of This Brief
+          </div>
+          <div class="strategy-desc">
+            The objective of this presentation is to help SweafEx leadership compare possible technical models for future budgeting. This is <strong>not a recommendation for immediate spend</strong>; mobile applications are best evaluated once actual web usage patterns are observed.
+          </div>
+        </div>
+
+        <div class="prereq-card">
+          <div class="prereq-title">Mandatory Prerequisite</div>
+          <div class="prereq-desc">
+            All mobile options assume that the core web software, backend database, and APIs are 100% completed and verified first.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>SweafEx Digital Operations Platform</span>
+          <span class="footer-pill">Mobility Rationale</span>
+        </div>
+        <div class="footer-right">
+          <span>Prepared by Octagram AI</span>
+          <span>Slide 2 / 6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 3: COMPARE ALL THREE OPTIONS         -->
+  <!-- ========================================== -->
+  <div class="slide">
+    <div class="slide-content">
+      
+      <div class="slide-header">
+        <div class="header-left">
+          <div class="eyebrow">Platform Architecture Comparison</div>
+          <h2 class="slide-title">Comparing the Three Mobile Options</h2>
+          <div class="slide-subtitle">
+            Side-by-side analysis of delivery timelines, estimated investment, technical approach, and ideal business use cases.
+          </div>
+        </div>
+        <div class="header-badge">
+          <div class="header-badge-label">Estimates</div>
+          <div class="header-badge-val">Tentative Planning</div>
+        </div>
+      </div>
+
+      <div class="s3-cards-grid">
+        
+        <!-- OPTION A -->
+        <div class="compare-card highlight-pwa">
+          <div>
+            <div class="opt-tag-row">
+              <span class="opt-pill pill-pwa">Option A</span>
+              <span style="font-size: 7.5pt; color: #94a3b8;">Web-Powered</span>
+            </div>
+            
+            <div class="pricing-strip">
+              <div class="strip-price">₹50,000</div>
+              <div class="strip-time">2 Weeks Delivery</div>
+            </div>
+
+            <div class="card-h3">Progressive Web App (PWA)</div>
+
+            <div class="card-attr-group">
+              <div class="card-attr">
+                <span class="attr-label">What It Is</span>
+                <span class="attr-val">An enhanced, mobile-responsive edition of the web portal that users can save to their home screen as an app icon.</span>
+              </div>
+              <div class="card-attr">
+                <span class="attr-label">Main Advantage</span>
+                <span class="attr-val">Most economical route; directly leverages existing web screens, business logic, and security rules with minimal duplicate coding.</span>
+              </div>
+              <div class="card-attr">
+                <span class="attr-label">Best Suited For</span>
+                <span class="attr-val">Users who primarily need straightforward access to trip details, status milestone updates, and camera POD uploads.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OPTION B -->
+        <div class="compare-card highlight-android">
+          <div>
+            <div class="opt-tag-row">
+              <span class="opt-pill pill-android">Option B</span>
+              <span style="font-size: 7.5pt; color: #94a3b8;">Native App (Android)</span>
+            </div>
+            
+            <div class="pricing-strip">
+              <div class="strip-price" style="color: #34d399;">₹1,00,000</div>
+              <div class="strip-time">4 Weeks Delivery</div>
+            </div>
+
+            <div class="card-h3">Dedicated Android App</div>
+
+            <div class="card-attr-group">
+              <div class="card-attr">
+                <span class="attr-label">What It Is</span>
+                <span class="attr-val">A standalone Android application (.apk) installed on devices, communicating directly with the core web platform APIs.</span>
+              </div>
+              <div class="card-attr">
+                <span class="attr-label">Main Advantage</span>
+                <span class="attr-val">A tailored native touch experience with mobile-specific navigation, device permission handling, and app-store distribution.</span>
+              </div>
+              <div class="card-attr">
+                <span class="attr-label">Best Suited For</span>
+                <span class="attr-val">Organisations wanting a dedicated Android interface for field drivers, fleet supervisors, and on-the-move operations staff.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- OPTION C -->
+        <div class="compare-card highlight-cross">
+          <div>
+            <div class="opt-tag-row">
+              <span class="opt-pill pill-cross">Option C</span>
+              <span style="font-size: 7.5pt; color: #94a3b8;">Dual Native Platforms</span>
+            </div>
+            
+            <div class="pricing-strip">
+              <div class="strip-price" style="color: #c084fc;">₹2,00,000</div>
+              <div class="strip-time">6 Weeks Delivery</div>
+            </div>
+
+            <div class="card-h3">Dedicated Android + iOS Apps</div>
+
+            <div class="card-attr-group">
+              <div class="card-attr">
+                <span class="attr-label">What It Is</span>
+                <span class="attr-val">Dedicated mobile applications built for both Google Android and Apple iOS ecosystems, connecting to the shared backend.</span>
+              </div>
+              <div class="card-attr">
+                <span class="attr-label">Main Advantage</span>
+                <span class="attr-val">Comprehensive cross-platform coverage, ensuring seamless adoption whether stakeholders use Android phones or Apple iPhones.</span>
+              </div>
+              <div class="card-attr">
+                <span class="attr-label">Best Suited For</span>
+                <span class="attr-val">Enterprises requiring unified app-store presence for high-value corporate clients, directors, and external cargo owners.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="s3-disclaimer-callout">
+        <div class="callout-badge" style="display: flex; align-items: center; gap: 6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Essential Planning Notice</div>
+        <div class="callout-text">
+          All figures are <strong>tentative planning estimates</strong> based on reusing the backend, APIs, authentication, and role logic from the web application. <em>The PWA is not inferior—it provides high utility for low cost; dedicated apps are chosen when platform-specific distribution and touch UX are mandatory.</em>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>SweafEx Digital Operations Platform</span>
+          <span class="footer-pill">Architectural Comparison</span>
+        </div>
+        <div class="footer-right">
+          <span>Non-Binding Budgeting Guide</span>
+          <span>Slide 3 / 6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 4: WHAT WORK IS INVOLVED             -->
+  <!-- ========================================== -->
+  <div class="slide">
+    <div class="slide-content">
+      
+      <div class="slide-header">
+        <div class="header-left">
+          <div class="eyebrow">Engineering Breakdown &amp; Scope Effort</div>
+          <h2 class="slide-title">What Work Is Involved in Each Option?</h2>
+          <div class="slide-subtitle">
+            Understanding the development effort, platform dependencies, and architectural logic that drive the timeline and cost differences.
+          </div>
+        </div>
+        <div class="header-badge">
+          <div class="header-badge-label">Engineering Scope</div>
+          <div class="header-badge-val">Effort Analysis</div>
+        </div>
+      </div>
+
+      <div class="s4-grid">
+        
+        <!-- PWA WORK -->
+        <div class="work-box">
+          <div class="work-header">
+            <span class="work-title">PWA Engineering</span>
+            <span class="work-badge" style="color: #38bdf8;">2 Wks &middot; ₹50k</span>
+          </div>
+          <ul class="work-list">
+            <li>
+              <div class="work-dot"></div>
+              <span><strong>Workflow review:</strong> Audit completed web app to identify mobile-essential driver &amp; staff flows.</span>
+            </li>
+            <li>
+              <div class="work-dot"></div>
+              <span><strong>Mobile UI refinement:</strong> Optimize responsive layouts, touch targets, forms, and mobile menus.</span>
+            </li>
+            <li>
+              <div class="work-dot"></div>
+              <span><strong>PWA manifest &amp; service worker:</strong> Configure home-screen install banners, icons, and asset caching.</span>
+            </li>
+            <li>
+              <div class="work-dot"></div>
+              <span><strong>Core testing:</strong> Verify authentication, role limits, trip updates, and mobile browser camera uploads.</span>
+            </li>
+            <li>
+              <div class="work-dot"></div>
+              <span><strong>Deployment &amp; handover:</strong> Direct production push with zero app-store delays.</span>
+            </li>
+          </ul>
+          <div class="work-focus-box">
+            <strong>Key Focus:</strong> Refines and adapts existing web frontend without developing a secondary codebase.
+          </div>
+        </div>
+
+        <!-- ANDROID WORK -->
+        <div class="work-box">
+          <div class="work-header">
+            <span class="work-title">Android App Engineering</span>
+            <span class="work-badge" style="color: #34d399;">4 Wks &middot; ₹1,00,000</span>
+          </div>
+          <ul class="work-list">
+            <li>
+              <div class="work-dot" style="background: #34d399;"></div>
+              <span><strong>Dedicated mobile screens:</strong> Design &amp; build mobile-native UI components and tab-based navigation.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #34d399;"></div>
+              <span><strong>REST API integration:</strong> Connect mobile application securely to existing backend data endpoints.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #34d399;"></div>
+              <span><strong>Operational workflows:</strong> Implement role-based login, live trip tracking cards, and direct camera POD upload.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #34d399;"></div>
+              <span><strong>Hardware &amp; network handling:</strong> Manage device permissions, connectivity interruptions, and loading states.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #34d399;"></div>
+              <span><strong>Device testing &amp; release build:</strong> Test on representative Android screen sizes and compile production APK/AAB.</span>
+            </li>
+          </ul>
+          <div class="work-focus-box" style="border-color: #34d399;">
+            <strong>Key Focus:</strong> Builds a standalone mobile client while consuming backend business logic and databases.
+          </div>
+        </div>
+
+        <!-- ANDROID + IOS WORK -->
+        <div class="work-box">
+          <div class="work-header">
+            <span class="work-title">Dual App Engineering</span>
+            <span class="work-badge" style="color: #c084fc;">6 Wks &middot; ₹2,00,000</span>
+          </div>
+          <ul class="work-list">
+            <li>
+              <div class="work-dot" style="background: #c084fc;"></div>
+              <span><strong>Cross-platform architecture:</strong> Plan unified codebase delivering native ergonomics on both operating systems.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #c084fc;"></div>
+              <span><strong>Dual UI implementation:</strong> Adapt layouts for Material (Android) and Cupertino (iOS) navigation conventions.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #c084fc;"></div>
+              <span><strong>Shared backend integration:</strong> Secure endpoint consumption across both mobile ecosystems.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #c084fc;"></div>
+              <span><strong>Dual-ecosystem QA:</strong> Extensive verification across various Android hardware and Apple iOS devices.</span>
+            </li>
+            <li>
+              <div class="work-dot" style="background: #c084fc;"></div>
+              <span><strong>Store release preparation:</strong> Package production binaries and assist with Google Play &amp; Apple App Store submission.</span>
+            </li>
+          </ul>
+          <div class="work-focus-box" style="border-color: #c084fc;">
+            <strong>Key Focus:</strong> Full two-ecosystem support, device matrix testing, and compliance with dual store guidelines.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="s4-bottom-logic">
+        <div class="logic-label">Pricing Logic</div>
+        <div class="logic-grid">
+          <div class="logic-item">
+            <strong>PWA (₹50,000):</strong> Low cost because it refines and reuses the existing web frontend codebase directly.
+          </div>
+          <div class="logic-item">
+            <strong>Android (₹1,00,000):</strong> Moderate cost because it requires constructing a separate mobile UI and native device layer.
+          </div>
+          <div class="logic-item">
+            <strong>Android + iOS (₹2,00,000):</strong> Higher cost due to dual operating system validation, Apple compliance, and dual store overhead.
+          </div>
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>SweafEx Digital Operations Platform</span>
+          <span class="footer-pill">Development Scope</span>
+        </div>
+        <div class="footer-right">
+          <span>Estimated Scope Packages &middot; Octagram</span>
+          <span>Slide 4 / 6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 5: ASSUMPTIONS, DEPENDENCIES & EXCLUSIONS -->
+  <!-- ========================================== -->
+  <div class="slide">
+    <div class="slide-content">
+      
+      <div class="slide-header">
+        <div class="header-left">
+          <div class="eyebrow">Governance &amp; Scope Boundaries</div>
+          <h2 class="slide-title">Assumptions, Dependencies &amp; Exclusions</h2>
+          <div class="slide-subtitle">
+            A clear framework of technical prerequisites, third-party items, and commercial boundaries governing all mobile options.
+          </div>
+        </div>
+        <div class="header-badge">
+          <div class="header-badge-label">Architecture</div>
+          <div class="header-badge-val">Technical Governance</div>
+        </div>
+      </div>
+
+      <div class="s5-grid">
+        
+        <!-- ASSUMPTIONS -->
+        <div class="assumptions-box">
+          <div class="section-h3 color-blue">
+            <span style="display: inline-flex; align-items: center;"><svg width="14" height="14" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg></span> Core Engineering Assumptions
+          </div>
+          <ul class="check-list">
+            <li>
+              <span class="check-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg></span>
+              <span><strong>Web software complete:</strong> The primary SweafEx web application is 100% developed, tested, and operational before mobile development initiates.</span>
+            </li>
+            <li>
+              <span class="check-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg></span>
+              <span><strong>Backend &amp; API readiness:</strong> Required database models, API endpoints, authentication mechanisms, and user roles already exist and are reusable.</span>
+            </li>
+            <li>
+              <span class="check-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg></span>
+              <span><strong>Codebase structure:</strong> Existing business logic and backend services are sufficiently structured to support external mobile queries without rewrite.</span>
+            </li>
+            <li>
+              <span class="check-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="12" height="12" viewBox="0 0 20 20" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 10 8 14 16 6"/></svg></span>
+              <span><strong>Agreed mobile scope:</strong> Development is strictly focused on the agreed mobile operational workflows (trip viewing, milestone reporting, POD upload).</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- EXCLUSIONS -->
+        <div class="exclusions-box">
+          <div class="section-h3 color-rose">
+            <span style="display: inline-flex; align-items: center;"><svg width="13" height="13" viewBox="0 0 20 20" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg></span> Excluded Unless Agreed Separately
+          </div>
+          <ul class="check-list">
+            <li>
+              <span class="cross-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg></span>
+              <span><strong>New backend features:</strong> Creation of unbuilt server workflows, complex ERP modules, or major changes to core business logic.</span>
+            </li>
+            <li>
+              <span class="cross-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg></span>
+              <span><strong>Core software redesigns:</strong> Major structural overhauls or visual redesigns of the foundational web application.</span>
+            </li>
+            <li>
+              <span class="cross-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg></span>
+              <span><strong>Hosting &amp; third-party APIs:</strong> Cloud server hosting, WhatsApp Business API credits, Google Maps API usage, or SMS gateway fees.</span>
+            </li>
+            <li>
+              <span class="cross-icon" style="display: inline-flex; align-items: center; margin-top: 2px;"><svg width="11" height="11" viewBox="0 0 20 20" fill="none" stroke="#f43f5e" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="5" x2="15" y2="15"/><line x1="15" y1="5" x2="5" y2="15"/></svg></span>
+              <span><strong>App store fees &amp; maintenance:</strong> Google Play Developer ($25 one-time) and Apple Developer Program ($99/year) accounts, and ongoing app maintenance.</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="s5-warning-box">
+        <div class="warning-title" style="display: flex; align-items: center; gap: 6px;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Architectural Review Notice</div>
+        <div class="warning-text">
+          These timelines and prices assume high backend reusability. The definitive scope, final cost, and delivery schedule can only be confirmed after the web software is complete and Octagram has conducted a formal architectural code review. Should additional server endpoints or refactoring be required, revised estimates will be agreed upon with SweafEx before work commences.
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>SweafEx Digital Operations Platform</span>
+          <span class="footer-pill">Technical Terms</span>
+        </div>
+        <div class="footer-right">
+          <span>Octagram Commercial Guidelines</span>
+          <span>Slide 5 / 6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- SLIDE 6: PLANNING FOR THE FUTURE           -->
+  <!-- ========================================== -->
+  <div class="slide">
+    <div class="slide-content">
+      
+      <div class="slide-header">
+        <div class="header-left">
+          <div class="eyebrow">Next Steps &amp; Roadmap</div>
+          <h2 class="slide-title">Plan Now. Decide When You're Ready.</h2>
+          <div class="slide-subtitle">
+            A sensible, low-risk roadmap to evaluate your real-world mobile needs before committing capital.
+          </div>
+        </div>
+        <div class="header-badge">
+          <div class="header-badge-label">Strategy</div>
+          <div class="header-badge-val">Next Phase</div>
+        </div>
+      </div>
+
+      <!-- Recap Row -->
+      <div class="s6-recap-row">
+        <div class="recap-item">
+          <div>
+            <div style="font-size: 7pt; color: #38bdf8; font-weight: 700; text-transform: uppercase;">Option A</div>
+            <div class="recap-name">Progressive Web App</div>
+          </div>
+          <div class="recap-meta">
+            <div class="recap-cost">₹50,000</div>
+            <div class="recap-time">2 Weeks Delivery</div>
+          </div>
+        </div>
+
+        <div class="recap-item">
+          <div>
+            <div style="font-size: 7pt; color: #34d399; font-weight: 700; text-transform: uppercase;">Option B</div>
+            <div class="recap-name">Dedicated Android App</div>
+          </div>
+          <div class="recap-meta">
+            <div class="recap-cost" style="color: #34d399;">₹1,00,000</div>
+            <div class="recap-time">4 Weeks Delivery</div>
+          </div>
+        </div>
+
+        <div class="recap-item">
+          <div>
+            <div style="font-size: 7pt; color: #c084fc; font-weight: 700; text-transform: uppercase;">Option C</div>
+            <div class="recap-name">Android + iOS Apps</div>
+          </div>
+          <div class="recap-meta">
+            <div class="recap-cost" style="color: #c084fc;">₹2,00,000</div>
+            <div class="recap-time">6 Weeks Delivery</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommended 4-step sequence -->
+      <div class="roadmap-container">
+        <div class="roadmap-heading">Recommended 4-Step Decision Framework</div>
+        <div class="steps-row">
+          <div class="step-card">
+            <div class="step-badge">Step 1</div>
+            <div class="step-title">Complete Web System</div>
+            <div class="step-desc">Finish the core SweafEx web platform, establishing rock-solid operational databases, booking flows, and billing workflows.</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">Step 2</div>
+            <div class="step-title">Observe Field Usage</div>
+            <div class="step-desc">Evaluate real-world driver adoption and customer requests through the browser to identify where mobile friction actually exists.</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">Step 3</div>
+            <div class="step-title">Architecture Review</div>
+            <div class="step-desc">Octagram and SweafEx conduct a technical review of backend APIs to confirm reusability and validate exact requirements.</div>
+          </div>
+
+          <div class="step-card">
+            <div class="step-badge">Step 4</div>
+            <div class="step-title">Targeted Build</div>
+            <div class="step-desc">Select the right mobile path (PWA, Android, or Dual) based on validated demand, with precise scope and guaranteed pricing.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Consultative Closing -->
+      <div class="s6-consultative-close">
+        <div class="close-icon-star" style="display: inline-flex; align-items: center; justify-content: center;"><svg width="13" height="13" viewBox="0 0 24 24" fill="#38bdf8"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <div class="close-quote">
+          "Once the core web software is complete, <strong>Octagram will review the existing architecture with SweafEx</strong> and provide a precise scope, timeline, and quotation for the selected option—ensuring zero wasted investment."
+        </div>
+      </div>
+
+      <div class="slide-footer">
+        <div class="footer-left">
+          <span>Octagram AI &amp; Software Solutions</span>
+          <span class="footer-pill">Executive Planning Summary</span>
+          <span>Prepared for SweafEx Leadership</span>
+        </div>
+        <div class="footer-right">
+          <span>Final Planning Brief</span>
+          <span>Slide 6 / 6</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,2751 @@
+
+---
+
+# SWEAFEX INTERNAL OPERATIONS MANAGEMENT SYSTEM
+
+## DATA, PROCESS & FEATURE DOCUMENTATION
+
+**Document Purpose:**  
+To document the existing Excel sheets, CRM formats, WhatsApp communication formats and operational information currently used by SweafEx, and translate them into requirements for an internal operations management software.
+
+**Source:** Existing SweafEx Excel formats, CRM examples, WhatsApp message formats and operational documents supplied by the company.
+
+---
+
+# 1. PURPOSE OF THE SOFTWARE
+
+SweafEx currently manages its transportation operations using a combination of:
+
+- WhatsApp messages
+- Excel sheets
+- Vendor databases
+- Enquiry sheets
+- Requirement sheets
+- Placement sheets
+- Trip confirmation sheets
+- Trip status sheets
+- Supplier/payment sheets
+- Vendor and broker CRM sheets
+- Rate cards
+- Purchasing memos
+
+The purpose of the new internal software is to replace this fragmented process with a **single centralized operational system**.
+
+The software should allow SweafEx employees to manage the complete journey of a transportation requirement:
+
+**Client Requirement → Enquiry → Vendor Search → Vendor Quotes → Vendor Selection → Vehicle/Driver Verification → Placement → Trip Confirmation → Trip Tracking → Delivery/POD → Supplier Payment → Trip Completion → Rating/CRM**
+
+The system should maintain a single source of truth so that information entered once can automatically appear wherever it is required.
+
+For example:
+
+If an employee enters:
+
+> Trip ID: EXP0369  
+> Client: Micron Electricals India Pvt Ltd  
+> From: Bangalore  
+> To: Tuni  
+> Vehicle: 20 Feet Open  
+> Weight: 7 Tonnes
+
+that information should automatically be available in:
+
+- Requirement
+- Placement
+- Trip Confirmation
+- Supplier Details
+- Trip Status
+- Purchasing Memo
+- CRM
+- WhatsApp confirmation
+
+The user should not need to manually enter the same information into multiple Excel files.
+
+---
+
+# 2. OVERALL BUSINESS WORKFLOW
+
+The system should be designed around the following operational lifecycle.
+
+```text
+CLIENT
+   ↓
+CLIENT REQUIREMENT
+   ↓
+ENQUIRY
+   ↓
+REQUIREMENT
+   ↓
+VENDOR / BROKER SEARCH
+   ↓
+QUOTATIONS
+   ↓
+QUOTE COMPARISON
+   ↓
+BEST VENDOR / RATE
+   ↓
+PLACEMENT
+   ↓
+VEHICLE + DRIVER VERIFICATION
+   ↓
+TRIP CONFIRMATION
+   ↓
+CLIENT WHATSAPP CONFIRMATION
+   ↓
+TRIP START
+   ↓
+LOADING
+   ↓
+TRANSIT
+   ↓
+UNLOADING
+   ↓
+POD / DOCUMENTS
+   ↓
+TRIP COMPLETION
+   ↓
+SUPPLIER PAYMENT
+   ↓
+RATING
+   ↓
+CRM / VENDOR PERFORMANCE
+```
+
+---
+
+# 3. CORE ENTITIES OF THE SYSTEM
+
+The software should not be built as separate Excel replacements.
+
+Instead, it should have centralized entities.
+
+The primary entities should be:
+
+1. Client / Party
+2. Enquiry
+3. Requirement
+4. Vendor
+5. Broker
+6. Vehicle
+7. Driver
+8. Quote
+9. Placement
+10. Trip
+11. Trip Status
+12. Supplier Payment
+13. Purchase Memo
+14. Rate Card
+15. CRM / Performance
+16. WhatsApp Messages
+17. Documents / Attachments
+
+These entities should be connected.
+
+---
+
+# 4. CLIENT / PARTY MANAGEMENT
+
+## Purpose
+
+The Client/Party module stores information about companies that approach SweafEx for transportation requirements.
+
+Examples visible in the supplied formats include:
+
+- Micron Electricals India Pvt Ltd
+- Nirmala Enterprises
+- Sturlite
+- RSD
+
+The client becomes the owner of the transportation requirement.
+
+---
+
+## Required fields
+
+### Client ID
+
+Unique internal identifier for the client.
+
+Example:
+
+```text
+CL0001
+```
+
+---
+
+### Client Name / Party
+
+Name of the company requesting transportation.
+
+Example:
+
+```text
+Micron Electricals India Pvt Ltd
+```
+
+---
+
+### Contact Person
+
+Person from the client organization communicating with SweafEx.
+
+**To Be Confirmed:** The supplied formats do not clearly show a dedicated client contact-person field.
+
+---
+
+### Contact Number
+
+Client contact number.
+
+**To Be Confirmed.**
+
+---
+
+### Email
+
+Client email address.
+
+**To Be Confirmed.**
+
+---
+
+### Client Address
+
+Registered or operational address.
+
+**To Be Confirmed.**
+
+---
+
+### GSTIN
+
+Client GST identification number.
+
+**To Be Confirmed.**
+
+---
+
+### Notes
+
+Additional information about the client.
+
+---
+
+## Client functionality
+
+The software should allow employees to:
+
+- Create clients
+- Edit clients
+- Search clients
+- View all enquiries belonging to a client
+- View all trips belonging to a client
+- View completed trips
+- View active trips
+- View outstanding information
+- View historical transportation requirements
+
+---
+
+# 5. ENQUIRY MANAGEMENT
+
+## Purpose
+
+The Enquiry represents a transportation requirement received from a client.
+
+The supplied enquiry sheet shows fields such as:
+
+- Enquiry No
+- Date
+- Party
+- From
+- To
+- Vehicle
+- Material
+- Loading Date
+- Target Price
+- Vendor quotes
+- Best rate
+- Final status
+
+The enquiry is the starting point of the operational workflow.
+
+---
+
+# 6. NEW CLIENT WHATSAPP REQUIREMENT
+
+The supplied documentation shows that a client requirement can arrive through WhatsApp.
+
+Example:
+
+```text
+New Tuni Requirment:
+
+Loading : Bangalore- 560026
+Unloading : Tuni - 531127
+Length : 20 Feet
+Type : Open
+Weight : 7 Tonnes
+Material : Iron and Steel
+Loading : Now
+Party :Micron Electricals India Pvt Ltd
+```
+
+The source confirms this as an example of how client requests appear. sweafx_formats and docs
+
+---
+
+## Information that must be extracted from the message
+
+### Requirement destination
+
+Example:
+
+```text
+Tuni
+```
+
+---
+
+### Loading location
+
+Example:
+
+```text
+Bangalore
+```
+
+---
+
+### Loading PIN
+
+Example:
+
+```text
+560026
+```
+
+---
+
+### Unloading PIN
+
+Example:
+
+```text
+531127
+```
+
+---
+
+### Vehicle length
+
+Example:
+
+```text
+20 Feet
+```
+
+---
+
+### Vehicle type
+
+Example:
+
+```text
+Open
+```
+
+---
+
+### Weight
+
+Example:
+
+```text
+7 Tonnes
+```
+
+---
+
+### Material
+
+Example:
+
+```text
+Iron and Steel
+```
+
+---
+
+### Loading requirement
+
+Example:
+
+```text
+Now
+```
+
+This could represent immediate loading.
+
+The exact allowed values should be confirmed with SweafEx.
+
+---
+
+### Party
+
+Example:
+
+```text
+Micron Electricals India Pvt Ltd
+```
+
+---
+
+# 7. ENQUIRY NUMBER
+
+Every enquiry should receive a unique identifier.
+
+Example:
+
+```text
+ENQ1071
+ENQ1074
+ENQ1085
+ENQ1086
+```
+
+The enquiry number should never be duplicated.
+
+The system should automatically generate it.
+
+---
+
+# 8. ENQUIRY DATE
+
+The date on which the requirement/enquiry was created.
+
+Example:
+
+```text
+30 Sep 2026
+1 Oct 2026
+```
+
+---
+
+# 9. PARTY
+
+The client requesting the transportation service.
+
+Example:
+
+```text
+Nirmala Enterprises
+Sturlite
+Micron Electricals India
+RSD
+```
+
+---
+
+# 10. FROM LOCATION
+
+The enquiry sheet separates the origin into:
+
+```text
+From
+    Area
+    City
+```
+
+### Area
+
+Usually an area/PIN or locality identifier.
+
+Example:
+
+```text
+Kumbalgodu
+571107
+```
+
+### City
+
+Example:
+
+```text
+Bangalore
+```
+
+---
+
+# 11. TO LOCATION
+
+The destination is similarly separated into:
+
+```text
+To
+    Area
+    City
+```
+
+Example:
+
+```text
+Area: Piriyapatna
+City: Luhari
+```
+
+The exact example values vary by enquiry.
+
+---
+
+# 12. VEHICLE REQUIREMENT
+
+The enquiry records:
+
+### Vehicle Length
+
+Examples:
+
+```text
+14 Feet
+20 Feet
+32F SXL
+```
+
+---
+
+### Vehicle Type
+
+Examples:
+
+```text
+Open
+Container
+```
+
+---
+
+### Weight
+
+Examples:
+
+```text
+3 Tonnes
+6 Tonnes
+7 Tonnes
+9 Tonnes
+```
+
+---
+
+# 13. MATERIAL
+
+The material being transported.
+
+Examples visible in the requirement examples:
+
+```text
+LED
+Iron & Steel
+Box
+PVC Pipe
+```
+
+The system should maintain this as a structured field.
+
+---
+
+# 14. LOADING DATE
+
+Required date for vehicle loading.
+
+Example:
+
+```text
+1 Oct 2026
+3 Oct 2026
+```
+
+The system should support:
+
+- Specific date
+- Immediate/Now requirement if that is an accepted operational value
+
+The exact rules should be confirmed.
+
+---
+
+# 15. TARGET PRICE
+
+The amount the client expects or the target rate for the transportation requirement.
+
+Example:
+
+```text
+₹32,000
+₹35,000
+₹90,000
+```
+
+---
+
+# 16. QUOTATION MANAGEMENT
+
+The current enquiry sheet allows multiple vendors to quote.
+
+The supplied enquiry format shows:
+
+```text
+Quote One
+    Vendor
+    Rate
+    Availability
+
+Quote Two
+    Vendor
+    Rate
+    Availability
+
+Quote Three
+    Vendor
+    Rate
+    Availability
+
+Quote Four
+    Vendor
+    Rate
+    Availability
+```
+
+The software should improve this by allowing **any number of vendor quotes**, rather than limiting the database to four.
+
+---
+
+## Quote fields
+
+### Vendor
+
+Vendor who provided the quotation.
+
+---
+
+### Rate
+
+Rate quoted by the vendor.
+
+---
+
+### Availability
+
+Whether the vendor/vehicle is available.
+
+Possible values could eventually include:
+
+```text
+Available
+Unavailable
+Pending
+```
+
+However, these exact values should be confirmed with SweafEx.
+
+---
+
+### Quote timestamp
+
+Recommended software field.
+
+Records when the quote was received.
+
+---
+
+### Notes
+
+Additional vendor comments.
+
+---
+
+# 17. BEST RATE
+
+The enquiry sheet contains a:
+
+```text
+Best – Rate
+```
+
+field.
+
+The system should calculate or allow employees to identify the best available rate.
+
+Important:
+
+**The lowest rate should not automatically be assumed to be the winning rate.**
+
+The actual business rule needs confirmation.
+
+For example, vendor selection may depend on:
+
+- Price
+- Availability
+- Reliability
+- Vehicle verification
+- Previous performance
+- Response time
+
+---
+
+# 18. FINAL STATUS
+
+The enquiry/requirement sheet contains a Final Status field.
+
+In the example, this can contain a Trip ID such as:
+
+```text
+EXP0368
+EXP0369
+EXP0370
+```
+
+This suggests that once an enquiry becomes an actual transportation trip, it receives a Trip ID.
+
+The exact status lifecycle should be confirmed.
+
+---
+
+# 19. REQUIREMENT MANAGEMENT
+
+The Requirement Sheet represents requirements that are ready to be worked on.
+
+The supplied format includes:
+
+```text
+Enquiry No
+Date
+Party
+From
+    Area
+    City
+To
+    Area
+    City
+Vehicle
+    Length
+    Type
+Material
+    Weight
+    Type
+Loading Date
+Trip Rate
+Final Status
+```
+
+---
+
+# 20. REQUIREMENT VS ENQUIRY
+
+The software should distinguish between:
+
+### Enquiry
+
+Initial transportation request.
+
+### Requirement
+
+Structured operational requirement that the team actively works on to find transportation.
+
+### Trip
+
+Confirmed transportation assignment.
+
+This separation is important because one enquiry may go through multiple stages before becoming a trip.
+
+---
+
+# 21. TRIP ID
+
+Once the requirement is finalized, the system should create a unique Trip ID.
+
+Examples:
+
+```text
+EXP0368
+EXP0369
+EXP0370
+```
+
+The Trip ID becomes the main reference throughout the operational process.
+
+It should appear in:
+
+- Placement
+- Trip Confirmation
+- Supplier Details
+- Trip Status
+- Purchase Memo
+- WhatsApp
+- CRM
+- Payment records
+
+---
+
+# 22. VENDOR MANAGEMENT
+
+## Purpose
+
+Vendors are transportation companies, fleet owners, brokers or other suppliers who provide vehicles.
+
+The vendor master is one of the most important components of the software.
+
+---
+
+## Vendor fields shown in the supplied formats
+
+### Vendor ID
+
+Unique vendor identifier.
+
+---
+
+### Vendor Name / Company Name
+
+Name of transportation company.
+
+Examples visible include:
+
+```text
+SM TRANSPORTER
+ZINKA LOGISTICS SOLUTIONS LIMITED
+FR8 INDIA PRIVATE LIMITED
+BINDHU R
+```
+
+---
+
+### Party Type
+
+Example:
+
+```text
+PTY
+```
+
+The exact meaning and allowed values should be confirmed.
+
+---
+
+### Vendor PAN
+
+PAN number of the vendor.
+
+---
+
+### GSTIN
+
+GST identification number.
+
+---
+
+### Vendor Address
+
+Address of vendor.
+
+---
+
+### Transport Name
+
+Transportation business name.
+
+---
+
+### Broker
+
+Broker associated with the vehicle/vendor.
+
+---
+
+### Truck Owner
+
+Owner of the truck.
+
+---
+
+### Broker/Owner Number
+
+Contact number of broker or owner.
+
+---
+
+### Contact Person
+
+Main vendor contact.
+
+---
+
+### Contact Number
+
+Vendor contact number.
+
+---
+
+# 23. VENDOR CRM
+
+The supplied Vendor CRM contains information around fleet and vendor performance.
+
+The visible fields include:
+
+```text
+S.No
+Vendor ID
+Company Name
+Party Type
+Contact Person
+Number
+Response Time
+Reliability Rating
+No. of Vehicles
+No. of Trips
+Vehicle Size
+Vehicle Type
+Passing
+Vehicle Number
+Driver Name
+Driver Number
+DL Number
+Notes
+```
+
+---
+
+# 24. BROKER CRM
+
+The supplied Broker CRM uses a very similar structure.
+
+The software should therefore support a common supplier CRM architecture with a type such as:
+
+```text
+Vendor
+Broker
+Fleet Owner
+```
+
+rather than maintaining completely separate databases.
+
+---
+
+# 25. VEHICLE MANAGEMENT
+
+Vehicles should be stored independently from vendors.
+
+A vendor may have:
+
+- Multiple vehicles
+- Multiple drivers
+- Different vehicle types
+- Different capacities
+
+---
+
+## Vehicle fields
+
+### Vehicle Number
+
+Example:
+
+```text
+AP39UB 3717
+```
+
+---
+
+### Vehicle Size
+
+Examples:
+
+```text
+14 Feet
+20 Feet
+32F SXL
+```
+
+---
+
+### Vehicle Type
+
+Examples:
+
+```text
+Open
+Container
+```
+
+---
+
+### Load Capacity / Passing
+
+Example:
+
+```text
+7 Tonnes
+```
+
+---
+
+### Vehicle Owner
+
+Person/company owning the vehicle.
+
+---
+
+### Vendor
+
+Vendor associated with the vehicle.
+
+---
+
+# 26. VEHICLE VERIFICATION
+
+The Placement Sheet contains multiple verification fields.
+
+These include:
+
+```text
+Insurance Valid
+Tax Valid
+Fitness Valid
+PUCC Valid
+Status
+Black Listed
+Vehicle Verified
+DL Valid
+Compatible DL
+Driver Verified
+```
+
+These should become structured fields in the system.
+
+---
+
+# 27. INSURANCE VALIDITY
+
+Records whether the vehicle has valid insurance.
+
+Possible implementation:
+
+```text
+Valid
+Expired
+Pending
+Not Available
+```
+
+The exact business values should be confirmed.
+
+---
+
+# 28. TAX VALIDITY
+
+Records whether required vehicle tax documentation is valid.
+
+---
+
+# 29. FITNESS VALIDITY
+
+Records whether the vehicle fitness certificate is valid.
+
+---
+
+# 30. PUCC VALIDITY
+
+Records whether the Pollution Under Control Certificate is valid.
+
+---
+
+# 31. BLACKLIST STATUS
+
+The Placement Sheet includes a Black Listed field.
+
+This should be treated as a critical warning.
+
+If a vehicle/vendor/driver is blacklisted, the system should clearly display a warning before placement.
+
+The exact blacklisting rules should be confirmed.
+
+---
+
+# 32. VEHICLE VERIFIED
+
+Records whether the vehicle has been verified.
+
+---
+
+# 33. DRIVER MANAGEMENT
+
+Drivers should have their own records.
+
+Fields visible in the supplied formats include:
+
+### Driver Name
+
+Example:
+
+```text
+Vinod Kumar
+```
+
+### Driver Number
+
+Example:
+
+```text
++91 9504884888
+```
+
+### Driver DL Number
+
+Example:
+
+```text
+AP00 220210030453
+```
+
+### Driver PAN
+
+The purchasing memo also shows a driver PAN field.
+
+---
+
+# 34. DRIVER VERIFICATION
+
+The system should track:
+
+- DL validity
+- Driver verification
+- Compatibility of DL
+- Blacklist status if applicable
+
+The supplied placement sheet contains:
+
+```text
+DL Valid
+Compatible DL
+Driver Verified
+```
+
+---
+
+# 35. PLACEMENT MANAGEMENT
+
+## Purpose
+
+Placement occurs when SweafEx selects a vehicle/driver for a requirement.
+
+The Placement Sheet connects:
+
+```text
+Trip
++
+Vendor
++
+Vehicle
++
+Driver
+```
+
+---
+
+## Placement information
+
+The placement process should record:
+
+- Trip ID
+- Date
+- Vehicle number
+- Driver name
+- Driver phone
+- Driver DL
+- Vehicle capacity
+- Verification results
+- Loading capacity
+- Vehicle verification
+- Driver verification
+
+---
+
+# 36. TRIP CONFIRMATION
+
+Once a vehicle is placed, SweafEx needs to confirm the transportation details.
+
+The Trip Confirmation Sheet includes information such as:
+
+```text
+S.No
+Date
+Trip ID
+DL Number
+Size
+Type
+Passing
+Party
+Loading City
+Loading Area
+Unloading City
+Unloading Area
+Trans ID
+Note
+WhatsApp
+```
+
+---
+
+# 37. TRANS ID
+
+The client WhatsApp example contains:
+
+```text
+Trans ID : 29AAECW3533B1ZI
+```
+
+The software should maintain this identifier.
+
+The exact origin and business meaning of Trans ID should be confirmed.
+
+---
+
+# 38. CLIENT WHATSAPP CONFIRMATION
+
+The supplied format is:
+
+```text
+SweafEx
+Trip ID : EXP0369
+Party : Micron Electricals India Pvt Ltd
+Driver Vinod Kumar will be attending your trip
+Loading : Bangalore
+Unloading : Tuni
+Vehicle No : AP39UB 3717❌
+Vehicle Type : 20 Feet Open
+Load Capacity : 7 Tonnes
+Driver : Vinod Kumar
+Number : +91 9504884888
+Driver DL : AP00 220210030453❌
+Trans ID : 29AAECW3533B1ZI
+Note : Kindly Make Transit Insurance For Complete Safety of your Goods
+```
+
+The source states that this is sent to the client when a vendor is matched and is accompanied by a truck/transport photo. sweafx_formats and docs
+
+---
+
+# 39. WHATSAPP AUTOMATION
+
+The software should ideally generate this message automatically.
+
+Instead of the employee typing:
+
+```text
+Trip ID
+Party
+Driver
+Vehicle
+Loading
+Unloading
+Vehicle Type
+Capacity
+DL
+Trans ID
+```
+
+the software should retrieve these values from the Trip record.
+
+The employee should be able to:
+
+```text
+Generate WhatsApp Message
+        ↓
+Review
+        ↓
+Copy / Send
+```
+
+If WhatsApp Business/API integration is eventually used, the system can potentially send it automatically.
+
+---
+
+# 40. WHATSAPP MESSAGE TEMPLATES
+
+Templates should be configurable.
+
+At minimum:
+
+### Template 1 — New Requirement
+
+Used when capturing a new client requirement.
+
+---
+
+### Template 2 — Vehicle Matched
+
+Used when a vendor and vehicle are selected.
+
+---
+
+### Template 3 — Trip Update
+
+The existing trip-status process suggests that additional operational updates may be communicated.
+
+The exact message formats were not supplied and therefore should be collected from SweafEx before development.
+
+---
+
+### Template 4 — Delivery / Completion
+
+Should be confirmed with the company.
+
+---
+
+# 41. ONGOING TRIP MANAGEMENT
+
+The Supplier Details – Ongoing Trip format demonstrates that once a vehicle is assigned, the company needs to continue tracking the trip.
+
+The information includes:
+
+- Trip
+- Vendor
+- Vehicle
+- Driver
+- Loading
+- Unloading
+- Transport ID
+- Notes
+- WhatsApp status
+
+This should become the **Trip Operations Dashboard**.
+
+---
+
+# 42. TRIP STATUS MANAGEMENT
+
+The Trip Status Sheet is one of the most important operational sheets.
+
+It tracks the movement of the truck through the transportation lifecycle.
+
+Visible status categories include:
+
+```text
+Start
+Loading
+Transit
+Reached
+Started
+Bills Received
+Unloading
+Reached
+Completed
+POD Received
+Trip Completed
+Rating
+```
+
+The exact sequence and naming should be validated against the company's actual workflow.
+
+---
+
+# 43. TRIP STATUS EVENTS
+
+Instead of storing everything as unrelated columns, the software should ideally treat each status as an event.
+
+For example:
+
+```text
+Trip: EXP0369
+
+Trip Started
+10:15 AM
+
+Reached Loading Location
+12:20 PM
+
+Loading Started
+12:45 PM
+
+Loading Completed
+1:30 PM
+
+Reached Destination
+8:10 AM
+
+Unloading Started
+8:30 AM
+
+Unloading Completed
+9:20 AM
+
+POD Received
+9:45 AM
+
+Trip Completed
+10:00 AM
+```
+
+This provides a complete operational history.
+
+---
+
+# 44. BILLS RECEIVED
+
+The Trip Status Sheet contains a Bills Received status.
+
+The system should record:
+
+- Whether bills have been received
+- Date/time received
+- Uploaded document if applicable
+
+The exact document types should be confirmed.
+
+---
+
+# 45. POD
+
+POD means the proof/document confirming delivery.
+
+The supplied Trip Status Sheet includes:
+
+```text
+POD Received Online
+```
+
+The system should allow:
+
+- POD status
+- POD upload
+- Date received
+- User who uploaded it
+
+---
+
+# 46. TRIP COMPLETION
+
+A trip should have a clear completion state.
+
+Example:
+
+```text
+Trip Completed
+```
+
+Only completed trips should move into the final financial/CRM stage, unless SweafEx's actual process differs.
+
+---
+
+# 47. RATING
+
+The Trip Status Sheet contains a Rating column.
+
+Rating should eventually contribute to vendor performance.
+
+Potentially:
+
+```text
+Trip Rating
+Vendor Reliability
+Driver Performance
+```
+
+However, only the existence of the Rating field is confirmed by the supplied format. The exact rating methodology should be confirmed.
+
+---
+
+# 48. SUPPLIER DETAILS
+
+The supplier/ongoing trip sheet connects:
+
+```text
+Trip
+Vendor
+Vehicle
+Driver
+Route
+Financial information
+```
+
+This is effectively a supplier-side trip record.
+
+---
+
+# 49. SUPPLIER FINANCIAL INFORMATION
+
+The supplied Supplier Details format contains financial fields including:
+
+```text
+Rent
+TDS
+Advance
+Final
+Balance
+A/c
+```
+
+---
+
+## Rent
+
+Total amount payable to supplier/vendor.
+
+Example:
+
+```text
+₹32,000
+```
+
+---
+
+## TDS
+
+Tax Deducted at Source amount.
+
+---
+
+## Advance
+
+Amount already paid to supplier.
+
+---
+
+## Final
+
+Final payment amount.
+
+---
+
+## Balance
+
+Remaining amount payable.
+
+A typical relationship would be:
+
+```text
+Balance = Total Rent - Advance - applicable deductions/final payments
+```
+
+However, the exact calculation rules should be confirmed with the accounts team.
+
+---
+
+## A/c
+
+The sheet includes an abbreviated `A/c` field.
+
+Its exact meaning should be confirmed.
+
+It may represent an accounting/payment status, but this should not be assumed as a final requirement.
+
+---
+
+# 50. RESPONSE TIME
+
+Supplier formats include Response Time.
+
+This can be used to evaluate vendors.
+
+For example:
+
+```text
+Vendor receives enquiry
+        ↓
+Vendor responds
+        ↓
+Response time recorded
+```
+
+This could later contribute to vendor reliability scoring.
+
+---
+
+# 51. VENDOR PERFORMANCE
+
+The CRM contains:
+
+```text
+Response Time
+Reliability Rating
+No. of Vehicles
+No. of Trips
+Rating
+```
+
+This indicates that the software should eventually provide vendor performance information.
+
+Possible dashboard:
+
+```text
+Vendor
+Total Trips
+Successful Trips
+Average Response Time
+Reliability Rating
+Fleet Size
+Average Trip Rating
+```
+
+The exact calculations are to be confirmed.
+
+---
+
+# 52. PURCHASING MEMO
+
+The supplied purchasing memo is sent to the client before unloading. sweafx_formats and docs
+
+It contains several sections.
+
+---
+
+## Vendor Details
+
+Fields shown:
+
+```text
+Name
+Contact No
+Transport Name
+GSTN
+Address
+Broker
+Truck Owner
+Contact No
+```
+
+---
+
+## Trip Details
+
+```text
+Trip ID
+Bill No
+Date
+```
+
+---
+
+## Route
+
+```text
+From
+To
+Kilo Meters
+```
+
+---
+
+## Vehicle Details
+
+```text
+Number
+Owner Name
+Type
+Weight
+```
+
+---
+
+## Driver Details
+
+```text
+Name
+Contact No
+PAN No
+DL No
+```
+
+---
+
+## Payment Details
+
+```text
+Total Rent
+Advance
+Balance
+```
+
+---
+
+# 53. PURCHASE MEMO GENERATION
+
+The software should generate the Purchasing Memo automatically from stored information.
+
+The user should not have to manually recreate the document.
+
+Example:
+
+```text
+Trip
+    ↓
+Vendor information
+    ↓
+Vehicle information
+    ↓
+Driver information
+    ↓
+Payment information
+    ↓
+Generate Purchasing Memo
+```
+
+---
+
+# 54. CRM
+
+The current SweafEx CRM contains a supplier trip search facility.
+
+The supplied format shows filters including:
+
+```text
+Vehicle Number
+Vehicle Size
+Unloading Area
+Vendor / Party
+Vehicle Type
+Trip ID
+Loading City
+Weight / Passing
+Driver Name
+Unloading City
+Loading Area
+Trip Status
+```
+
+The source also indicates that the search supports partial matching and combining filters. sweafx_formats and docs
+
+---
+
+# 55. CRM SEARCH REQUIREMENTS
+
+Users should be able to search using one or multiple fields.
+
+Example:
+
+```text
+Loading City = Bangalore
+Vehicle Size = 20 Feet
+Vehicle Type = Open
+```
+
+The system should return matching trips/vendors.
+
+Another example:
+
+```text
+Vendor = XYZ
+Trip Status = Completed
+```
+
+---
+
+# 56. CRM DASHBOARD
+
+The CRM should provide:
+
+### Vendor information
+
+- Vendor name
+- Vendor ID
+- Contact
+- Fleet size
+- Vehicle details
+
+### Trip history
+
+- Number of trips
+- Completed trips
+- Cancelled trips
+- Active trips
+
+### Performance
+
+- Response time
+- Reliability
+- Ratings
+
+### Search
+
+Multi-field filtering.
+
+---
+
+# 57. RATE CARD
+
+The supplied rate card is:
+
+```text
+Bangalore to Chennai Rate Card
+```
+
+Fields shown:
+
+```text
+S.No
+Vehicle Size
+Vehicle Type
+Weight
+Target Rate
+Rate
+Max Rates
+```
+
+Example:
+
+```text
+8 Feet
+Open or Container
+1 Tonnes
+₹7,000
+₹7,000
+```
+
+The rate card should therefore be treated as route-specific pricing information. sweafx_formats and docs
+
+---
+
+# 58. RATE CARD MANAGEMENT
+
+The system should allow administrators to create:
+
+```text
+Origin
+Destination
+Vehicle Size
+Vehicle Type
+Weight
+Target Rate
+Rate
+Maximum Rate
+```
+
+Example:
+
+```text
+Origin: Bangalore
+Destination: Chennai
+Vehicle Size: 14 Feet
+Vehicle Type: Open
+Weight: 3 Tonnes
+Target Rate: ₹9,000
+Rate: ₹9,000
+Maximum Rate: ₹X
+```
+
+---
+
+# 59. RATE CARD USAGE
+
+When a new requirement is created, the software should ideally be able to search the applicable rate card.
+
+For example:
+
+```text
+Requirement
+Bangalore → Chennai
+14 Feet
+Open
+3 Tonnes
+
+        ↓
+
+Matching Rate Card
+
+        ↓
+
+Target Rate: ₹9,000
+```
+
+This can help employees evaluate vendor quotes.
+
+However, whether this should automatically influence the selected vendor/rate needs confirmation.
+
+---
+
+# 60. DASHBOARD
+
+The internal software should have a central dashboard.
+
+The dashboard should show operationally important information.
+
+Recommended structure based on the supplied workflows:
+
+### Today's Requirements
+
+```text
+New
+Pending
+Being Quoted
+Awaiting Vendor
+```
+
+### Today's Placements
+
+```text
+Pending Verification
+Ready
+Confirmed
+```
+
+### Active Trips
+
+```text
+Loading
+In Transit
+Reached
+Unloading
+POD Pending
+```
+
+### Financial
+
+```text
+Advance Pending
+Balance Pending
+Payment Pending
+```
+
+### Exceptions
+
+```text
+Vehicle verification failed
+Driver verification failed
+POD missing
+Trip delayed
+Vendor unavailable
+```
+
+The exact dashboard KPIs should be confirmed with management.
+
+---
+
+# 61. SEARCH
+
+Global search should support:
+
+```text
+Enquiry No
+Trip ID
+Client
+Vendor
+Broker
+Vehicle Number
+Driver Name
+Driver Number
+Loading City
+Unloading City
+```
+
+---
+
+# 62. DOCUMENT ATTACHMENTS
+
+The system should support attachments where applicable.
+
+Potential documents include:
+
+- Vehicle photo
+- Insurance
+- Tax document
+- Fitness certificate
+- PUCC
+- Driver DL
+- POD
+- Bills
+- Purchasing memo
+
+Only documents actually used by SweafEx should be enabled after confirmation.
+
+---
+
+# 63. COLOUR-CODED STATUS
+
+The existing Excel sheets use colour extensively.
+
+Examples include:
+
+- Red
+- Green
+- Yellow
+- Cyan
+- Orange
+
+These colours appear to communicate status/priority.
+
+The software should preserve the **meaning** of the colour coding, but not simply reproduce Excel colours without understanding them.
+
+The exact colour/status mapping should be confirmed.
+
+For example:
+
+```text
+Green = Completed / Valid
+Red = Failed / Invalid / Problem
+Yellow = Pending
+```
+
+This is an example of a possible mapping only and **must be confirmed**.
+
+---
+
+# 64. NOTIFICATION SYSTEM
+
+The software should notify employees when important actions are required.
+
+Examples:
+
+```text
+New enquiry received
+Vendor quote pending
+Vehicle verification pending
+Driver verification pending
+Trip ready for confirmation
+Trip delayed
+POD missing
+Payment pending
+```
+
+The exact notification rules should be defined with SweafEx.
+
+---
+
+# 65. USER ROLES
+
+The supplied documentation does not define user permissions, so this needs to be confirmed.
+
+A sensible starting structure would be:
+
+### Admin
+
+Full access.
+
+### Operations
+
+Manage enquiries, vendors, placements and trips.
+
+### Accounts
+
+Manage supplier payments and financial information.
+
+### Management
+
+View dashboards, reports and CRM.
+
+### Sales / Client Handling
+
+Manage client requirements and communication.
+
+These are proposed roles and should not be treated as confirmed SweafEx requirements until validated.
+
+---
+
+# 66. AUDIT HISTORY
+
+Because multiple employees may modify the same trip, the software should maintain an audit history.
+
+For each important change:
+
+```text
+Who changed it
+What was changed
+Old value
+New value
+Date
+Time
+```
+
+This is especially important for:
+
+- Trip rate
+- Vendor
+- Vehicle
+- Driver
+- Payment
+- Trip status
+
+---
+
+# 67. SINGLE SOURCE OF TRUTH
+
+This is one of the most important requirements.
+
+The system should avoid:
+
+```text
+Excel A
+Excel B
+Excel C
+WhatsApp
+Excel D
+```
+
+all maintaining different copies of the same information.
+
+Instead:
+
+```text
+DATABASE
+
+Client
+Enquiry
+Requirement
+Vendor
+Vehicle
+Driver
+Trip
+Payment
+```
+
+Everything else should be generated from the database.
+
+---
+
+# 68. EXAMPLE OF THE NEW DIGITAL WORKFLOW
+
+## STEP 1 — Client sends WhatsApp
+
+```text
+New Tuni Requirment:
+
+Loading : Bangalore- 560026
+Unloading : Tuni - 531127
+Length : 20 Feet
+Type : Open
+Weight : 7 Tonnes
+Material : Iron and Steel
+Loading : Now
+Party : Micron Electricals India Pvt Ltd
+```
+
+---
+
+## STEP 2 — Employee creates enquiry
+
+System generates:
+
+```text
+ENQXXXX
+```
+
+and stores:
+
+```text
+Client
+From
+To
+Vehicle
+Weight
+Material
+Loading
+```
+
+---
+
+## STEP 3 — Requirement is created
+
+The system converts the enquiry into an operational requirement.
+
+---
+
+## STEP 4 — Employee searches vendors
+
+System searches:
+
+```text
+20 Feet
+Open
+7 Tonnes
+Bangalore → Tuni
+```
+
+---
+
+## STEP 5 — Vendors provide quotes
+
+Example:
+
+```text
+Vendor A — ₹34,000 — Available
+Vendor B — ₹35,000 — Available
+Vendor C — ₹33,500 — Pending
+```
+
+---
+
+## STEP 6 — Vendor selected
+
+Employee selects vendor.
+
+---
+
+## STEP 7 — Vehicle and driver assigned
+
+System records:
+
+```text
+Vehicle
+Driver
+Driver phone
+DL
+Capacity
+```
+
+---
+
+## STEP 8 — Verification
+
+System checks:
+
+```text
+Insurance
+Tax
+Fitness
+PUCC
+Vehicle
+DL
+Blacklist
+```
+
+---
+
+## STEP 9 — Trip created
+
+Example:
+
+```text
+EXP0369
+```
+
+---
+
+## STEP 10 — WhatsApp confirmation generated
+
+The system generates the existing SweafEx format automatically.
+
+---
+
+## STEP 11 — Trip monitoring
+
+Operations team updates:
+
+```text
+Started
+Loading
+Reached
+Loading completed
+Transit
+Reached destination
+Unloading
+POD
+Completed
+```
+
+---
+
+## STEP 12 — Supplier payment
+
+System records:
+
+```text
+Rent
+TDS
+Advance
+Final
+Balance
+```
+
+---
+
+## STEP 13 — Trip completed
+
+System records:
+
+```text
+Completed
+Rating
+POD
+Payment status
+```
+
+---
+
+# 69. IMPORTANT DATA RELATIONSHIPS
+
+The database should approximately work like this:
+
+```text
+CLIENT
+   │
+   └── ENQUIRY
+          │
+          └── REQUIREMENT
+                 │
+                 ├── QUOTES
+                 │      └── VENDOR
+                 │
+                 └── TRIP
+                        │
+                        ├── VENDOR
+                        ├── VEHICLE
+                        ├── DRIVER
+                        │
+                        ├── PLACEMENT
+                        │
+                        ├── TRIP STATUS
+                        │
+                        ├── POD / DOCUMENTS
+                        │
+                        ├── SUPPLIER PAYMENT
+                        │
+                        ├── PURCHASE MEMO
+                        │
+                        └── WHATSAPP MESSAGES
+```
+
+---
+
+# 70. FEATURE REQUIREMENT LIST
+
+The software should ultimately contain at least the following features.
+
+```text
+F001 – Client Management
+F002 – Enquiry Management
+F003 – WhatsApp Requirement Capture
+F004 – Requirement Management
+F005 – Vendor Management
+F006 – Broker Management
+F007 – Vehicle Management
+F008 – Driver Management
+F009 – Quote Management
+F010 – Quote Comparison
+F011 – Rate Card Management
+F012 – Placement Management
+F013 – Vehicle Verification
+F014 – Driver Verification
+F015 – Trip Creation
+F016 – Trip Confirmation
+F017 – WhatsApp Message Generation
+F018 – Active Trip Dashboard
+F019 – Trip Status Tracking
+F020 – POD Management
+F021 – Supplier Management
+F022 – Supplier Payment Tracking
+F023 – Purchasing Memo Generation
+F024 – Vendor CRM
+F025 – Broker CRM
+F026 – Supplier Trip Search
+F027 – Vendor Performance
+F028 – Ratings
+F029 – Document Management
+F030 – Notifications
+F031 – Dashboard
+F032 – Reporting
+F033 – User Management
+F034 – Permissions
+F035 – Audit History
+```
+
+---
+
+# 71. WHAT SHOULD NOT BE COPIED DIRECTLY FROM EXCEL
+
+The software should **not simply recreate every Excel sheet as a screen**.
+
+For example, the current enquiry sheet has:
+
+```text
+Quote One
+Quote Two
+Quote Three
+Quote Four
+```
+
+The software should instead have:
+
+```text
+Quotes
+    ├── Vendor A
+    ├── Vendor B
+    ├── Vendor C
+    ├── Vendor D
+    └── Vendor E
+```
+
+There should be no artificial four-vendor limitation unless the business specifically requires it.
+
+Similarly, instead of separate spreadsheets for:
+
+```text
+Vehicle
+Driver
+Vendor
+Trip
+```
+
+the system should maintain relationships between them.
+
+---
+
+# 72. DATA VALIDATION
+
+The software should validate important information.
+
+Examples:
+
+### Vehicle Number
+
+Required before placement.
+
+### Driver
+
+Required before trip confirmation.
+
+### Driver DL
+
+Required before confirmation if this is mandatory.
+
+### Vehicle Verification
+
+Should be completed before placement.
+
+### Vendor
+
+Required before trip creation.
+
+### Rate
+
+Required before finalizing the trip.
+
+### Trip ID
+
+Automatically generated.
+
+---
+
+# 73. EXCEPTIONS / ERROR CONDITIONS
+
+The system should identify exceptions such as:
+
+```text
+Vendor unavailable
+Vehicle unavailable
+Driver unavailable
+Vehicle blacklisted
+Driver verification failed
+Insurance expired
+PUCC expired
+Fitness expired
+DL invalid
+No vendor quote
+No vehicle assigned
+Trip delayed
+POD missing
+Payment pending
+```
+
+The exact rules for each exception must be validated with SweafEx.
+
+---
+
+# 74. REPORTING
+
+The system should eventually provide reports such as:
+
+### Enquiry Report
+
+```text
+Total enquiries
+Pending enquiries
+Converted enquiries
+Lost/cancelled enquiries
+```
+
+### Vendor Report
+
+```text
+Vendor
+Trips
+Response time
+Reliability
+Rating
+```
+
+### Trip Report
+
+```text
+Trip ID
+Client
+Route
+Vendor
+Vehicle
+Driver
+Rate
+Status
+```
+
+### Financial Report
+
+```text
+Total rent
+Advance
+TDS
+Balance
+Payments
+```
+
+### Operations Report
+
+```text
+Active trips
+Delayed trips
+POD pending
+Completed trips
+```
+
+These reports are proposed system functionality; the supplied formats establish the underlying data fields but do not explicitly specify these reports.
+
+---
+
+# 75. ITEMS THAT MUST BE CONFIRMED WITH SWEAFEX
+
+Before development starts, these questions should be answered.
+
+## Client
+
+1. What client information is actually maintained?
+2. Do they maintain client contact persons?
+3. Do they store client GSTIN?
+4. Can one client have multiple locations?
+
+---
+
+## Enquiry
+
+5. Who creates the enquiry?
+6. Is every WhatsApp request manually entered?
+7. Should WhatsApp messages be automatically parsed?
+8. Can one enquiry become multiple trips?
+9. What are the possible enquiry statuses?
+
+---
+
+## Vendor
+
+10. What exactly qualifies as a vendor?
+11. What qualifies as a broker?
+12. Can one vendor have multiple brokers?
+13. Can one vehicle belong to multiple vendors?
+14. What information is mandatory for vendor creation?
+
+---
+
+## Vehicle
+
+15. What documents must be checked?
+16. How often do vehicle documents expire?
+17. What exactly makes a vehicle blacklisted?
+18. Can a vehicle be temporarily blocked?
+
+---
+
+## Driver
+
+19. What driver documents are required?
+20. What does “Compatible DL” mean?
+21. What exactly does Driver Verified mean?
+22. Is driver history maintained?
+
+---
+
+## Quotes
+
+23. How are vendors selected?
+24. Is lowest price always preferred?
+25. How is vendor reliability considered?
+26. Can multiple vendors be shortlisted?
+27. What happens when no vendor accepts the requirement?
+
+---
+
+## Trips
+
+28. When exactly is a Trip ID generated?
+29. What are all possible trip statuses?
+30. Who is allowed to change trip status?
+31. What constitutes a delayed trip?
+32. What happens when a trip is cancelled?
+
+---
+
+## WhatsApp
+
+33. Which messages are mandatory?
+34. Who sends them?
+35. Are messages manually copied or sent through WhatsApp?
+36. Are different templates used for different clients?
+37. What does the ❌ beside Vehicle No / DL mean?
+38. What other WhatsApp messages are used during a trip?
+
+---
+
+## Finance
+
+39. How is TDS calculated?
+40. When is advance paid?
+41. What is the formula for Balance?
+42. What exactly does `A/c` mean?
+43. Who approves payments?
+44. What payment statuses exist?
+
+---
+
+## POD
+
+45. What documents constitute POD?
+46. Is POD always digital?
+47. Who uploads POD?
+48. Can a trip be marked completed without POD?
+
+---
+
+## CRM
+
+49. How is Reliability Rating calculated?
+50. How is Response Time calculated?
+51. How is vendor rating calculated?
+52. Are ratings manually entered or automatically calculated?
+
+---
+
+# 76. CRITICAL DESIGN PRINCIPLE
+
+The final system should be designed around the **Trip lifecycle**, rather than around the existing Excel files.
+
+The existing Excel files are representations of the process.
+
+They should become:
+
+```text
+DATABASE
+      ↓
+BUSINESS LOGIC
+      ↓
+SCREENS / DASHBOARDS
+      ↓
+EXCEL EXPORTS
+      ↓
+WHATSAPP MESSAGES
+      ↓
+PURCHASING MEMOS
+```
+
+rather than:
+
+```text
+Excel Sheet 1
+Excel Sheet 2
+Excel Sheet 3
+Excel Sheet 4
+```
+
+---
+
+# 77. FINAL PROPOSED SYSTEM STRUCTURE
+
+The internal application could ultimately have the following navigation:
+
+```text
+DASHBOARD
+
+OPERATIONS
+├── Enquiries
+├── Requirements
+├── Quotations
+├── Placements
+├── Active Trips
+├── Trip Status
+└── Completed Trips
+
+NETWORK
+├── Vendors
+├── Brokers
+├── Vehicles
+├── Drivers
+└── Rate Cards
+
+CLIENTS
+├── Clients
+└── Client Requirements
+
+FINANCE
+├── Supplier Payments
+├── Advances
+├── Balances
+└── Purchase Memos
+
+CRM
+├── Vendor CRM
+├── Broker CRM
+├── Trip Search
+└── Performance
+
+COMMUNICATION
+├── WhatsApp Templates
+├── Message History
+└── Documents
+
+REPORTS
+├── Operations
+├── Vendor Performance
+├── Trips
+└── Finance
+
+ADMIN
+├── Users
+├── Roles & Permissions
+├── Settings
+└── Audit Log
+```
+
+---
+
+# 78. MOST IMPORTANT TAKEAWAY
+
+The supplied SweafEx documentation shows that the company isn't really dealing with a collection of independent Excel sheets.
+
+It is dealing with **one operational process that has been manually split across multiple spreadsheets and WhatsApp conversations**.
+
+The software should therefore centralize these relationships:
+
+```text
+CLIENT
+   ↓
+ENQUIRY
+   ↓
+REQUIREMENT
+   ↓
+QUOTES
+   ↓
+VENDOR
+   ↓
+VEHICLE + DRIVER
+   ↓
+PLACEMENT
+   ↓
+TRIP
+   ↓
+TRIP STATUS
+   ↓
+POD
+   ↓
+PAYMENT
+   ↓
+RATING / CRM
+```
+

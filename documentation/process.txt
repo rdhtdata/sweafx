@@ -1,0 +1,835 @@
+# SweafEx
+## Current-State Business Process & Department Workflow
+
+### 1. Business Overview
+
+SweafEx provides transportation and freight coordination services to customers who require vehicles to transport goods from one location to another.
+
+The basic business model is:
+
+**Customer Requirement → Vehicle/Vendor Sourcing → Vehicle Placement → Trip Execution → Trip Monitoring → POD → Billing & Payment**
+
+SweafEx generally does not operate the vehicles itself. Instead, when a customer approaches SweafEx with a transportation requirement, the company identifies and coordinates with suitable external transportation providers.
+
+These providers may include:
+
+- Fleet companies
+- Transport brokers
+- Individual truck owners/drivers
+- Other transportation vendors
+
+SweafEx's role is therefore to act as the coordination and management layer between the **customer** and the **transportation vendor/driver**.
+
+The company remains involved throughout the journey, from the initial customer enquiry through vehicle arrangement, loading, transportation, unloading, documentation, billing and payment.
+
+---
+
+# 2. High-Level Business Journey
+
+A typical transportation requirement follows this general journey:
+
+**1. Customer contacts SweafEx**
+
+↓  
+
+**2. Sales captures the transportation requirement**
+
+↓  
+
+**3. Requirement is passed to the vehicle placement / purchase function**
+
+↓  
+
+**4. Vehicle Placement searches for suitable vendors/vehicles**
+
+↓  
+
+**5. Vendor and vehicle documents are collected and verified**
+
+↓  
+
+**6. Vehicle is placed for the customer requirement**
+
+↓  
+
+**7. Vehicle details are communicated back to Sales**
+
+↓  
+
+**8. Sales updates the customer**
+
+↓  
+
+**9. Sales Backend records and communicates vehicle/trip information**
+
+↓  
+
+**10. Traffic Coordinator takes operational control of the trip**
+
+↓  
+
+**11. Vehicle reaches pickup/loading location**
+
+↓  
+
+**12. Loading information is recorded and communicated**
+
+↓  
+
+**13. Trip progresses toward destination**
+
+↓  
+
+**14. Traffic Coordinator continuously coordinates with the driver/vendor**
+
+↓  
+
+**15. Customer receives relevant journey updates**
+
+↓  
+
+**16. Vehicle reaches destination and unloading takes place**
+
+↓  
+
+**17. Driver provides POD**
+
+↓  
+
+**18. Trip is marked as completed**
+
+↓  
+
+**19. Vendor/trip is reviewed/rated**
+
+↓  
+
+**20. Final bill is prepared**
+
+↓  
+
+**21. Accounts tracks customer payment and approves/records financial transactions in Zoho**
+
+---
+
+# 3. Departments & Responsibilities
+
+## 3.1 Sales Team
+
+### Primary Responsibility
+
+The Sales Team is the primary customer-facing function.
+
+They handle incoming transportation enquiries and maintain communication with customers throughout the process.
+
+### Activities
+
+The Sales Team:
+
+- Receives incoming customer enquiries.
+- Communicates with customers regarding their transportation requirements.
+- Collects information required to fulfil the transportation request.
+- Communicates with customers during the vehicle-placement process.
+- Receives information from the Purchase / Vehicle Placement function regarding available vehicles.
+- Updates customers about vehicle availability and progress.
+- Continues customer communication during the trip.
+- Provides customers with relevant updates received from the operational teams.
+
+### Information handled
+
+A customer requirement may include information such as:
+
+- Cargo requirements
+- Cargo weight
+- Pickup location
+- Drop location
+- Budget
+- Other transportation requirements
+
+The exact enquiry information to be captured should be confirmed during the detailed requirements phase.
+
+---
+
+# 3.2 Vehicle Placement Team
+
+### Primary Responsibility
+
+The Vehicle Placement Team is responsible for finding a suitable transportation solution for a customer requirement.
+
+They communicate with external transportation providers, including:
+
+- Vendors
+- Brokers
+- Fleet companies
+- Individual truck drivers
+
+### Activities
+
+The Vehicle Placement Team:
+
+1. Receives the transportation requirement.
+2. Searches for suitable vendors/vehicles.
+3. Communicates with vendors to determine availability.
+4. Evaluates possible transportation solutions.
+5. Selects a suitable vehicle/vendor solution.
+6. Collects required vendor and vehicle documentation.
+7. Sends the collected information to the Traffic Coordinator / relevant operational team.
+8. Informs the Sales Team once a vehicle has been successfully arranged.
+
+### Vendor documentation
+
+Before vehicle placement, the required vendor information/documents may include:
+
+- RC
+- Driver's Licence (DL)
+- PAN
+- Aadhaar
+- TDS Certificate
+- GST Certificate
+- Bank Details
+- Company-related documentation, where applicable
+
+The exact mandatory document checklist should be confirmed with the business.
+
+### Key principle
+
+**A vehicle should not be considered ready for placement until the required vendor/vehicle information has been collected.**
+
+---
+
+# 3.3 Purchase Coordinator
+
+### Primary Responsibility
+
+The Purchase Coordinator supports the procurement and vendor-arrangement workflow.
+
+### Activities
+
+The Purchase Coordinator is involved in:
+
+- Payment-related activities
+- Procurement workflow
+- Supply sheet management
+- Vendor sheet management
+- Receiving/processing enquiry information
+- Passing enquiry requirements to the team responsible for finding vendors
+- Coordinating vehicle arrangements with the Vehicle Placement Team
+- Communicating vehicle availability to the Sales Team
+
+### Relationship with Vehicle Placement
+
+The Purchase Coordinator acts as an important coordination point between:
+
+**Customer Requirement → Vendor Search → Vehicle Arrangement → Sales**
+
+The exact division of responsibility between the Purchase Coordinator and Vehicle Placement Team should be documented further, since the current notes indicate that the two functions work closely together.
+
+---
+
+# 3.4 Sales Backend
+
+### Primary Responsibility
+
+Sales Backend takes over after a vehicle has been placed and supports the operational communication and documentation process.
+
+### Activities
+
+Once a vehicle has been placed, Sales Backend:
+
+- Sends vehicle-related information through WhatsApp.
+- Sends trip-status information through WhatsApp.
+- Provides loading information.
+- Provides unloading information.
+- Supports communication of operational updates.
+- Creates the final bill.
+
+### Communication
+
+Sales Backend appears to act as an important communication bridge between the operational teams and external parties.
+
+The current process uses WhatsApp for communication related to:
+
+- Vehicle outsourcing
+- Trip status
+- Loading
+- Unloading
+- Other operational updates
+
+The exact WhatsApp groups, recipients and message types should be documented separately.
+
+---
+
+# 3.5 Traffic Coordinator
+
+### Primary Responsibility
+
+The Traffic Coordinator manages the transportation journey after the vehicle has been arranged and the operational process has been handed over from Sales Backend.
+
+The Traffic Coordinator is responsible for monitoring and coordinating the trip from the beginning of the journey through loading, transportation and unloading.
+
+### Activities
+
+The Traffic Coordinator:
+
+- Takes operational control of the trip.
+- Coordinates with the driver/vendor.
+- Monitors the vehicle's journey.
+- Coordinates the loading process.
+- Coordinates the unloading process.
+- Receives trip-related information from the driver/vendor.
+- Passes relevant information to Sales.
+- Enables Sales to provide customer updates.
+- Tracks the operational progress of the vehicle.
+
+### Loading and vendor creation
+
+Once the vehicle is loaded:
+
+1. The vendor needs to be created/registered in the system.
+2. A Purchase Order needs to be created.
+3. A memo is associated with the Purchase Order.
+4. The Purchase Order goes through an approval process.
+5. Vendor payment is then processed according to the applicable workflow.
+
+### Trip completion
+
+Once the trip is completed:
+
+- The Traffic Coordinator obtains the POD.
+- The POD is provided by the driver.
+- The POD is used as evidence of completed transportation.
+- The completed trip is then passed back into the purchase/financial workflow.
+
+---
+
+# 3.6 Driver / Vendor
+
+The driver or vendor is the external transportation provider responsible for physically executing the transportation requirement.
+
+### Responsibilities
+
+The driver/vendor:
+
+- Accepts the transportation requirement.
+- Provides vehicle and driver information.
+- Provides required documentation.
+- Reports vehicle/trip progress.
+- Coordinates with the Traffic Coordinator.
+- Provides loading/unloading information.
+- Executes the transportation journey.
+- Provides the POD after completion.
+
+### POD
+
+The Proof of Delivery (POD) is provided by the driver after the delivery is completed.
+
+The POD consists of a signed document/page confirming delivery.
+
+The POD is an important completion document for the trip and is subsequently used in the billing/financial process.
+
+---
+
+# 3.7 Purchase Manager
+
+### Primary Responsibility
+
+The Purchase Manager becomes involved after completion of the transportation journey and is responsible for the vendor/trip evaluation and final billing process.
+
+### Activities
+
+After the trip is completed, the Purchase Manager:
+
+- Reviews the completed trip.
+- Provides/runs a rating for the trip, driver and/or vendor.
+- Uses the applicable rating methodology/formula.
+- Processes the final bill.
+
+### Trip / Driver / Vendor Rating
+
+The current notes indicate that the rating may be based on factors such as:
+
+**Response Time**
+
+Potentially:
+
+- Driver response time
+- Vendor response time
+
+The exact rating formula is not yet defined in the notes and should be confirmed with SweafEx.
+
+---
+
+# 3.8 Accounting Team
+
+### Primary Responsibility
+
+The Accounting Team manages the financial follow-up after billing.
+
+### Activities
+
+The Accounting Team:
+
+- Tracks payment of the final customer bill.
+- Handles payment-related follow-up.
+- Approves payments and bills.
+- Uses Zoho for financial processing.
+- Maintains the financial records in Zoho.
+
+### Zoho
+
+Zoho is currently used as part of the financial workflow, particularly for:
+
+- Bills
+- Payments
+- Approvals
+- Accounting-related activities
+
+The operational CRM should therefore work alongside Zoho rather than necessarily replacing it.
+
+---
+
+# 4. End-to-End Process
+
+## Stage 1 – Customer Enquiry
+
+The process begins when a customer contacts SweafEx with a transportation requirement.
+
+The customer provides the required transportation information, which may include:
+
+- Pickup location
+- Drop location
+- Cargo
+- Cargo weight
+- Budget
+- Other transportation requirements
+
+The Sales Team receives and manages the enquiry.
+
+### Output
+
+**Transportation Requirement / Enquiry**
+
+---
+
+# Stage 2 – Vendor & Vehicle Search
+
+The requirement is passed to the procurement/vehicle-placement function.
+
+The Vehicle Placement Team searches the available vendor network for a suitable transportation solution.
+
+They communicate with:
+
+- Fleet operators
+- Brokers
+- Individual drivers
+- Other vendors
+
+The objective is to find a vehicle that can fulfil the customer's requirement at a suitable commercial arrangement.
+
+### Output
+
+**Potential Vehicle + Vendor**
+
+---
+
+# Stage 3 – Vendor & Vehicle Documentation
+
+Before vehicle placement, the required vendor and vehicle documents are collected.
+
+Typical documents include:
+
+- RC
+- DL
+- PAN
+- Aadhaar
+- TDS Certificate
+- GST Certificate
+- Bank Details
+
+The collected information is passed to the relevant operational team.
+
+### Output
+
+**Documented & Ready Vendor/Vehicle**
+
+---
+
+# Stage 4 – Vehicle Placement
+
+Once a suitable vehicle has been identified and the necessary information has been collected, the vehicle is placed against the customer requirement.
+
+The Vehicle Placement/Purchase function informs Sales about the selected vehicle.
+
+Sales then communicates the vehicle details to the customer.
+
+### Output
+
+**Vehicle Placed**
+
+---
+
+# Stage 5 – Operational Handover
+
+After vehicle placement, the process moves into operational execution.
+
+Sales Backend communicates relevant vehicle and trip information through WhatsApp and records/provides loading and unloading information.
+
+The Traffic Coordinator then takes responsibility for monitoring the trip.
+
+### Output
+
+**Trip Under Operational Management**
+
+---
+
+# Stage 6 – Trip Execution
+
+The Traffic Coordinator coordinates with the driver/vendor throughout the journey.
+
+The trip includes:
+
+**Vehicle Start → Pickup → Loading → Transit → Destination → Unloading**
+
+The Traffic Coordinator collects operational updates and passes relevant information to Sales.
+
+Sales uses these updates to keep the customer informed.
+
+### Output
+
+**Trip Progress + Customer Updates**
+
+---
+
+# Stage 7 – Purchase Order & Payment
+
+After the vehicle has been loaded:
+
+1. Vendor is created/registered.
+2. Purchase Order is created.
+3. Memo is attached/created.
+4. Purchase Order goes through approval.
+5. Vendor payment is processed according to the applicable workflow.
+
+The exact sequence and approval authority should be confirmed.
+
+### Output
+
+**Approved Vendor PO + Payment Process**
+
+---
+
+# Stage 8 – Delivery & POD
+
+The vehicle reaches the destination and completes unloading.
+
+The driver provides the signed POD.
+
+The POD is collected and recorded as part of the trip completion process.
+
+### Output
+
+**Completed Trip + POD**
+
+---
+
+# Stage 9 – Trip / Vendor Evaluation
+
+Once the trip is completed, the Purchase Manager reviews the trip and vendor/driver performance.
+
+The current process appears to include a rating mechanism.
+
+One identified factor is:
+
+**Response Time**
+
+Potential rating subjects include:
+
+- Driver
+- Vendor
+- Trip
+
+The exact formula and scoring system require confirmation.
+
+### Output
+
+**Trip/Vendor/Driver Rating**
+
+---
+
+# Stage 10 – Billing
+
+Following trip completion, the final bill is prepared.
+
+The current notes indicate that Sales Backend / Purchase Manager are involved in creating the final bill.
+
+The exact ownership of final bill creation should be confirmed.
+
+### Output
+
+**Final Customer Bill**
+
+---
+
+# Stage 11 – Accounts & Payment Tracking
+
+The Accounting Team takes responsibility for financial follow-up.
+
+They:
+
+- Track customer payments.
+- Approve bills/payments in Zoho.
+- Maintain the financial records.
+- Follow up on outstanding payments where required.
+
+### Output
+
+**Payment Recorded / Outstanding Payment Tracked**
+
+---
+
+# 5. Department Interaction Model
+
+The current workflow can be represented as:
+
+```text
+                         CUSTOMER
+                            │
+                            ▼
+                     ┌─────────────┐
+                     │    SALES    │
+                     │   Enquiry   │
+                     └──────┬──────┘
+                            │
+                            ▼
+              ┌─────────────────────────┐
+              │ PURCHASE / VEHICLE      │
+              │ PLACEMENT               │
+              │                         │
+              │ Find vendor + vehicle   │
+              │ Collect documents       │
+              └────────────┬────────────┘
+                           │
+                           ▼
+                    VEHICLE PLACED
+                           │
+                           ▼
+                  ┌─────────────────┐
+                  │  SALES BACKEND  │
+                  │                 │
+                  │ WhatsApp        │
+                  │ Trip updates    │
+                  │ Loading/Unloading│
+                  └────────┬────────┘
+                           │
+                           ▼
+                ┌────────────────────┐
+                │ TRAFFIC COORDINATOR│
+                │                    │
+                │ Trip monitoring    │
+                │ Driver coordination│
+                │ Loading            │
+                │ Transit            │
+                │ Unloading          │
+                └─────────┬──────────┘
+                          │
+                          ▼
+                    TRIP COMPLETED
+                          │
+                          ▼
+                         POD
+                          │
+                          ▼
+                 ┌──────────────────┐
+                 │ PURCHASE MANAGER │
+                 │                  │
+                 │ Rating           │
+                 │ Final billing    │
+                 └────────┬─────────┘
+                          │
+                          ▼
+                  ┌───────────────┐
+                  │   ACCOUNTS    │
+                  │               │
+                  │ Payment       │
+                  │ Zoho          │
+                  └───────────────┘
+```
+
+---
+
+# 6. Core Business Objects
+
+Based on the current process, the future system will need to maintain information around several core objects.
+
+### Customer
+
+Information about the customer requesting transportation.
+
+### Enquiry
+
+The initial transportation requirement submitted by the customer.
+
+### Vendor
+
+The external transportation provider.
+
+### Vehicle
+
+The vehicle being used to fulfil the requirement.
+
+### Driver
+
+The individual operating the vehicle.
+
+### Trip
+
+The actual transportation journey.
+
+### Documents
+
+Documents associated with customers, vendors, vehicles, drivers and trips.
+
+Examples include:
+
+- RC
+- DL
+- PAN
+- Aadhaar
+- GST Certificate
+- TDS Certificate
+- Bank Details
+- POD
+
+### Purchase Order
+
+The vendor-side commercial document created after the vehicle is loaded.
+
+### POD
+
+Proof of Delivery provided by the driver after delivery.
+
+### Final Bill
+
+The customer-side billing document generated after completion of the transportation process.
+
+### Payment
+
+Financial transactions associated with vendor payments and customer collections.
+
+---
+
+# 7. Communication Flow
+
+Communication currently takes place between several internal and external parties.
+
+### Customer ↔ Sales
+
+Used for:
+
+- Requirement gathering
+- Vehicle updates
+- Trip updates
+- Delivery updates
+- General customer communication
+
+### Vehicle Placement ↔ Vendor/Driver
+
+Used for:
+
+- Vehicle availability
+- Commercial negotiation
+- Vehicle arrangement
+- Documentation
+
+### Traffic Coordinator ↔ Driver/Vendor
+
+Used for:
+
+- Trip status
+- Loading
+- Transit
+- Unloading
+- Operational issues
+- Delivery/POD
+
+### Traffic Coordinator → Sales
+
+Used to provide information that Sales can communicate to the customer.
+
+### Sales Backend ↔ WhatsApp
+
+Used for:
+
+- Vehicle information
+- Trip status
+- Loading information
+- Unloading information
+- Other operational messages
+
+---
+
+# 8. Key Information Flow
+
+The most important information flow through the company is:
+
+**Customer Requirement**
+
+↓
+
+**Enquiry**
+
+↓
+
+**Vendor Search**
+
+↓
+
+**Vehicle Selection**
+
+↓
+
+**Vendor & Vehicle Documents**
+
+↓
+
+**Vehicle Placement**
+
+↓
+
+**Trip**
+
+↓
+
+**Loading**
+
+↓
+
+**Transit Monitoring**
+
+↓
+
+**Unloading**
+
+↓
+
+**POD**
+
+↓
+
+**Trip Completion**
+
+↓
+
+**Rating**
+
+↓
+
+**Billing**
+
+↓
+
+**Payment**
+
+This represents the central business journey that the future CRM/operations platform should support.
+
+---

@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SweafEx Operations CRM - Solution Proposal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #1e293b;
+    background-color: #ffffff;
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    position: relative;
+    padding: 22mm 20mm 20mm 20mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+    background-color: #ffffff;
+  }
+
+  /* Header & Footer */
+  .page-header {
+    position: absolute;
+    top: 10mm;
+    left: 20mm;
+    right: 20mm;
+    height: 8mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 3mm;
+    font-size: 10px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .page-header .brand-tag {
+    color: #2563eb;
+    font-weight: 700;
+  }
+
+  .page-footer {
+    position: absolute;
+    bottom: 10mm;
+    left: 20mm;
+    right: 20mm;
+    height: 6mm;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 2.5mm;
+    font-size: 9.5px;
+    color: #94a3b8;
+  }
+
+  /* Headings & Text */
+  .section-tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #2563eb;
+    background: #eff6ff;
+    padding: 3px 10px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    border: 1px solid #dbeafe;
+  }
+
+  .page-title {
+    font-size: 24px;
+    font-weight: 800;
+    color: #0f172a;
+    line-height: 1.25;
+    margin-bottom: 6px;
+    letter-spacing: -0.5px;
+  }
+
+  .page-subtitle {
+    font-size: 13px;
+    color: #475569;
+    margin-bottom: 18px;
+    line-height: 1.45;
+  }
+
+  /* Grid & Flex layouts */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+  }
+
+  /* Cards */
+  .card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .card-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+
+  .icon-blue { background: #eff6ff; color: #2563eb; }
+  .icon-emerald { background: #ecfdf5; color: #059669; }
+  .icon-amber { background: #fffbeb; color: #d97706; }
+  .icon-indigo { background: #eef2ff; color: #4f46e5; }
+  .icon-purple { background: #faf5ff; color: #7c3aed; }
+  .icon-slate { background: #f1f5f9; color: #475569; }
+
+  .card-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #0f172a;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: #64748b;
+    line-height: 1.45;
+  }
+
+  /* Key Callout Box */
+  .callout-box {
+    background: #f8fafc;
+    border-left: 4px solid #2563eb;
+    padding: 14px 18px;
+    border-radius: 0 8px 8px 0;
+    margin: 16px 0;
+  }
+
+  .callout-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 4px;
+  }
+
+  .callout-text {
+    font-size: 12px;
+    color: #475569;
+    line-height: 1.45;
+  }
+
+  /* Tables */
+  table.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin-top: 10px;
+  }
+
+  table.custom-table th {
+    background: #f1f5f9;
+    color: #334155;
+    font-weight: 700;
+    text-align: left;
+    padding: 9px 12px;
+    border-bottom: 2px solid #cbd5e1;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+  }
+
+  table.custom-table td {
+    padding: 9px 12px;
+    border-bottom: 1px solid #e2e8f0;
+    color: #334155;
+    vertical-align: middle;
+  }
+
+  table.custom-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  table.custom-table tr:nth-child(even) {
+    background-color: #fafbfc;
+  }
+
+  /* Badges & Pills */
+  .badge {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-blue { background: #dbeafe; color: #1d4ed8; }
+  .badge-green { background: #d1fae5; color: #047857; }
+  .badge-amber { background: #fef3c7; color: #b45309; }
+  .badge-slate { background: #f1f5f9; color: #475569; }
+  .badge-red { background: #fee2e2; color: #b91c1c; }
+
+  /* Flow Steps */
+  .flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 14px 0;
+  }
+
+  .flow-node {
+    display: flex;
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    position: relative;
+  }
+
+  .flow-badge {
+    font-weight: 800;
+    font-size: 12px;
+    color: #ffffff;
+    background: #2563eb;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Cover Page Styling */
+  .cover-page {
+    background: linear-gradient(135deg, #090e17 0%, #0f172a 50%, #1e293b 100%);
+    color: #ffffff;
+    padding: 30mm 25mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .cover-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cover-logo-text {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    color: #ffffff;
+  }
+
+  .cover-logo-text span {
+    color: #3b82f6;
+  }
+
+  .cover-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #60a5fa;
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    padding: 6px 14px;
+    border-radius: 6px;
+  }
+
+  .cover-main {
+    margin: 40px 0;
+  }
+
+  .cover-tagline {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #38bdf8;
+    margin-bottom: 16px;
+  }
+
+  .cover-title {
+    font-size: 44px;
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 18px;
+  }
+
+  .cover-title span {
+    color: #38bdf8;
+    font-size: 44px;
+    font-weight: 800;
+    display: inline-block;
+  }
+
+  .cover-desc {
+    font-size: 16px;
+    color: #94a3b8;
+    line-height: 1.6;
+    max-width: 580px;
+    margin-bottom: 30px;
+  }
+
+  .cover-highlights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-top: 25px;
+  }
+
+  .cover-highlight-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 14px;
+  }
+
+  .cover-highlight-val {
+    font-size: 13px;
+    font-weight: 700;
+    color: #38bdf8;
+    margin-bottom: 4px;
+  }
+
+  .cover-highlight-lbl {
+    font-size: 11px;
+    color: #94a3b8;
+    line-height: 1.35;
+  }
+
+  .cover-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .meta-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .meta-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #64748b;
+    font-weight: 700;
+  }
+
+  .meta-val {
+    font-size: 13px;
+    font-weight: 600;
+    color: #f1f5f9;
+  }
+
+  /* Timeline & Process */
+  .timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+    padding-left: 24px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: #cbd5e1;
+  }
+
+  .timeline-item {
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -24px;
+    top: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #2563eb;
+    border: 3px solid #ffffff;
+    box-shadow: 0 0 0 1.5px #2563eb;
+  }
+
+  .timeline-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0f172a;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .timeline-desc {
+    font-size: 11.5px;
+    color: #64748b;
+    margin-top: 2px;
+  }
+
+  /* List Styling */
+  ul.check-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.check-list li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 12px;
+    color: #334155;
+    margin-bottom: 7px;
+    line-height: 1.45;
+  }
+
+  ul.check-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #059669;
+    font-weight: 800;
+    font-size: 12px;
+  }
+
+  /* Milestone Pills */
+  .milestone-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  .milestone-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 9px 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .milestone-num {
+    background: #0f172a;
+    color: #ffffff;
+    font-size: 10.5px;
+    font-weight: 800;
+    width: 22px;
+    height: 22px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+
+  .milestone-text {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #1e293b;
+  }
+
+  .milestone-sub {
+    font-size: 10px;
+    color: #64748b;
+  }
+
+  /* Chat bubble styling for WhatsApp page */
+  .chat-bubble {
+    background: #e7fedb;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+    border: 1px solid #c8e6c9;
+    position: relative;
+  }
+
+  .chat-bubble-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    font-weight: 700;
+    color: #2e7d32;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  .chat-bubble-body {
+    font-size: 11.5px;
+    color: #1b5e20;
+    line-height: 1.4;
+  }
+
+  .chat-bubble-meta {
+    font-size: 9.5px;
+    color: #66bb6a;
+    text-align: right;
+    margin-top: 4px;
+  }
+
+  .metric-box {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .metric-value {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+  }
+
+  .metric-label {
+    font-size: 10.5px;
+    color: #64748b;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+
+  .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 6px;
+  }
+
+  .status-pill {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background: #e2e8f0;
+    color: #334155;
+  }
+
+  .live-trip-mockup {
+    background: #ffffff;
+    border: 2px solid #3b82f6;
+    border-radius: 8px;
+    padding: 14px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.08);
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================================================================= -->
+<!-- PAGE 1: COVER PAGE                                                        -->
+<!-- ========================================================================= -->
+<div class="page cover-page">
+  <div class="cover-header">
+    <div class="cover-logo-text">OCTGRAM</div>
+    <div class="cover-badge">SOLUTION PROPOSAL</div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-tagline">OPERATIONS TRANSFORMATION INITIATIVE</div>
+    <h1 class="cover-title">SweafEx<br><span>Operations CRM</span></h1>
+    <p class="cover-desc">
+      A centralized operational platform designed to unify SweafEx's end-to-end freight lifecycle — connecting customer enquiries, rate boards, vehicle assignments, live trip tracking, and WhatsApp automation alongside Zoho.
+    </p>
+
+    <div class="cover-highlights">
+      <div class="cover-highlight-card">
+        <div class="cover-highlight-val">Single EXP ID</div>
+        <div class="cover-highlight-lbl">One permanent trip identity across operations, customer updates & billing.</div>
+      </div>
+      <div class="cover-highlight-card">
+        <div class="cover-highlight-val">Zero-Install Portals</div>
+        <div class="cover-highlight-lbl">Instant mobile web links for field drivers and corporate customers.</div>
+      </div>
+      <div class="cover-highlight-card">
+        <div class="cover-highlight-val">Zoho Coexistence</div>
+        <div class="cover-highlight-lbl">Preserves Zoho for accounting while powering operations in Octgram CRM.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cover-footer">
+    <div class="meta-group">
+      <span class="meta-label">Prepared For</span>
+      <span class="meta-val">Whooosh Networks Pvt Ltd (SweafEx)</span>
+      <span style="font-size:11px; color:#94a3b8;">Leadership & Operations Management</span>
+    </div>
+    <div class="meta-group">
+      <span class="meta-label">Prepared By</span>
+      <span class="meta-val">Octgram</span>
+      <span style="font-size:11px; color:#38bdf8; font-weight:600;">vishnu@octagramai.com &bull; +91 9482090023</span>
+    </div>
+    <div class="meta-group" style="text-align: right;">
+      <span class="meta-label">Date & Version</span>
+      <span class="meta-val">March 2026 | v1.0</span>
+      <span style="font-size:11px; color:#94a3b8;">Confidential</span>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 2: EXECUTIVE SUMMARY                                                 -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Octgram Proposal</span>
+  </div>
+
+  <div class="section-tag">Executive Summary</div>
+  <h2 class="page-title">Unifying SweafEx Freight Operations</h2>
+  <p class="page-subtitle">A high-impact operational CRM that transforms fragmented WhatsApp and spreadsheet workflows into a streamlined, automated operational system.</p>
+
+  <div class="callout-box" style="margin-top: 0; margin-bottom: 16px;">
+    <div class="callout-title">The Strategic Objective</div>
+    <div class="callout-text">
+      SweafEx operates a fast-growing Full Truck Load (FTL) freight brokerage across South India. To support rapid scaling, Octgram proposes a dedicated <strong>Operations CRM</strong> that centralizes customer enquiries, vendor quotes, vehicle placement, 13-stage trip milestone tracking, and POD collection — while seamlessly integrating with SweafEx's existing <strong>Zoho setup</strong> for accounting, billing, and financial reconciliation.
+    </div>
+  </div>
+
+  <div class="grid-2" style="margin-bottom: 16px;">
+    <div class="card" style="border-top: 3px solid #ef4444;">
+      <div class="card-header">
+        <div class="card-icon icon-slate" style="color:#ef4444; background:#fef2f2;">!</div>
+        <div class="card-title">Current Operational Landscape</div>
+      </div>
+      <ul class="check-list" style="margin-top: 6px;">
+        <li style="color:#64748b;"><strong style="color:#334155;">8 WhatsApp Groups:</strong> Critical trip data, rates, and documents trapped in chat threads.</li>
+        <li style="color:#64748b;"><strong style="color:#334155;">Multiple Excel Sheets:</strong> Customer quotes, vehicle details, and margins managed in disconnected files.</li>
+        <li style="color:#64748b;"><strong style="color:#334155;">Repeated Data Entry:</strong> Trip details re-typed across WhatsApp messages, emails, and bills.</li>
+        <li style="color:#64748b;"><strong style="color:#334155;">Manual Follow-ups:</strong> Team spends hours calling drivers for updates and following up on PODs.</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-top: 3px solid #059669;">
+      <div class="card-header">
+        <div class="card-icon icon-emerald">✓</div>
+        <div class="card-title">The Octgram CRM Solution</div>
+      </div>
+      <ul class="check-list" style="margin-top: 6px;">
+        <li><strong style="color:#0f172a;">Single EXP Trip ID:</strong> One permanent ID linking customer, vendor, vehicle, POD, and billing.</li>
+        <li><strong style="color:#0f172a;">Dynamic Rate Board:</strong> Real-time margin visibility with floor-price controls for management.</li>
+        <li><strong style="color:#0f172a;">Automated WhatsApp:</strong> Instant customer updates, auto-TCN dispatch, and payment reminders.</li>
+        <li><strong style="color:#0f172a;">Preserved Zoho Setup:</strong> Operational data flows directly to Zoho Books for financial processing.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="background: #f8fafc; border: 1px solid #cbd5e1; margin-bottom: 16px;">
+    <div style="font-weight: 700; font-size: 13px; color: #0f172a; margin-bottom: 8px;">Key Business Outcomes for SweafEx</div>
+    <div class="grid-4">
+      <div class="metric-box" style="background:#ffffff;">
+        <div class="metric-value" style="color:#2563eb;">100%</div>
+        <div class="metric-label">Data Consistency (Single EXP ID)</div>
+      </div>
+      <div class="metric-box" style="background:#ffffff;">
+        <div class="metric-value" style="color:#059669;">Zero</div>
+        <div class="metric-label">App Friction for Drivers/Vendors</div>
+      </div>
+      <div class="metric-box" style="background:#ffffff;">
+        <div class="metric-value" style="color:#d97706;">Live</div>
+        <div class="metric-label">Trip Margin & Profit Visibility</div>
+      </div>
+      <div class="metric-box" style="background:#ffffff;">
+        <div class="metric-value" style="color:#4f46e5;">Automated</div>
+        <div class="metric-label">WhatsApp Milestone Updates</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 2 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 3: THE CURRENT CHALLENGE                                             -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Operational Analysis</span>
+  </div>
+
+  <div class="section-tag">Current Operational Challenges</div>
+  <h2 class="page-title">From Fragmented Operations to One Connected Workflow</h2>
+  <p class="page-subtitle">As trip volumes expand, operational friction arises from disconnected tools rather than team performance.</p>
+
+  <div class="card" style="background: #f8fafc; border: 1px solid #e2e8f0; margin-bottom: 16px; padding: 12px 16px;">
+    <div style="font-size: 11px; font-weight: 700; color: #475569; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">Today's Fragmented Communication Path</div>
+    <div style="display: flex; align-items: center; justify-content: space-between; font-size: 10.5px; font-weight: 700; text-align: center; gap: 4px;">
+      <div style="background:#ffffff; border:1px solid #cbd5e1; padding:6px 8px; border-radius:6px; flex:1;">Customer<br><span style="color:#64748b; font-weight:500;">Enquiry</span></div>
+      <div style="color:#94a3b8;">→</div>
+      <div style="background:#fef3c7; border:1px solid #fde68a; padding:6px 8px; border-radius:6px; flex:1; color:#92400e;">WhatsApp<br><span style="font-weight:500;">Chat Thread</span></div>
+      <div style="color:#94a3b8;">→</div>
+      <div style="background:#ffffff; border:1px solid #cbd5e1; padding:6px 8px; border-radius:6px; flex:1;">Sales Team<br><span style="color:#64748b; font-weight:500;">Excel Sheet</span></div>
+      <div style="color:#94a3b8;">→</div>
+      <div style="background:#fef3c7; border:1px solid #fde68a; padding:6px 8px; border-radius:6px; flex:1; color:#92400e;">Purchase<br><span style="font-weight:500;">8 WA Groups</span></div>
+      <div style="color:#94a3b8;">→</div>
+      <div style="background:#ffffff; border:1px solid #cbd5e1; padding:6px 8px; border-radius:6px; flex:1;">Transporter<br><span style="color:#64748b; font-weight:500;">Driver Call</span></div>
+      <div style="color:#94a3b8;">→</div>
+      <div style="background:#e0e7ff; border:1px solid #c7d2fe; padding:6px 8px; border-radius:6px; flex:1; color:#3730a3;">Zoho<br><span style="font-weight:500;">Manual PO</span></div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 12px; margin-bottom: 14px;">
+    <div class="card" style="padding: 12px 14px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+        <span class="badge badge-amber">Challenge 1</span>
+        <strong style="font-size:12.5px; color:#0f172a;">Manual Trip ID Transcription</strong>
+      </div>
+      <p style="font-size:11.5px; color:#475569;">Trip IDs are typed manually across WhatsApp, Excel sheets, and email drafts, creating mismatches between operational updates, vendor POs, and customer invoices.</p>
+    </div>
+
+    <div class="card" style="padding: 12px 14px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+        <span class="badge badge-amber">Challenge 2</span>
+        <strong style="font-size:12.5px; color:#0f172a;">Operational Data Trapped in Chat</strong>
+      </div>
+      <p style="font-size:11.5px; color:#475569;">Rates, driver details, and loading timestamps live in WhatsApp chat histories, making them unsearchable, difficult to audit, and inaccessible to management in real time.</p>
+    </div>
+
+    <div class="card" style="padding: 12px 14px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+        <span class="badge badge-amber">Challenge 3</span>
+        <strong style="font-size:12.5px; color:#0f172a;">Physical POD Bottlenecks</strong>
+      </div>
+      <p style="font-size:11.5px; color:#475569;">Tracking physical hard copy PODs across multiple trips is managed manually, delaying vendor balance settlements and slowing down customer invoice generation.</p>
+    </div>
+
+    <div class="card" style="padding: 12px 14px;">
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+        <span class="badge badge-amber">Challenge 4</span>
+        <strong style="font-size:12.5px; color:#0f172a;">Invisible Real-Time Margins</strong>
+      </div>
+      <p style="font-size:11.5px; color:#475569;">Customer rates and vendor costs are recorded in separate places. Management cannot easily verify trip profitability until month-end accounting reconciliation.</p>
+    </div>
+  </div>
+
+  <div class="callout-box" style="margin-top: 4px;">
+    <div class="callout-title">The Path Forward</div>
+    <div class="callout-text">
+      These bottlenecks are natural milestones for a fast-scaling freight business. Octgram CRM bridges these gaps by acting as the unified operational backbone — giving the sales, purchase, and operations teams dedicated workspaces while maintaining clean data handoffs to Zoho.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 3 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 4: THE FUTURE STATE                                                  -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Future Operating Model</span>
+  </div>
+
+  <div class="section-tag">Target Architecture</div>
+  <h2 class="page-title">One Trip. One EXP. One Source of Truth.</h2>
+  <p class="page-subtitle">Every operational event, document, communication, and financial record links permanently to a single EXP Trip ID.</p>
+
+  <div class="card" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); color: #ffffff; padding: 18px; margin-bottom: 18px; border: none;">
+    <div style="font-size: 11px; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">The Unified Trip Lifecycle Pipeline</div>
+    
+    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; text-align: center;">
+      <div style="background: rgba(255,255,255,0.06); padding: 10px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #60a5fa; font-weight: 800; font-size: 11px;">01. ENQUIRY</div>
+        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">Auto ENQ ID from WhatsApp/Web</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); padding: 10px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #60a5fa; font-weight: 800; font-size: 11px;">02. RATE BOARD</div>
+        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">Vendor quotes & margin check</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); padding: 10px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #60a5fa; font-weight: 800; font-size: 11px;">03. ORDER & EXP</div>
+        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">Vehicle placed & EXP Trip created</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); padding: 10px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #60a5fa; font-weight: 800; font-size: 11px;">04. MILESTONES</div>
+        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">13 Live updates & auto-TCN</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.06); padding: 10px 8px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.1);">
+        <div style="color: #34d399; font-weight: 800; font-size: 11px;">05. POD & BILLING</div>
+        <div style="font-size: 10px; color: #94a3b8; margin-top: 4px;">5-stage POD & Zoho invoice</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 16px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-blue">#</div>
+        <div class="card-title">What Changes with the Single EXP ID?</div>
+      </div>
+      <ul class="check-list">
+        <li><strong>Permanent System Lock:</strong> Once an EXP Trip ID is generated on vehicle placement, it is locked and auto-populates all records.</li>
+        <li><strong>Elimination of Transcription Errors:</strong> Drivers, coordinators, and accounts staff always reference the identical trip code.</li>
+        <li><strong>Complete Traceability:</strong> One click from the EXP record opens the original customer enquiry, vendor quotes, RC/DL verification, signed TCN, POD photos, and Zoho bill.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-emerald">★</div>
+        <div class="card-title">Operational Integrity Guarantee</div>
+      </div>
+      <ul class="check-list">
+        <li><strong>Role-Based Discipline:</strong> Sales sets rates, Purchase places verified vehicles, Accounts approves payments, and Operations monitors margins.</li>
+        <li><strong>Structured Communication:</strong> WhatsApp is preserved as the communication channel, while Octgram CRM becomes the system of record.</li>
+        <li><strong>Auditable Compliance:</strong> Every timestamp, user modification, and document upload is logged permanently.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="callout-box" style="margin-top: 0;">
+    <div class="callout-title">Core Principle</div>
+    <div class="callout-text">
+      <strong>Zoho is the financial record. WhatsApp is the communication channel. Octgram CRM is the operational engine that connects them.</strong>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 4 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 5: WHAT THE CRM MANAGES                                              -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Core Modules</span>
+  </div>
+
+  <div class="section-tag">Platform Scope</div>
+  <h2 class="page-title">Everything Your Operations Team Needs — In One Place</h2>
+  <p class="page-subtitle">A modular CRM built around SweafEx's specific departmental roles and operational workflows.</p>
+
+  <div class="grid-2" style="gap: 14px;">
+    
+    <!-- Card 1 -->
+    <div class="card" style="border-left: 4px solid #2563eb;">
+      <div class="card-header">
+        <div class="card-icon icon-blue">1</div>
+        <div>
+          <div class="card-title">Customer & Sales Management</div>
+          <div style="font-size: 11px; color: #64748b;">Sales Coordinators & Sales Backend</div>
+        </div>
+      </div>
+      <ul class="check-list" style="font-size: 11.5px;">
+        <li><strong>Customer Master:</strong> Profiles, billing GSTINs, credit terms, and invoicing preferences.</li>
+        <li><strong>Enquiry Hub:</strong> Multi-channel capture with auto-generated ENQ references.</li>
+        <li><strong>Quote & Rate Board:</strong> Real-time margin guidance and approved price floors.</li>
+        <li><strong>Order Conversion:</strong> 1-click conversion of enquiries into confirmed Orders (ORD).</li>
+        <li><strong>Communication History:</strong> Complete log of customer interactions and spec changes.</li>
+      </ul>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card" style="border-left: 4px solid #059669;">
+      <div class="card-header">
+        <div class="card-icon icon-emerald">2</div>
+        <div>
+          <div class="card-title">Vendors & Fleet Management</div>
+          <div style="font-size: 11px; color: #64748b;">Purchase Coordinators</div>
+        </div>
+      </div>
+      <ul class="check-list" style="font-size: 11.5px;">
+        <li><strong>Vendor Master:</strong> Transporter profiles, fleet types, PAN, GSTIN, and bank accounts.</li>
+        <li><strong>RC & DL Verification:</strong> Verification workflow via external verification APIs.</li>
+        <li><strong>Document Repository:</strong> RC, DL, Insurance, PAN, Passbook, and truck photos.</li>
+        <li><strong>30-Day Expiry Alerts:</strong> Proactive alerts before vehicle/driver documents expire.</li>
+        <li><strong>Transporter Ratings:</strong> Historical on-time performance and reliability scores.</li>
+      </ul>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card" style="border-left: 4px solid #d97706;">
+      <div class="card-header">
+        <div class="card-icon icon-amber">3</div>
+        <div>
+          <div class="card-title">Trip Operations & Milestones</div>
+          <div style="font-size: 11px; color: #64748b;">Operations & Purchase Teams</div>
+        </div>
+      </div>
+      <ul class="check-list" style="font-size: 11.5px;">
+        <li><strong>EXP Trip Console:</strong> Core operational screen binding vehicle, route, driver, and load.</li>
+        <li><strong>13-Milestone Tracking:</strong> Granular checkpoints from loading transit to delivery.</li>
+        <li><strong>Auto TCN Generation:</strong> Pre-filled Trip Confirmation Notes created at loading.</li>
+        <li><strong>5-Stage POD Tracker:</strong> End-to-end physical & digital POD monitoring.</li>
+        <li><strong>Driver Portal:</strong> Zero-install mobile web page for milestone and photo uploads.</li>
+      </ul>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card" style="border-left: 4px solid #7c3aed;">
+      <div class="card-header">
+        <div class="card-icon icon-purple">4</div>
+        <div>
+          <div class="card-title">Management & Financial Control</div>
+          <div style="font-size: 11px; color: #64748b;">Operations Manager & Accounts</div>
+        </div>
+      </div>
+      <ul class="check-list" style="font-size: 11.5px;">
+        <li><strong>Live Margin Intelligence:</strong> Real-time gross margin (INR & %) visible per trip.</li>
+        <li><strong>Overdue POD Alerts:</strong> Escalation dashboard for POD hard copies pending &gt; 7 days.</li>
+        <li><strong>TDS Compliance:</strong> 2% Section 194C deduction rules or non-TDS certificate checks.</li>
+        <li><strong>Daily Billing Sheets:</strong> Auto-compiled completed trips for 1-click Zoho invoicing.</li>
+        <li><strong>Executive BI:</strong> Route profitability, conversion rates, and carrier analytics.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 5 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 6: ENQUIRY TO ORDER                                                  -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Workflow: Sales & Demand</span>
+  </div>
+
+  <div class="section-tag">Enquiry Management</div>
+  <h2 class="page-title">From Inbound Enquiry to Confirmed Order</h2>
+  <p class="page-subtitle">A fast, structured rate board workflow that speeds up quoting while protecting gross margins.</p>
+
+  <div class="flow-container">
+    <div class="flow-node">
+      <div class="flow-badge">1</div>
+      <div style="flex:1;">
+        <div style="font-weight:700; font-size:12.5px; color:#0f172a;">Omnichannel Enquiry Capture</div>
+        <div style="font-size:11px; color:#64748b;">Captures enquiries from WhatsApp Business API, Website forms, Social Media, or manual phone intake. System assigns permanent <strong>ENQ001</strong> number and sends 60-second WhatsApp auto-acknowledgment.</div>
+      </div>
+      <span class="badge badge-blue">ENQ Generated</span>
+    </div>
+
+    <div class="flow-node">
+      <div class="flow-badge">2</div>
+      <div style="flex:1;">
+        <div style="font-weight:700; font-size:12.5px; color:#0f172a;">Purchase Team Quoting (Up to 4 Vendors)</div>
+        <div style="font-size:11px; color:#64748b;">Purchase Coordinator logs up to 4 vendor quotes with rates and availability. Customer identity is automatically masked in vendor-facing outreach to preserve commercial confidentiality.</div>
+      </div>
+      <span class="badge badge-amber">Quotes Logged</span>
+    </div>
+
+    <div class="flow-node">
+      <div class="flow-badge">3</div>
+      <div style="flex:1;">
+        <div style="font-weight:700; font-size:12.5px; color:#0f172a;">Rate Board & Margin Guard</div>
+        <div style="font-size:11px; color:#64748b;">Operations Manager sets Customer Rate Range (Min/Max). Rate Board calculates gross margin in real time. Sales Coordinator is alerted if a quoted rate drops below the margin floor.</div>
+      </div>
+      <span class="badge badge-green">Margin Verified</span>
+    </div>
+
+    <div class="flow-node">
+      <div class="flow-badge">4</div>
+      <div style="flex:1;">
+        <div style="font-weight:700; font-size:12.5px; color:#0f172a;">Order Confirmation (ORD Created)</div>
+        <div style="font-size:11px; color:#64748b;">Customer confirms booking. System generates official Order (ORD), sets POD-NA requirements, and automatically passes the requirement to Purchase for vehicle placement.</div>
+      </div>
+      <span class="badge badge-blue">ORD Confirmed</span>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top: 12px; background: #fafbfc;">
+    <div style="font-weight: 700; font-size: 12.5px; color: #0f172a; margin-bottom: 6px;">Actionable Lost Business Intelligence</div>
+    <p style="font-size: 11.5px; color: #475569; margin-bottom: 8px;">
+      When an enquiry does not convert, the system mandates a closure reason from a standardized dropdown:
+    </p>
+    <div class="pill-row">
+      <span class="status-pill" style="background:#fee2e2; color:#991b1b;">Rate Difference</span>
+      <span class="status-pill" style="background:#fee2e2; color:#991b1b;">Customer Arranged Own Vehicle</span>
+      <span class="status-pill" style="background:#fee2e2; color:#991b1b;">Vehicle Size Unavailable</span>
+      <span class="status-pill" style="background:#fee2e2; color:#991b1b;">Customer Unresponsive</span>
+      <span class="status-pill" style="background:#f1f5f9; color:#475569;">Other</span>
+    </div>
+    <p style="font-size: 11px; color: #64748b; margin-top: 8px;">
+      This data gives management clear visibility into pricing gaps, unavailable vehicle types, and high-demand routes that need additional transporter onboarding.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 6 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 7: VENDOR & VEHICLE VERIFICATION                                     -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Compliance & Safety</span>
+  </div>
+
+  <div class="section-tag">Verification & Trust</div>
+  <h2 class="page-title">Know Who and What You Are Putting on the Road</h2>
+  <p class="page-subtitle">Standardized onboarding checklists and external API verifications to protect cargo safety and legal compliance.</p>
+
+  <div class="grid-2" style="gap: 14px; margin-bottom: 14px;">
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-emerald">✓</div>
+        <div class="card-title">Digital Verification Workflow</div>
+      </div>
+      <div class="timeline" style="margin-top: 6px;">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Vendor & Vehicle Entry</div>
+          <div class="timeline-desc">Transporter selected from Master; truck & driver details logged.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">API Verifications (RC & DL)</div>
+          <div class="timeline-desc">Instant verification of vehicle RC and driver license validity.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-title">Mandatory Document Checklist</div>
+          <div class="timeline-desc">Enforces upload of RC, DL, PAN, Bank Details & Truck Photo.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot" style="background:#059669; box-shadow:0 0 0 1.5px #059669;"></div>
+          <div class="timeline-title" style="color:#059669;">Verified & Vehicle Placed</div>
+          <div class="timeline-desc">EXP ID generated; vehicle placement message formatted.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-amber">⏱</div>
+        <div class="card-title">Proactive Expiry Governance</div>
+      </div>
+      <p style="font-size: 11.5px; color: #475569; margin-bottom: 10px;">
+        The CRM tracks document validity across SweafEx's entire vendor base:
+      </p>
+      <ul class="check-list">
+        <li><strong>30-Day Expiry Alerts:</strong> Automated notifications to Purchase Coordinator before vehicle RC, insurance, or driver DL expires.</li>
+        <li><strong>System Placement Gate:</strong> Hard block preventing vehicle placement if mandatory documents are missing or expired.</li>
+        <li><strong>Registered Bank Enforcement:</strong> Restricts all payout instructions exclusively to verified bank accounts in the Vendor Master.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="background: #f8fafc; border: 1px solid #cbd5e1;">
+    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 8px;">
+      <div style="font-weight: 700; font-size: 12.5px; color: #0f172a;">Third-Party Verification APIs (Pricing Placeholders)</div>
+      <span class="badge badge-slate">External Passthrough</span>
+    </div>
+    <table class="custom-table" style="background:#ffffff; border-radius:6px; overflow:hidden; border:1px solid #e2e8f0;">
+      <thead>
+        <tr>
+          <th>Verification Service</th>
+          <th>Operational Purpose</th>
+          <th style="text-align:right;">Estimated Pricing</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Vehicle RC Verification API</strong></td>
+          <td>Validates vehicle fitness, insurance, owner name & tax status via Vahan.</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;"><code>[TO BE CONFIRMED]</code></td>
+        </tr>
+        <tr>
+          <td><strong>Driver DL Verification API</strong></td>
+          <td>Verifies driver identity and transport vehicle license validity via Sarathi.</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;"><code>[TO BE CONFIRMED]</code></td>
+        </tr>
+        <tr>
+          <td><strong>GSTIN & E-Way Bill API</strong></td>
+          <td>Party GST validation and single-click E-Way Bill verification where applicable.</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;"><code>[TO BE CONFIRMED]</code></td>
+        </tr>
+      </tbody>
+    </table>
+    <div style="font-size: 10.5px; color: #64748b; margin-top: 8px; font-style: italic;">
+      * Note: External verification capabilities and response schemas depend on the selected third-party API provider's tier and governmental availability. Costs will be passed through transparently without markup.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 7 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 8: TRIP MANAGEMENT & MILESTONES                                      -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Trip Operations</span>
+  </div>
+
+  <div class="section-tag">Trip Execution</div>
+  <h2 class="page-title">Every Trip, Tracked From Start to Finish</h2>
+  <p class="page-subtitle">Structured tracking across the 13 SOP milestones with real-time timestamps and automated customer alerts.</p>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 14px;">
+    
+    <!-- Milestone List -->
+    <div>
+      <div style="font-weight: 700; font-size: 12.5px; color: #0f172a; margin-bottom: 8px;">13 Granular SOP Milestones (Simplified Stages)</div>
+      <div class="milestone-grid">
+        <div class="milestone-card">
+          <div class="milestone-num">1</div>
+          <div><div class="milestone-text">Started</div><div class="milestone-sub">Truck departs for loading</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">2</div>
+          <div><div class="milestone-text">Loading Transit (1-2)</div><div class="milestone-sub">En route to pickup</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">3</div>
+          <div><div class="milestone-text">Reached Loading</div><div class="milestone-sub">Truck at pickup point</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">4</div>
+          <div><div class="milestone-text">Loading Started</div><div class="milestone-sub">Auto-generates TCN PDF</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">5</div>
+          <div><div class="milestone-text">Bills Received</div><div class="milestone-sub">Material & e-way bill checked</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">6</div>
+          <div><div class="milestone-text">Unloading Transit (1-3)</div><div class="milestone-sub">Main transit updates</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">7</div>
+          <div><div class="milestone-text">Reached Unloading</div><div class="milestone-sub">Truck at destination</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">8</div>
+          <div><div class="milestone-text">Unloading Done</div><div class="milestone-sub">Cargo safely delivered</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">9</div>
+          <div><div class="milestone-text">POD Soft Received</div><div class="milestone-sub">Driver uploads signed TCN</div></div>
+        </div>
+        <div class="milestone-card">
+          <div class="milestone-num">10</div>
+          <div><div class="milestone-text">Trip Completed</div><div class="milestone-sub">Ready for billing & payout</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Console Mockup -->
+    <div>
+      <div style="font-weight: 700; font-size: 12.5px; color: #0f172a; margin-bottom: 8px;">What the Operations Team Sees</div>
+      <div class="live-trip-mockup">
+        <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #e2e8f0; padding-bottom:8px; margin-bottom:8px;">
+          <div>
+            <span style="font-size:14px; font-weight:800; color:#0f172a;">EXP001245</span>
+            <span class="badge badge-blue" style="margin-left:6px;">In Transit</span>
+          </div>
+          <span style="font-size:10.5px; color:#64748b;">Updated 14:32</span>
+        </div>
+
+        <div style="font-size:11.5px; color:#334155; line-height:1.6;">
+          <div><strong>Route:</strong> Bangalore (560068) → Chennai (600001)</div>
+          <div><strong>Customer:</strong> ABC Manufacturing Ltd</div>
+          <div><strong>Vehicle:</strong> KA01AB1234 (32ft Multi-Axle)</div>
+          <div><strong>Driver:</strong> Ramesh Kumar (+91 98XXX XXXXX)</div>
+          <div><strong>Current Leg:</strong> Unloading Transit Leg 2</div>
+          <div><strong>Gross Margin:</strong> ₹4,500 (12.8%)</div>
+        </div>
+
+        <div style="margin-top:10px; padding-top:8px; border-top:1px dashed #cbd5e1; display:flex; gap:6px;">
+          <span class="badge badge-green">RC Valid</span>
+          <span class="badge badge-green">DL Valid</span>
+          <span class="badge badge-blue">TCN Sent</span>
+          <span class="badge badge-amber">POD Pending</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="callout-box" style="margin-top: 0;">
+    <div class="callout-title">Trip Confirmation Note (TCN) Auto-Generation</div>
+    <div class="callout-text">
+      When the <strong>Loading Started</strong> milestone is triggered, the CRM automatically generates a pre-filled TCN PDF combining vehicle, driver, and load details. The Sales Backend shares this with the customer via WhatsApp in 1 click, and the signed return copy doubles as the primary Proof of Delivery (POD).
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 8 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 9: WHATSAPP AUTOMATION                                               -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Communication Engine</span>
+  </div>
+
+  <div class="section-tag">WhatsApp Business API</div>
+  <h2 class="page-title">Keep Customers Updated — Automatically</h2>
+  <p class="page-subtitle">WhatsApp remains the customer's familiar communication channel, while the CRM controls and records every message.</p>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 12px;">
+    
+    <div>
+      <div class="chat-bubble">
+        <div class="chat-bubble-header">
+          <span>Enquiry Acknowledgment</span>
+          <span>Auto • &lt; 60s</span>
+        </div>
+        <div class="chat-bubble-body">
+          "Hello! Thank you for choosing SweafEx. Your freight enquiry has been registered with reference <strong>#ENQ00124</strong>. Our pricing team is working on the best route quotes for you."
+        </div>
+        <div class="chat-bubble-meta">Delivered via Company WA</div>
+      </div>
+
+      <div class="chat-bubble">
+        <div class="chat-bubble-header">
+          <span>Vehicle Placement Advisory</span>
+          <span>Manual 1-Click</span>
+        </div>
+        <div class="chat-bubble-body">
+          "Vehicle placed for Trip <strong>#EXP001245</strong> (BLR → MAA). Vehicle: KA01AB1234. For any live updates, please contact our dedicated Logistics Coordinator at +91 99XXX XXXXX."
+        </div>
+        <div class="chat-bubble-meta">Delivered via Company WA</div>
+      </div>
+
+      <div class="chat-bubble">
+        <div class="chat-bubble-header">
+          <span>TCN & Milestone Updates</span>
+          <span>Auto on Trigger</span>
+        </div>
+        <div class="chat-bubble-body">
+          "Your shipment has completed loading. Please find the attached Trip Confirmation Note (TCN). Live status: <strong>In Transit to Destination</strong>."
+        </div>
+        <div class="chat-bubble-meta">Delivered with PDF attachment</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="chat-bubble" style="background:#eff6ff; border-color:#bfdbfe;">
+        <div class="chat-bubble-header" style="color:#1d4ed8;">
+          <span>POD & Delivery Notice</span>
+          <span>On Unloading</span>
+        </div>
+        <div class="chat-bubble-body" style="color:#1e3a8a;">
+          "Trip <strong>#EXP001245</strong> has been successfully delivered in Chennai. The soft copy of your signed POD has been uploaded and is available for download."
+        </div>
+        <div class="chat-bubble-meta" style="color:#60a5fa;">Delivered via Company WA</div>
+      </div>
+
+      <div class="card" style="border-left: 3px solid #d97706; padding: 10px 14px; margin-bottom: 10px;">
+        <div style="font-weight:700; font-size:12px; color:#0f172a; margin-bottom:4px;">Automated Payment Follow-Up Cadence</div>
+        <ul style="font-size:11px; color:#475569; list-style:none; padding-left:0; line-height:1.5;">
+          <li>• <strong>Day 7:</strong> Courteous WhatsApp payment reminder with invoice attached.</li>
+          <li>• <strong>Day 14:</strong> Second reminder + CRM dashboard prompt for Sales follow-up call.</li>
+          <li>• <strong>Day 21+:</strong> Escalation notification to Operations Manager dashboard.</li>
+        </ul>
+      </div>
+
+      <div class="card" style="background:#f8fafc; padding: 10px 14px;">
+        <div style="font-weight:700; font-size:11.5px; color:#0f172a; margin-bottom:2px;">WhatsApp API Commercials</div>
+        <div style="font-size:11px; color:#64748b;">WhatsApp Business API charges: <code>[TO BE CONFIRMED]</code></div>
+        <div style="font-size:10px; color:#94a3b8; margin-top:2px;">Subject to Meta official conversation rates and selected provider plans.</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 9 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 10: CUSTOMER & VENDOR MOBILE EXPERIENCE                              -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Mobile Web Workflows</span>
+  </div>
+
+  <div class="section-tag">Zero-Friction Access</div>
+  <h2 class="page-title">No App Downloads. No Complicated Interfaces.</h2>
+  <p class="page-subtitle">Designed specifically for corporate clients and on-the-road drivers operating directly from mobile web links.</p>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 16px;">
+    
+    <!-- Customer Experience -->
+    <div class="card" style="border-top: 4px solid #2563eb;">
+      <div class="card-header">
+        <div class="card-icon icon-blue">👤</div>
+        <div>
+          <div class="card-title">Customer Mobile Workflow</div>
+          <div style="font-size: 11px; color: #64748b;">Client Self-Service via WhatsApp Link</div>
+        </div>
+      </div>
+      
+      <div class="flow-container" style="gap: 8px;">
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px;">1</div>
+          <div style="font-size:11.5px; color:#334155;">Customer taps secure WhatsApp magic link</div>
+        </div>
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px;">2</div>
+          <div style="font-size:11.5px; color:#334155;">Views live trip milestone timeline & ETA</div>
+        </div>
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px;">3</div>
+          <div style="font-size:11.5px; color:#334155;">Downloads generated TCN and GST Invoice</div>
+        </div>
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px;">4</div>
+          <div style="font-size:11.5px; color:#334155;">Acknowledges digital POD on completion</div>
+        </div>
+      </div>
+      <div style="font-size: 11px; color: #64748b; margin-top: 6px; font-style: italic;">
+        Result: Reduces inbound status phone calls by over 70%.
+      </div>
+    </div>
+
+    <!-- Vendor / Driver Experience -->
+    <div class="card" style="border-top: 4px solid #059669;">
+      <div class="card-header">
+        <div class="card-icon icon-emerald">🚛</div>
+        <div>
+          <div class="card-title">Transporter / Driver Workflow</div>
+          <div style="font-size: 11px; color: #64748b;">Fast Mobile Web Checkpoints</div>
+        </div>
+      </div>
+      
+      <div class="flow-container" style="gap: 8px;">
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px; background:#059669;">1</div>
+          <div style="font-size:11.5px; color:#334155;">Driver receives placement link on phone</div>
+        </div>
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px; background:#059669;">2</div>
+          <div style="font-size:11.5px; color:#334155;">Uploads truck photo & taps milestone status</div>
+        </div>
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px; background:#059669;">3</div>
+          <div style="font-size:11.5px; color:#334155;">Snaps photo of signed TCN at delivery</div>
+        </div>
+        <div class="flow-node" style="padding: 8px 10px;">
+          <div class="flow-badge" style="width:20px; height:20px; font-size:10px; background:#059669;">4</div>
+          <div style="font-size:11.5px; color:#334155;">Automatically triggers balance payout workflow</div>
+        </div>
+      </div>
+      <div style="font-size: 11px; color: #64748b; margin-top: 6px; font-style: italic;">
+        Result: Instant POD photo capture without demanding app installs.
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card" style="background: #f8fafc; border: 1px solid #cbd5e1;">
+    <div style="font-weight: 700; font-size: 12.5px; color: #0f172a; margin-bottom: 4px;">Designed for Real-World Road Conditions</div>
+    <p style="font-size: 11.5px; color: #475569;">
+      Field drivers frequently operate in low-bandwidth regions and resist downloading heavy mobile applications. Octgram’s mobile web pages load in under 2 seconds, consume negligible data, and provide large, intuitive one-tap buttons for milestone updates.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 10 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 11: OCTGRAM + ZOHO INTEGRATION                                      -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Ecosystem Alignment</span>
+  </div>
+
+  <div class="section-tag">Systems Coexistence</div>
+  <h2 class="page-title">Works Seamlessly With Your Existing Zoho Setup</h2>
+  <p class="page-subtitle">Octgram powers daily freight operations, while Zoho continues handling trusted financial accounting.</p>
+
+  <div class="grid-2" style="gap: 16px; margin-bottom: 16px;">
+    
+    <!-- Octgram Role -->
+    <div class="card" style="border: 2px solid #2563eb; background:#f8fafc;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:14px; font-weight:800; color:#2563eb;">OCTGRAM CRM</span>
+        <span class="badge badge-blue">Operational Layer</span>
+      </div>
+      <ul class="check-list" style="font-size:11.5px;">
+        <li>Customer & Vendor Master Management</li>
+        <li>Enquiry Management & Lost Reasons</li>
+        <li>Dynamic Rate Board & Margin Floor</li>
+        <li>EXP Trip ID Generation & Locking</li>
+        <li>RC / DL External Verification</li>
+        <li>13-Milestone Real-Time Tracking</li>
+        <li>5-Stage POD Lifecycle Tracking</li>
+        <li>WhatsApp Automation & Templates</li>
+        <li>Customer & Vendor Mobile Web Links</li>
+        <li>Operations BI & Executive Dashboards</li>
+      </ul>
+    </div>
+
+    <!-- Zoho Role -->
+    <div class="card" style="border: 2px solid #4f46e5; background:#f8fafc;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+        <span style="font-size:14px; font-weight:800; color:#4f46e5;">ZOHO (BOOKS / SUITE)</span>
+        <span class="badge badge-indigo">Financial Layer</span>
+      </div>
+      <ul class="check-list" style="font-size:11.5px;">
+        <li>Purchase Orders & URPM Purchasing Memos</li>
+        <li>Vendor Bills & Section 194C TDS (2%)</li>
+        <li>Vendor Advance (90%) & Balance (10%) Bills</li>
+        <li>Official GST Customer Invoices</li>
+        <li>Customer Payment Receipts & Credit Notes</li>
+        <li>Bank Account Reconciliation (NEFT/IMPS)</li>
+        <li>General Ledger & Statutory Accounting</li>
+        <li>Chartered Accountant / Tax Filings</li>
+        <li>Corporate Balance Sheets & P&L</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card" style="background:#eff6ff; border:1px solid #bfdbfe; margin-bottom:12px;">
+    <div style="font-weight:700; font-size:12.5px; color:#1e3a8a; margin-bottom:4px;">How the Two Systems Connect</div>
+    <p style="font-size:11.5px; color:#1e40af; line-height:1.5;">
+      When a vehicle is placed in Octgram CRM, a purchase order draft is prepared. When a trip completes and POD is verified, completed trip data automatically compiles into a daily billing sheet for one-click GST invoice generation in Zoho Books. This eliminates double entry without disrupting SweafEx’s established accounting workflows.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 11 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 12: MANAGEMENT DASHBOARDS                                            -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Executive Intelligence</span>
+  </div>
+
+  <div class="section-tag">Management Visibility</div>
+  <h2 class="page-title">Management Gets a Real-Time View of the Business</h2>
+  <p class="page-subtitle">Real-time operational dashboards replace manual phone updates and retrospective spreadsheet calculations.</p>
+
+  <div class="grid-3" style="gap: 12px; margin-bottom: 14px;">
+    <div class="card" style="padding: 12px;">
+      <div style="font-size: 11px; color: #64748b; font-weight: 600;">Active Trips Today</div>
+      <div style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 4px 0;">24 Trips</div>
+      <div style="font-size: 10.5px; color: #059669; font-weight: 600;">18 In Transit • 6 Loading</div>
+    </div>
+    <div class="card" style="padding: 12px;">
+      <div style="font-size: 11px; color: #64748b; font-weight: 600;">Average Gross Margin</div>
+      <div style="font-size: 22px; font-weight: 800; color: #2563eb; margin: 4px 0;">13.4%</div>
+      <div style="font-size: 10.5px; color: #2563eb; font-weight: 600;">₹4,250 avg per trip</div>
+    </div>
+    <div class="card" style="padding: 12px;">
+      <div style="font-size: 11px; color: #64748b; font-weight: 600;">Pending Hard Copy PODs</div>
+      <div style="font-size: 22px; font-weight: 800; color: #d97706; margin: 4px 0;">8 Pending</div>
+      <div style="font-size: 10.5px; color: #dc2626; font-weight: 600;">2 Overdue (&gt; 7 Days)</div>
+    </div>
+  </div>
+
+  <div class="grid-2" style="gap: 14px; margin-bottom: 14px;">
+    
+    <div class="card">
+      <div style="font-weight: 700; font-size: 12.5px; color: #0f172a; margin-bottom: 8px;">Key Operational Intelligence Modules</div>
+      <ul class="check-list" style="font-size:11.5px;">
+        <li><strong>Route Margin Analysis:</strong> Compare profitability across Bangalore, Chennai, Hyderabad, and Coimbatore corridors.</li>
+        <li><strong>Enquiry Conversion Rates:</strong> Track lead conversion percentages by customer and lead source.</li>
+        <li><strong>Vendor Reliability Scoring:</strong> Transporter placement turnaround times and milestone adherence.</li>
+        <li><strong>POD Aging Matrix:</strong> Instant breakdown of PODs pending soft copy vs. physical hard copy delivery.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <div style="font-weight: 700; font-size: 12.5px; color: #0f172a; margin-bottom: 8px;">Financial & Recovery Insights</div>
+      <ul class="check-list" style="font-size:11.5px;">
+        <li><strong>Receivables Aging:</strong> Day 7, Day 14, and Day 21+ invoice aging buckets.</li>
+        <li><strong>Vendor Balance Holds:</strong> 10% balance payout status linked directly to physical POD receipt.</li>
+        <li><strong>TDS Deduction Ledger:</strong> Complete Section 194C deduction history ready for tax filing.</li>
+        <li><strong>Daily Billing Reconciliation:</strong> Instant view of completed trips awaiting invoicing.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="callout-box" style="margin-top: 0;">
+    <div class="callout-title">Management Autonomy</div>
+    <div class="callout-text">
+      The Operations Manager no longer needs to wait for weekly Excel consolidations. The dashboard provides an instantaneous, transparent view of daily freight velocity and company gross margins.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 12 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 13: SECURITY & OPERATIONAL CONTROL                                   -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Governance & Control</span>
+  </div>
+
+  <div class="section-tag">Access & Compliance</div>
+  <h2 class="page-title">Built for Controlled Business Operations</h2>
+  <p class="page-subtitle">Strict departmental role boundaries, external data isolation, and verified banking workflows.</p>
+
+  <div class="grid-2" style="gap: 14px; margin-bottom: 14px;">
+    
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-indigo">🔒</div>
+        <div class="card-title">Role-Based Access Control (RBAC)</div>
+      </div>
+      <table class="custom-table">
+        <thead>
+          <tr>
+            <th>Role</th>
+            <th>Operational Visibility Scope</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Sales Coordinator</strong></td>
+            <td>Enquiries, Customer CRM, Orders, Trip Status.</td>
+          </tr>
+          <tr>
+            <td><strong>Purchase Coord.</strong></td>
+            <td>Vendor Master, Quotes, Trip Placement, POs.</td>
+          </tr>
+          <tr>
+            <td><strong>Sales Backend</strong></td>
+            <td>Shared WA Business, Routine TCN/Invoices.</td>
+          </tr>
+          <tr>
+            <td><strong>Finance / Accounts</strong></td>
+            <td>PO Approvals, Payouts, Invoicing, Reconciliation.</td>
+          </tr>
+          <tr>
+            <td><strong>Operations Manager</strong></td>
+            <td>Full access, Rate Board overrides, BI reports.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-icon icon-emerald">🛡</div>
+        <div class="card-title">Data Isolation & Security</div>
+      </div>
+      <ul class="check-list" style="font-size:11.5px; margin-top:6px;">
+        <li><strong>External Tenant Isolation:</strong> Customers can only view their own trips. Transporters only see assigned trips.</li>
+        <li><strong>Immutable Audit History:</strong> Every price adjustment, milestone update, and spec change logs the user identity and exact timestamp.</li>
+        <li><strong>Anti-Fraud Bank Governance:</strong> Payout requests are strictly bound to registered vendor bank accounts — blocking personal UPI transfers.</li>
+        <li><strong>Encrypted Document Vault:</strong> Secure cloud storage for RC, DL, signed TCNs, material bills, and POD photos.</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="card" style="background:#f8fafc; border:1px solid #cbd5e1;">
+    <div style="font-weight:700; font-size:12.5px; color:#0f172a; margin-bottom:4px;">Shared WhatsApp Business Number Protocol</div>
+    <p style="font-size:11.5px; color:#475569; line-height:1.5;">
+      To prevent the Sales Coordinator from being overwhelmed with routine updates, the <strong>Sales Backend</strong> shares the official Company WhatsApp Business account to handle automated TCN delivery, POD submissions, and invoice sharing. The Sales Coordinator remains focused on customer relationships and price negotiations.
+    </p>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 13 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 14: IMPLEMENTATION ROADMAP                                           -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Delivery Plan</span>
+  </div>
+
+  <div class="section-tag">Implementation Phases</div>
+  <h2 class="page-title">From Current Process to Live Platform</h2>
+  <p class="page-subtitle">A practical, milestone-driven delivery process designed to ensure zero operational disruption.</p>
+
+  <div class="flow-container" style="gap: 12px;">
+    
+    <div class="flow-node">
+      <div class="flow-badge">1</div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:12.5px; color:#0f172a;">Phase 1: Discovery & Workflow Design</strong>
+          <span class="badge badge-slate">Weeks 1 – 2</span>
+        </div>
+        <div style="font-size:11px; color:#64748b; margin-top:2px;">
+          Detailed review of SweafEx 15-step SOP, finalization of screen workflows, database schema modeling, and confirmation of third-party API providers.
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-node">
+      <div class="flow-badge">2</div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:12.5px; color:#0f172a;">Phase 2: Core CRM Operations Engine</strong>
+          <span class="badge badge-blue">Weeks 3 – 4</span>
+        </div>
+        <div style="font-size:11px; color:#64748b; margin-top:2px;">
+          Buildout of Customer/Vendor Masters, Enquiry Hub, Rate Board with margin guard, EXP Trip creation, and Document management module.
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-node">
+      <div class="flow-badge">3</div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:12.5px; color:#0f172a;">Phase 3: Automations & API Integrations</strong>
+          <span class="badge badge-amber">Weeks 5 – 6</span>
+        </div>
+        <div style="font-size:11px; color:#64748b; margin-top:2px;">
+          WhatsApp Business API webhook automation, external RC/DL verification integration, TCN generation engine, and Zoho financial workflow bridge.
+        </div>
+      </div>
+    </div>
+
+    <div class="flow-node">
+      <div class="flow-badge">4</div>
+      <div style="flex:1;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:12.5px; color:#0f172a;">Phase 4: UAT, Staff Training & Live Go-Live</strong>
+          <span class="badge badge-green">Weeks 7 – 8</span>
+        </div>
+        <div style="font-size:11px; color:#64748b; margin-top:2px;">
+          End-to-end UAT verification against all 14 SOP acceptance scenarios, Excel vendor/customer data migration, team training, and go-live hypercare.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="card" style="margin-top: 10px; background: #fafbfc; border: 1px solid #e2e8f0;">
+    <div style="font-weight: 700; font-size: 11.5px; color: #0f172a; margin-bottom: 4px;">Key Implementation Prerequisites</div>
+    <div style="font-size: 11px; color: #64748b;">
+      Final delivery timelines depend on third-party onboarding milestones: (1) Meta WhatsApp Business account approval, (2) Third-party RC/DL API provider contract finalization, (3) Zoho Books API access credentials, and (4) Timely customer UAT feedback.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 14 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 15: SCOPE & COMMERCIAL STRUCTURE                                     -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span>SweafEx Operations CRM</span>
+    <span class="brand-tag">Commercial Outline</span>
+  </div>
+
+  <div class="section-tag">Scope & Investment</div>
+  <h2 class="page-title">Scope & Commercial Structure</h2>
+  <p class="page-subtitle">A transparent investment structure outlining deliverables, external third-party services, and maintenance.</p>
+
+  <div class="grid-2" style="gap: 14px; margin-bottom: 12px;">
+    
+    <!-- Included Scope -->
+    <div class="card">
+      <div style="font-weight: 700; font-size: 12px; color: #0f172a; margin-bottom: 6px;">Included in Octgram Implementation</div>
+      <ul class="check-list" style="font-size: 11px;">
+        <li>Complete custom CRM development (13 modules).</li>
+        <li>Rate Board & Margin Guard configuration.</li>
+        <li>TCN auto-generation & 5-stage POD lifecycle.</li>
+        <li>Customer & Driver zero-install mobile workflows.</li>
+        <li>WhatsApp Business API automated workflows.</li>
+        <li>External RC / DL verification integration.</li>
+        <li>Zoho Books workflow integration bridge.</li>
+        <li>Historical Excel data migration & team training.</li>
+        <li>30 days post-launch dedicated hypercare.</li>
+      </ul>
+    </div>
+
+    <!-- Third-Party Costs -->
+    <div class="card">
+      <div style="font-weight: 700; font-size: 12px; color: #0f172a; margin-bottom: 6px;">Third-Party Services (Passthrough Costs)</div>
+      <table class="custom-table" style="font-size: 10.5px;">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th style="text-align:right;">Estimated Cost</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>WhatsApp Business API</td>
+            <td style="text-align:right; font-weight:700;"><code>[TO BE CONFIRMED]</code></td>
+          </tr>
+          <tr>
+            <td>RC Verification API</td>
+            <td style="text-align:right; font-weight:700;"><code>[TO BE CONFIRMED]</code></td>
+          </tr>
+          <tr>
+            <td>DL Verification API</td>
+            <td style="text-align:right; font-weight:700;"><code>[TO BE CONFIRMED]</code></td>
+          </tr>
+          <tr>
+            <td>GST / E-Way Bill API</td>
+            <td style="text-align:right; font-weight:700;"><code>[TO BE CONFIRMED]</code></td>
+          </tr>
+          <tr>
+            <td>Cloud Infrastructure / Hosting</td>
+            <td style="text-align:right; font-weight:700;"><code>[TO BE CONFIRMED]</code></td>
+          </tr>
+          <tr>
+            <td>Zoho Subscriptions</td>
+            <td style="text-align:right; font-weight:700;">Existing / Client</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <!-- Commercial Table -->
+  <div class="card" style="background:#f8fafc; border: 2px solid #2563eb; margin-bottom: 10px;">
+    <div style="font-weight:700; font-size:12.5px; color:#0f172a; margin-bottom:6px;">Commercial Proposal Summary</div>
+    <table class="custom-table" style="background:#ffffff; border-radius:6px; overflow:hidden;">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Description</th>
+          <th style="text-align:right;">Investment (INR)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Platform Development</strong></td>
+          <td>Custom Operations CRM core engineering & modules</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;">₹ <code>[________]</code></td>
+        </tr>
+        <tr>
+          <td><strong>Implementation & Deployment</strong></td>
+          <td>Integrations, data migration, setup & training</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;">₹ <code>[________]</code></td>
+        </tr>
+        <tr>
+          <td><strong>Annual Maintenance & Support</strong></td>
+          <td>SLA support, patches, monitoring & updates</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;">₹ <code>[________]</code></td>
+        </tr>
+        <tr>
+          <td><strong>Third-Party Services (Est.)</strong></td>
+          <td>APIs, messaging & cloud hosting passthrough</td>
+          <td style="text-align:right; font-weight:700; color:#2563eb;">₹ <code>[________]</code></td>
+        </tr>
+        <tr style="background:#eff6ff;">
+          <td><strong style="color:#1e3a8a;">Total Proposed Investment</strong></td>
+          <td style="color:#1e3a8a;">Custom Platform Engineering & Launch</td>
+          <td style="text-align:right; font-weight:800; font-size:13px; color:#1e3a8a;">₹ <code>[________]</code></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div style="font-size: 10px; color: #64748b; font-style: italic;">
+    * Note: Third-party API, messaging, and hosting tariffs are billed directly by respective service providers or passed through at actuals without agency markup.
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 15 of 16</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 16: NEXT STEPS & SIGN-OFF                                            -->
+<!-- ========================================================================= -->
+<div class="page" style="display:flex; flex-direction:column; justify-content:space-between;">
+  <div>
+    <div class="page-header">
+      <span>SweafEx Operations CRM</span>
+      <span class="brand-tag">Engagement Kickoff</span>
+    </div>
+
+    <div class="section-tag">Engagement Path</div>
+    <h2 class="page-title">The Next Step</h2>
+    <p class="page-subtitle">A straightforward 4-step path to initiate SweafEx’s operations transformation.</p>
+
+    <div class="grid-2" style="gap: 14px; margin-bottom: 20px;">
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="badge badge-blue">Step 1</span>
+          <strong style="font-size:12.5px; color:#0f172a;">Scope & Commercial Alignment</strong>
+        </div>
+        <p style="font-size:11.5px; color:#475569;">Review this proposal, finalize the desired development timeline, and execute the service agreement.</p>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="badge badge-blue">Step 2</span>
+          <strong style="font-size:12.5px; color:#0f172a;">Third-Party API Selection</strong>
+        </div>
+        <p style="font-size:11.5px; color:#475569;">Jointly evaluate and select the preferred WhatsApp Business and RC/DL verification providers.</p>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="badge badge-blue">Step 3</span>
+          <strong style="font-size:12.5px; color:#0f172a;">UI/UX & Workflow Sign-off</strong>
+        </div>
+        <p style="font-size:11.5px; color:#475569;">Conduct collaborative design walkthroughs with SweafEx operations leadership to confirm screen layouts.</p>
+      </div>
+
+      <div class="card">
+        <div style="display:flex; align-items:center; gap:8px; margin-bottom:6px;">
+          <span class="badge badge-blue">Step 4</span>
+          <strong style="font-size:12.5px; color:#0f172a;">Sprint Kickoff & Deployment</strong>
+        </div>
+        <p style="font-size:11.5px; color:#475569;">Commence Phase 1 sprint execution with weekly milestone demos and transparent progress tracking.</p>
+      </div>
+    </div>
+
+    <div class="card" style="background:#f8fafc; border:1px solid #cbd5e1; padding:16px;">
+      <div style="font-weight:700; font-size:12.5px; color:#0f172a; margin-bottom:12px;">Engagement Authorization & Acceptance</div>
+      <div class="grid-2" style="gap:24px;">
+        <div style="border-top:1px solid #94a3b8; padding-top:8px;">
+          <div style="font-size:11.5px; font-weight:700; color:#0f172a;">For Whooosh Networks Pvt Ltd (SweafEx)</div>
+          <div style="font-size:11px; color:#64748b; margin-top:20px;">Authorized Signatory & Date</div>
+        </div>
+        <div style="border-top:1px solid #94a3b8; padding-top:8px;">
+          <div style="font-size:11.5px; font-weight:700; color:#0f172a;">For Octgram</div>
+          <div style="font-size:11px; color:#64748b; margin-top:20px;">Authorized Signatory & Date</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <div style="text-align:center; padding:12px; background:#0f172a; border-radius:8px; color:#ffffff;">
+      <div style="font-size:14px; font-weight:800; color:#ffffff;">OCTGRAM</div>
+      <div style="font-size:11px; color:#38bdf8; margin-top:2px;">Building the digital backbone for high-growth enterprises.</div>
+      <div style="font-size:11px; color:#f1f5f9; margin-top:6px; font-weight:500;">
+        Email: <span style="color:#38bdf8;">vishnu@octagramai.com</span> &bull; Phone: <span style="color:#38bdf8;">+91 9482090023</span> &bull; Web: <span style="color:#38bdf8;">www.octagramai.com</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>Whooosh Networks Pvt Ltd (SweafEx) — Confidential</span>
+    <span>Page 16 of 16</span>
+  </div>
+</div>
+
+</body>
+</html>

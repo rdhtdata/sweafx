@@ -1,0 +1,425 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum UserRole {
+  ADMIN
+  MANAGEMENT
+  SALES
+  TRAFFIC_OPS
+  ACCOUNTS
+}
+
+enum EntityStatus {
+  ACTIVE
+  INACTIVE
+  BLOCKED
+}
+
+enum VerificationStatus {
+  VERIFIED
+  UNVERIFIED
+  PENDING_CHECK
+}
+
+enum VendorPartyType {
+  BROKER
+  FLEET_OWNER
+  TRUCK_OWNER
+  TRANSPORTER
+  COMMISSION_AGENT
+}
+
+enum EnquiryStatus {
+  NEW
+  SENT_TO_PURCHASE
+  QUOTES_RECEIVED
+  RATE_SET
+  CONFIRMED_ORDER
+  CANCELLED_CLOSED
+}
+
+enum EnquirySourceChannel {
+  WHATSAPP
+  WEBSITE
+  PHONE
+  INSTAGRAM
+  DIRECT_VISIT
+}
+
+enum QuoteAvailability {
+  AVAILABLE
+  UNAVAILABLE
+  TENTATIVE
+}
+
+enum RequirementFinalStatus {
+  OPEN
+  VENDOR_SHORTLISTED
+  READY_FOR_PLACEMENT
+  PLACED_EXP
+  DROPPED
+}
+
+enum DocumentType {
+  GST_CERTIFICATE
+  PAN_CARD
+  MSME_CERTIFICATE
+  RC_COPY
+  INSURANCE_POLICY
+  FITNESS_CERTIFICATE
+  NATIONAL_PERMIT
+  TAX_RECEIPT
+  PUCC_CERTIFICATE
+  DRIVING_LICENSE
+  BANK_CANCELLED_CHEQUE
+  TRANSPORTER_AGREEMENT
+  CUSTOMER_CONTRACT
+  POD_DOCUMENT
+  OTHER
+}
+
+model User {
+  id           String        @id @default(uuid())
+  email        String        @unique
+  passwordHash String
+  name         String
+  phone        String?
+  role         UserRole      @default(SALES)
+  isActive     Boolean       @default(true)
+  department   String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  tokens       RefreshToken[]
+  auditLogs    AuditLog[]
+  enquiries    Enquiry[]
+
+  @@map("users")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  revoked   Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+model Customer {
+  id               String                 @id @default(uuid())
+  customerCode     String                 @unique // CUST-001
+  companyName      String
+  tradeName        String?
+  gstin            String                 @unique
+  pan              String
+  billingAddress   String
+  city             String
+  state            String
+  pincode          String
+  industry         String?
+  paymentTermsDays Int                    @default(30)
+  creditLimit      Decimal                @default(0.0) @db.Decimal(12, 2)
+  status           EntityStatus           @default(ACTIVE)
+  notes            String?
+  createdAt        DateTime               @default(now())
+  updatedAt        DateTime               @updatedAt
+  contacts         CustomerContact[]
+  corridors        CustomerCorridor[]
+  rateContracts    CustomerRateContract[]
+  enquiries        Enquiry[]
+
+  @@map("customers")
+}
+
+model CustomerContact {
+  id          String   @id @default(uuid())
+  customerId  String
+  customer    Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  name        String
+  designation String?
+  email       String?
+  phone       String
+  isPrimary   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+
+  @@map("customer_contacts")
+}
+
+model CustomerCorridor {
+  id                  String   @id @default(uuid())
+  customerId          String
+  customer            Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  originCity          String
+  originState         String
+  destCity            String
+  destState           String
+  standardVehicleType String?
+  agreedRate          Decimal? @db.Decimal(10, 2)
+  billingBasis        String   @default("PER_TRIP")
+  notes               String?
+  createdAt           DateTime @default(now())
+
+  @@map("customer_corridors")
+}
+
+model CustomerRateContract {
+  id                  String   @id @default(uuid())
+  customerId          String
+  customer            Customer @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  contractNumber      String?
+  validFrom           DateTime
+  validTo             DateTime
+  standardPaymentDays Int      @default(30)
+  termsAndConditions  String?
+  isActive            Boolean  @default(true)
+  createdAt           DateTime @default(now())
+
+  @@map("customer_rate_contracts")
+}
+
+model Transporter {
+  id                  String                  @id @default(uuid())
+  transporterCode     String                  @unique // TRP-001
+  companyName         String
+  tradeName           String?
+  partyType           VendorPartyType         @default(TRANSPORTER)
+  gstin               String?
+  pan                 String
+  contactPerson       String
+  phone               String
+  email               String?
+  address             String
+  city                String
+  state               String
+  pincode             String
+  transportName       String?
+  brokerName          String?
+  truckOwnerName      String?
+  brokerOwnerPhone    String?
+  standardPaymentDays Int                     @default(15)
+  rating              Decimal?                @db.Decimal(3, 2)
+  reliabilityRating   Decimal?                @default(4.5) @db.Decimal(3, 2)
+  responseTimeMinutes Int?                    @default(30)
+  totalTripsCount     Int                     @default(0)
+  status              EntityStatus            @default(ACTIVE)
+  notes               String?
+  createdAt           DateTime                @default(now())
+  updatedAt           DateTime                @updatedAt
+  bankDetails         TransporterBankDetail[]
+  vehicles            Vehicle[]
+  drivers             Driver[]
+  quotes              VendorQuote[]
+
+  @@map("transporters")
+}
+
+model TransporterBankDetail {
+  id                String      @id @default(uuid())
+  transporterId     String
+  transporter       Transporter @relation(fields: [transporterId], references: [id], onDelete: Cascade)
+  accountHolderName String
+  bankName          String
+  accountNumber     String
+  ifscCode          String
+  branchName        String?
+  isPrimary         Boolean     @default(true)
+  isVerified        Boolean     @default(false)
+  createdAt         DateTime    @default(now())
+
+  @@map("transporter_bank_details")
+}
+
+model Vehicle {
+  id                   String             @id @default(uuid())
+  vehicleNumber        String             @unique // e.g. AP39UB3717
+  transporterId        String?
+  transporter          Transporter?       @relation(fields: [transporterId], references: [id], onDelete: SetNull)
+  vehicleSize          String?            @default("32 Feet") // 14 Feet, 20 Feet, 32 Feet
+  vehicleType          String             @default("32 FT Multi-Axle (MXL)")
+  carryingCapacityTons Decimal            @default(14.0) @db.Decimal(5, 2)
+  passingCapacityTons  Decimal?           @db.Decimal(5, 2) // RTO Passing
+  rcNumber             String
+  rcExpiryDate         DateTime?
+  insuranceNumber      String?
+  insuranceExpiryDate  DateTime?
+  fitnessExpiryDate    DateTime?
+  taxExpiryDate        DateTime?
+  puccExpiryDate       DateTime?
+  permitNumber         String?
+  permitExpiryDate     DateTime?
+  isBlacklisted        Boolean            @default(false)
+  blacklistReason      String?
+  isVerified           Boolean            @default(false)
+  verificationStatus   VerificationStatus @default(UNVERIFIED)
+  status               EntityStatus       @default(ACTIVE)
+  gpsInstalled         Boolean            @default(false)
+  gpsDeviceId          String?
+  createdAt            DateTime           @default(now())
+  updatedAt            DateTime           @updatedAt
+
+  @@map("vehicles")
+}
+
+model Driver {
+  id                 String             @id @default(uuid())
+  transporterId      String?
+  transporter        Transporter?       @relation(fields: [transporterId], references: [id], onDelete: SetNull)
+  fullName           String
+  phone              String             @unique
+  altPhone           String?
+  licenseNumber      String             @unique
+  licenseExpiryDate  DateTime
+  dlCompatibility    String?            @default("HTV - Heavy Transport Vehicle")
+  aadhaarNumber      String?
+  city               String?
+  state              String?
+  isBlacklisted      Boolean            @default(false)
+  isVerified         Boolean            @default(false)
+  verificationStatus VerificationStatus @default(UNVERIFIED)
+  status             EntityStatus       @default(ACTIVE)
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+
+  @@map("drivers")
+}
+
+model Enquiry {
+  id                 String               @id @default(uuid())
+  enquiryNumber      String               @unique // ENQ1071
+  enquiryDate        DateTime             @default(now())
+  customerId         String
+  customer           Customer             @relation(fields: [customerId], references: [id], onDelete: Restrict)
+  customerName       String
+  sourceChannel      EnquirySourceChannel @default(WHATSAPP)
+  loadingAreaPin     String // e.g. "Kumbalgodu - 560026"
+  loadingCity        String
+  unloadingAreaPin   String // e.g. "Tuni - 531127"
+  unloadingCity      String
+  vehicleLength      String // "20 Feet", "32F SXL", etc.
+  vehicleType        String // "Open", "Container", etc.
+  materialType       String // "Iron and Steel", "LED", etc.
+  materialWeight     String // "7 Tonnes", etc.
+  loadingDate        DateTime
+  loadingRequirement String               @default("Scheduled") // "Now" or "Scheduled"
+  targetPrice        Decimal?             @db.Decimal(10, 2)
+  status             EnquiryStatus        @default(NEW)
+  closureReason      String? // Rate Difference, Vehicle Not Available, etc.
+  notes              String?
+  createdById        String?
+  createdByName      String?
+  createdBy          User?                @relation(fields: [createdById], references: [id], onDelete: SetNull)
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+  quotes             VendorQuote[]
+  requirement        Requirement?
+
+  @@map("enquiries")
+}
+
+model VendorQuote {
+  id              String            @id @default(uuid())
+  enquiryId       String
+  enquiry         Enquiry           @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  requirementId   String?
+  requirement     Requirement?      @relation(fields: [requirementId], references: [id], onDelete: SetNull)
+  quoteNumber     Int // 1, 2, 3, 4
+  transporterId   String
+  transporter     Transporter       @relation(fields: [transporterId], references: [id], onDelete: Restrict)
+  transporterName String
+  quotedRate      Decimal           @db.Decimal(10, 2)
+  availability    QuoteAvailability @default(AVAILABLE)
+  vehicleNumber   String?
+  quoteExpiry     DateTime?
+  isBestRate      Boolean           @default(false)
+  isSelected      Boolean           @default(false)
+  notes           String?
+  createdById     String?
+  createdByName   String?
+  quotedAt        DateTime          @default(now())
+
+  @@map("vendor_quotes")
+}
+
+model Requirement {
+  id                     String                 @id @default(uuid())
+  requirementNumber      String                 @unique // REQ001
+  enquiryId              String                 @unique
+  enquiry                Enquiry                @relation(fields: [enquiryId], references: [id], onDelete: Cascade)
+  enquiryNumber          String
+  requirementDate        DateTime               @default(now())
+  customerId             String
+  customerName           String
+  loadingAreaPin         String
+  loadingCity            String
+  unloadingAreaPin       String
+  unloadingCity          String
+  vehicleLength          String
+  vehicleType            String
+  materialType           String
+  materialWeight         String
+  loadingDate            DateTime
+  tripRate               Decimal?               @db.Decimal(10, 2)
+  finalStatus            RequirementFinalStatus @default(OPEN)
+  selectedQuoteId        String?
+  selectedTransporterId  String?
+  selectedTransporterName String?
+  selectedVehicleId      String?
+  selectedVehicleNumber  String?
+  selectedDriverId       String?
+  selectedDriverName     String?
+  selectedDriverPhone    String?
+  selectedDriverDl       String?
+  selectedBy             String?
+  selectedAt             DateTime?
+  finalTripId            String? // e.g. EXP0369 for Segment 2
+  notes                  String?
+  createdAt              DateTime               @default(now())
+  updatedAt              DateTime               @updatedAt
+  quotes                 VendorQuote[]
+
+  @@map("requirements")
+}
+
+model DocumentAttachment {
+  id           String       @id @default(uuid())
+  entityType   String // "CUSTOMER", "TRANSPORTER", "VEHICLE", "DRIVER", "ENQUIRY"
+  entityId     String
+  documentType DocumentType @default(OTHER)
+  fileName     String
+  fileKey      String
+  fileUrl      String
+  fileSize     Int
+  mimeType     String
+  checksum     String?
+  isVerified   Boolean      @default(false)
+  verifiedAt   DateTime?
+  verifiedBy   String?
+  createdAt    DateTime     @default(now())
+
+  @@map("document_attachments")
+}
+
+model AuditLog {
+  id         String   @id @default(uuid())
+  actorId    String
+  actorName  String
+  actorRole  UserRole
+  actor      User     @relation(fields: [actorId], references: [id], onDelete: Cascade)
+  action     String
+  entityType String
+  entityId   String
+  details    String?
+  ipAddress  String?
+  createdAt  DateTime @default(now())
+
+  @@map("audit_logs")
+}

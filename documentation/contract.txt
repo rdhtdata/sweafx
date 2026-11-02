@@ -1,0 +1,655 @@
+# SOFTWARE DEVELOPMENT AND IMPLEMENTATION AGREEMENT
+
+**SweafEx Digital Operations Platform — Phase 1**
+
+This Software Development and Implementation Agreement (“**Agreement**”) is made on **[Effective Date]** (“**Effective Date**”).
+
+## BETWEEN
+
+**1. SERVICE PROVIDER**
+
+**Umesh Shetty**, son/daughter of [Parent's Name], residing at 841, 10th cross, 26th main, Sector-1, HSR Layout, Bangalore 560102, PAN [●], acting in their individual capacity and carrying on software development and implementation activities under the proposed business name “Octagram”, pending incorporation of the intended business entity.
+
+Hereinafter referred to as the “**Service Provider**” or “**Octagram**”, which expression shall, where the context permits, include the Service Provider's permitted successors and assigns.
+
+**AND**
+
+**2. CLIENT**
+
+**Sweaf Express Pvt Ltd**, a company incorporated under the laws of India, bearing registration number [●], having its registered office at [Registered Office Address], and operating under the business or trading name “SweafEx”, acting through its duly authorised representative [name and designation].
+
+Hereinafter referred to as “**SweafEx**” or the “**Client**”, which expression shall include its permitted successors and assigns.
+
+The Service Provider and SweafEx are individually referred to as a “**Party**” and collectively as the “**Parties**”.
+
+## 1. BACKGROUND AND PURPOSE
+
+1.1. SweafEx wishes to commission a digital operations software platform to support its freight brokerage and related operational workflows, including customer and transporter management, shipment operations, document handling, reporting, role-based workspaces and agreed external integrations.
+
+1.2. The Service Provider has agreed to develop, implement, test and deploy Phase 1 of the SweafEx Digital Operations Platform in accordance with this Agreement and the approved project scope.
+
+1.3. The Parties have agreed to a fixed development fee of INR 3,00,000 (Indian Rupees Three Lakh only), exclusive of applicable GST and other legally chargeable taxes, subject to the terms of this Agreement.
+
+1.4. The Parties intend that SweafEx shall own the specifically commissioned Project-Specific Deliverables in accordance with the intellectual property provisions of this Agreement, while the Service Provider shall retain ownership of its Background Technology and the expressly reserved rights to reuse and commercialise generic and reusable technology.
+
+1.5. This Agreement supersedes inconsistent commercial statements in earlier proposals only to the extent expressly provided herein. The approved project scope shall remain governed by Schedule 1, subject to this Agreement and any mutually signed change requests.
+
+## 2. DEFINITIONS
+
+For this Agreement:
+
+2.1. “**Platform**” means the SweafEx Digital Operations Platform developed under this Agreement.
+
+2.2. “**Project-Specific Deliverables**” means the bespoke source code, object code, custom workflows, custom software modules, interface designs, technical documentation and other specifically commissioned materials expressly included in Schedule 1 and created for SweafEx under this Agreement, excluding Background Technology and Third-Party Materials.
+
+2.3. “**Background Technology**” means technology owned, developed, acquired or lawfully licensed by the Service Provider independently of this Agreement, including pre-existing software, libraries, frameworks, reusable modules, templates, generic workflow components, development tools, methodologies and general technical know-how.
+
+2.4. “**Third-Party Materials**” means software, libraries, APIs, services, datasets or other materials owned or controlled by third parties and incorporated into or used in connection with the Platform.
+
+2.5. “**Milestone**” means a development stage described in Schedule 2.
+
+2.6. “**Production Go-Live**” means the date on which the agreed Phase 1 Platform is first made available for operational use in the production environment designated for SweafEx, as recorded in writing by the Parties.
+
+2.7. “**Hypercare Period**” means the forty-five (45) calendar-day period commencing on Production Go-Live, subject to the provisions of Clause 8.
+
+2.8. “**Business Day**” means a day other than a Sunday or public holiday on which banks are ordinarily open for business at the agreed payment location in India.
+
+## 3. SCOPE OF SERVICES
+
+3.1. The Service Provider shall develop and implement Phase 1 of the Platform in accordance with Schedule 1, including the agreed functional requirements, Milestones, testing, training, deployment and handover activities.
+
+3.2. The anticipated implementation period is approximately ten (10) weeks from commencement, subject to the payment conditions, timely Client cooperation, access to required information, third-party dependencies, approvals and other permitted schedule extensions under this Agreement.
+
+3.3. The timeline is an implementation estimate and not an unconditional guarantee of completion by a fixed date. The Service Provider shall notify SweafEx of material anticipated delays and their known causes.
+
+3.4. The Service Provider shall perform the Services with reasonable professional skill and care and shall use commercially reasonable efforts to deliver the agreed functionality.
+
+3.5. Unless expressly included in Schedule 1, the Services do not include additional mobile applications, new modules, material post-approval workflow changes, additional integrations, ongoing operational staffing, accounting-system integration, or features requested after the agreed scope has been finalised.
+
+3.6. The Service Provider shall not be required to commence work outside the agreed scope unless the Parties approve a written change request in accordance with Clause 6.
+
+## 4. DEVELOPMENT FEE AND PAYMENT TERMS
+
+### 4.1. Fixed development fee
+
+The total development fee for Phase 1 shall be INR 3,00,000 (Indian Rupees Three Lakh only), exclusive of applicable GST and other legally chargeable taxes.
+
+### 4.2. Payment schedule
+
+SweafEx shall pay the development fee in the following instalments:
+
+| Payment | Description | Percentage | Amount |
+|---|---|---:|---:|
+| Advance | Project initiation, architecture setup and mobilisation | 20% | ₹60,000 |
+| Milestone 1 | Foundation and CRM | 16% | ₹48,000 |
+| Milestone 2 | Operations and trips | 16% | ₹48,000 |
+| Milestone 3 | Automation and APIs | 16% | ₹48,000 |
+| Milestone 4 | POD lifecycle, accounts and management reporting | 16% | ₹48,000 |
+| Milestone 5 | Connected portals, agreed integrations, testing, training and deployment preparation | 16% | ₹48,000 |
+| **Total** | | **100%** | **₹3,00,000** |
+
+### 4.3. Advance payment
+
+4.3.1. The advance of INR 60,000 shall be paid against the Service Provider's invoice or payment request and must be received in cleared funds before project commencement.
+
+4.3.2. The Service Provider shall have no obligation to mobilise the development team, commence substantive development or reserve a commencement date until the advance has cleared.
+
+4.3.3. The advance forms part of, and is not additional to, the total development fee.
+
+### 4.4. Milestone payment procedure
+
+4.4.1. Upon completion of each Milestone, the Service Provider shall demonstrate the relevant working deliverables to SweafEx and provide a written notice that the Milestone is ready for review.
+
+4.4.2. SweafEx shall review the demonstrated deliverables within five (5) Business Days of the demonstration or receipt of the review materials, whichever is later.
+
+4.4.3. If SweafEx identifies a material deviation from the agreed Milestone requirements, it shall provide a written notice specifying the deviation in reasonable detail within the review period. The Service Provider shall be given a reasonable opportunity to correct the identified deviation and resubmit the affected deliverables.
+
+4.4.4. If SweafEx does not provide a written rejection identifying a material deviation within the review period, the Milestone shall be deemed accepted for purposes of the milestone payment, provided the Service Provider has supplied the agreed review materials and made the working demonstration reasonably available.
+
+4.4.5. Upon acceptance or deemed acceptance, the Service Provider may issue the relevant milestone invoice. SweafEx shall pay that invoice within five (5) Business Days of receipt, together with applicable taxes.
+
+4.4.6. A rejection shall not be valid merely because SweafEx requests new functionality, a design preference change, an additional report or a feature outside the agreed Milestone requirements.
+
+4.4.7. The Service Provider shall not be obliged to commence the next Milestone until the full payment due for the preceding Milestone has been received in cleared funds.
+
+4.4.8. The Milestone 5 payment shall be due following acceptance or deemed acceptance of its agreed review deliverables and before Production Go-Live and final production handover. The Service Provider shall not be required to place the Platform into production or complete the final handover while that payment remains outstanding, except as otherwise expressly agreed in writing.
+
+### 4.5. Taxes and invoicing
+
+4.5.1. The development fee excludes GST and other applicable taxes legally chargeable on the Services. Such taxes shall be charged in accordance with applicable law against a valid invoice.
+
+4.5.2. Each Party shall be responsible for its own income taxes and other taxes imposed on it by law. Any tax deduction or withholding legally required from a payment shall be made by SweafEx in accordance with applicable law, with the relevant certificate or evidence furnished to the Service Provider.
+
+4.5.3. The Parties shall exchange the tax registration details reasonably required for invoicing and compliance. The Service Provider shall not represent that GST is chargeable under a particular registration unless legally entitled to do so.
+
+### 4.6. Payment default and suspension
+
+4.6.1. If SweafEx fails to pay an amount by its due date, the Service Provider may issue written notice identifying the outstanding amount and requesting payment.
+
+4.6.2. If the overdue amount remains unpaid for three (3) Business Days after such notice, the Service Provider may suspend development, testing, deployment, handover or other affected Services until the overdue amount is received in cleared funds.
+
+4.6.3. The Service Provider shall not be liable for delays, missed target dates or additional remobilisation time resulting from a payment default or suspension permitted under this Agreement.
+
+4.6.4. The implementation schedule shall be extended by the period of the suspension and the reasonable period required to remobilise resources and resume work, taking account of team availability and project dependencies.
+
+4.6.5. Any interest on overdue amounts shall be payable only at the rate expressly agreed in writing by the Parties or otherwise recoverable under applicable law. No additional contractual interest rate is created by this Clause.
+
+4.6.6. Suspension shall not waive SweafEx's obligation to pay amounts properly due for accepted Milestones or other accrued contractual obligations.
+
+## 5. CLIENT RESPONSIBILITIES
+
+5.1. SweafEx shall appoint an authorised project representative empowered to provide consolidated feedback, coordinate internal stakeholders and approve Milestones.
+
+5.2. SweafEx shall provide timely access to the business information, sample records, workflow descriptions, authorised users, third-party accounts, API credentials, domain settings and other materials reasonably required to perform the Services.
+
+5.3. SweafEx shall ensure that it has the necessary rights, permissions and lawful basis to provide personal data, commercial information, documents, images and other materials supplied to the Service Provider.
+
+5.4. SweafEx shall participate in reviews, user acceptance testing, training and deployment preparation and shall communicate material defects or blockers promptly.
+
+5.5. The Service Provider shall not be responsible for delays caused by incomplete information, late approvals, unavailable personnel, inaccurate Client-provided data, unavailable third-party services or other dependencies beyond its reasonable control.
+
+5.6. Where a Client dependency causes delay, the Service Provider shall notify SweafEx when reasonably practicable, and the project schedule shall be adjusted to the extent the delay affects the critical path or requires reasonable remobilisation.
+
+## 6. CHANGE CONTROL
+
+6.1. Either Party may propose a change to the agreed scope, functionality, integrations, technical requirements, deliverables or implementation schedule.
+
+6.2. A proposed change shall not become binding unless documented in a written change request approved by authorised representatives of both Parties.
+
+6.3. Each change request shall, where applicable, specify:
+
+(a) the requested change and its rationale;
+
+(b) any additional or reduced fees;
+
+(c) the effect on Milestone dates and the overall delivery schedule;
+
+(d) any changes to testing, acceptance, third-party costs or hosting requirements; and
+
+(e) any effect on intellectual property or other contractual obligations.
+
+6.4. The Service Provider shall not be obliged to undertake a change before the relevant change request has been approved. Any work undertaken without written approval shall not automatically entitle either Party to amend the fixed development fee.
+
+6.5. Clarifications and corrections necessary to bring an agreed deliverable into conformity with the existing scope shall not be treated as chargeable changes merely because they require additional effort.
+
+## 7. DEPLOYMENT, THIRD-PARTY SERVICES AND PRODUCTION ACCOUNTS
+
+7.1. The Service Provider shall undertake the agreed deployment preparation and production deployment activities after the applicable payment, testing and Client-readiness conditions have been met.
+
+7.2. Production hosting, cloud infrastructure, databases, storage, domains, WhatsApp Business API or other messaging charges, verification API transactions, email/SMS services, third-party subscriptions and other external service charges are excluded from the fixed development fee unless expressly stated otherwise in a signed change request.
+
+7.3. Such external costs shall either be paid directly by SweafEx to the provider or reimbursed to the Service Provider at actual cost, as agreed in writing. The Service Provider shall obtain SweafEx's prior written approval before incurring material external expenditure on SweafEx's behalf.
+
+7.4. SweafEx shall own or control its production hosting, domain, database, storage and other production service accounts wherever the provider's terms and technical arrangements reasonably permit. The Service Provider shall receive the access required to develop, deploy and support the Platform.
+
+7.5. The Parties shall document the designated account owner, administrator access and credential-transfer arrangements before Production Go-Live. Neither Party shall knowingly disable the other's authorised access in a manner that materially disrupts the agreed Services.
+
+7.6. The Service Provider shall not be responsible for service interruptions, pricing changes, API changes, rate limits, suspensions or outages caused by independent third-party providers, but shall provide reasonable cooperation within the agreed scope to investigate and address integration issues.
+
+7.7. The Parties acknowledge that Zoho Books shall continue as SweafEx's independent accounting system unless a specific integration is expressly included in Schedule 1 or agreed under a signed change request.
+
+## 8. HYPERCARE AND POST-IMPLEMENTATION MAINTENANCE
+
+### 8.1. Hypercare commencement and duration
+
+8.1.1. The Service Provider shall provide forty-five (45) consecutive calendar days of hypercare commencing on the Production Go-Live date.
+
+8.1.2. Hypercare is included in the fixed development fee and does not attract an additional hypercare fee, subject to the limitations in this Clause.
+
+### 8.2. Hypercare scope
+
+During the Hypercare Period, the Service Provider shall investigate and correct reproducible defects in the delivered Project-Specific Deliverables that cause the Platform materially to fail to conform to the agreed scope.
+
+Hypercare includes reasonable technical investigation and stabilisation of the deployed Phase 1 Platform within the agreed scope.
+
+### 8.3. Hypercare exclusions
+
+Hypercare does not include:
+
+(a) new features, enhancements or additional modules;
+
+(b) changes to approved workflows or requirements;
+
+(c) additional integrations not included in the agreed scope;
+
+(d) third-party provider charges or infrastructure costs;
+
+(e) issues caused by unauthorised modifications, misuse, Client-side configuration changes or unsupported environments;
+
+(f) outages or failures caused solely by independent third-party services; or
+
+(g) ongoing operational staffing, continuous monitoring or a guaranteed uptime commitment, unless separately agreed in writing.
+
+Where the cause of an issue is uncertain, the Service Provider shall make reasonable efforts to investigate it. Work outside the included hypercare scope shall be quoted separately where appropriate.
+
+### 8.4. Issue reporting and response
+
+SweafEx shall report issues through the designated communication channel and provide sufficient information to reproduce or investigate them. The Parties shall agree a primary contact and reasonable issue-prioritisation and communication arrangements before Production Go-Live.
+
+The Parties shall cooperate in good faith to resolve material defects promptly. No specific response-time or resolution-time service level is created by this Clause unless separately recorded in writing.
+
+### 8.5. Maintenance after hypercare
+
+8.5.1. Upon expiry of the Hypercare Period, ongoing paid maintenance and support shall be governed exclusively by a separate written maintenance agreement signed by both Parties.
+
+8.5.2. The Parties acknowledge that the earlier commercial proposal referenced INR 20,000 per month for maintenance under Option A. That amount is not binding under this Agreement and shall not become payable automatically.
+
+8.5.3. The separate maintenance agreement shall specify the fee, scope of support, support hours, response targets, exclusions, hosting responsibilities, billing arrangements, duration and termination rights.
+
+8.5.4. If no maintenance agreement has been signed by the end of the Hypercare Period, the Service Provider's included hypercare obligations shall expire at the end of that period. Neither Party shall be obliged to enter into a maintenance arrangement, and no ongoing maintenance fee shall arise solely from the expiry of hypercare.
+
+## 9. INTELLECTUAL PROPERTY AND OWNERSHIP
+
+### 9.1. Project-Specific Deliverables
+
+Subject to Clauses 9.2 to 9.6 and receipt by the Service Provider of all amounts due under this Agreement for the relevant Project-Specific Deliverables, the Service Provider hereby assigns, and agrees to assign as necessary upon creation, to SweafEx all assignable copyright and other intellectual property rights owned by the Service Provider in the Project-Specific Deliverables expressly identified in Schedule 1.
+
+The assignment shall be worldwide, for the full period of protection available under applicable law, and shall include the rights to reproduce, use, modify, adapt, maintain, distribute, communicate, commercialise and otherwise exploit the assigned Project-Specific Deliverables, subject to applicable law and third-party rights.
+
+The consideration for this assignment is included in the development fee set out in Clause 4. The assignment shall take effect for the relevant deliverables upon receipt of all amounts due for those deliverables.
+
+### 9.2. Background Technology retained by the Service Provider
+
+All Background Technology shall remain the property of the Service Provider or its respective third-party owner. Nothing in this Agreement transfers ownership of Background Technology to SweafEx merely because it is used in developing the Platform or embedded in a Project-Specific Deliverable.
+
+### 9.3. Reuse and commercialisation rights
+
+The Service Provider shall retain the perpetual right to reuse, adapt, repackage, modify, develop, commercialise, distribute and license its Background Technology and generic or reusable components for other clients, products or purposes, including in the same or similar industries.
+
+This right includes generic software functions, reusable workflows, common technical patterns, libraries, development methods and generalised improvements, provided that the Service Provider does not disclose or use SweafEx's Confidential Information, personal data, identifiable Client records, trade secrets or other materials assigned exclusively to SweafEx.
+
+The Service Provider shall not use SweafEx's name, branding, logos or identifiable business information in marketing or product demonstrations without SweafEx's prior written consent.
+
+### 9.4. Embedded Background Technology licence
+
+To the extent Background Technology owned or controlled by the Service Provider is incorporated into a delivered Project-Specific Deliverable and is necessary for SweafEx to use, operate, maintain, modify or obtain the intended benefit of that deliverable, the Service Provider grants SweafEx a perpetual, worldwide, royalty-free, non-exclusive licence to use, execute, reproduce, maintain, modify and permit its appointed service providers to support that Background Technology solely as part of, or in connection with, SweafEx's Platform and business operations.
+
+This licence does not transfer ownership of the Background Technology or permit SweafEx to extract and commercialise the Service Provider's generic components as a separate competing product, except to the extent expressly agreed in writing.
+
+### 9.5. Third-Party Materials and open-source software
+
+Third-Party Materials shall remain subject to the applicable third-party ownership and licence terms. No assignment under this Agreement shall purport to transfer rights the Service Provider does not own or have authority to transfer.
+
+The Service Provider shall disclose material third-party and open-source components and relevant licence restrictions to the extent reasonably practicable and applicable to the delivered software. SweafEx shall comply with applicable third-party licence terms.
+
+### 9.6. Further assurances and source-code handover
+
+Each Party shall execute reasonable documents necessary to give effect to the intellectual property provisions of this Agreement.
+
+Following payment of all amounts due for the relevant Project-Specific Deliverables, the Service Provider shall provide SweafEx with the agreed source code and technical materials included in the scope and handover arrangements in Schedule 1.
+
+The Service Provider shall ensure that its employees and contractors engaged in producing assigned Project-Specific Deliverables have entered into appropriate written arrangements to enable the rights expressly assigned under this Agreement to be transferred lawfully.
+
+### 9.7. No implied transfer
+
+Except for the express assignments and licences in this Clause, neither Party acquires ownership of the other Party's intellectual property by implication, estoppel or otherwise.
+
+## 10. CONFIDENTIALITY
+
+10.1. “Confidential Information” means non-public information disclosed by or on behalf of a Party, including business processes, customer and supplier records, rates, margins, financial information, credentials, source code, technical designs, security information and commercial plans.
+
+10.2. The receiving Party shall:
+
+(a) use Confidential Information only to perform or exercise its rights under this Agreement;
+
+(b) protect it using reasonable security measures;
+
+(c) disclose it only to personnel, professional advisers and approved service providers who need to know it and are bound by appropriate confidentiality obligations; and
+
+(d) not disclose it to an unauthorised third party without prior written consent, except where required by law.
+
+10.3. Confidential Information does not include information that the receiving Party can demonstrate is lawfully public without breach, was lawfully known before disclosure, was independently developed without use of the disclosed information, or was lawfully received from a third party without a duty of confidentiality.
+
+10.4. Where disclosure is legally required, the receiving Party shall, where legally permitted, give prior notice and reasonably cooperate in seeking confidential treatment.
+
+10.5. These obligations shall continue for five (5) years after termination or expiry of this Agreement, except that trade secrets shall remain protected for so long as they qualify as trade secrets under applicable law.
+
+10.6. The Service Provider may retain and use general professional knowledge and skills acquired during the project, provided it does not disclose or use SweafEx's Confidential Information or infringe SweafEx's assigned intellectual property.
+
+## 11. DATA PROTECTION AND INFORMATION SECURITY
+
+11.1. Each Party shall comply with the data-protection, cybersecurity and privacy laws applicable to its activities under this Agreement, including applicable provisions of the Digital Personal Data Protection Act, 2023 and rules or notifications in force from time to time, to the extent applicable.
+
+11.2. SweafEx shall determine and communicate the lawful purposes for which personal data is supplied for the Platform and shall be responsible for obtaining any notices, permissions, consents or other lawful authorisations required of it.
+
+11.3. Where the Service Provider processes personal data on behalf of SweafEx, it shall process such data only for the agreed Services and in accordance with SweafEx's documented lawful instructions, subject to applicable law.
+
+11.4. The Service Provider shall implement reasonable technical and organisational safeguards appropriate to the nature of the data and the agreed Services, including appropriate access restrictions and credential protection.
+
+11.5. Each Party shall notify the other without undue delay after becoming aware of a security incident affecting personal data or Confidential Information handled under this Agreement, to the extent legally permitted, and shall reasonably cooperate in investigation, mitigation and legally required notifications.
+
+11.6. SweafEx shall control its production accounts and shall determine authorised business-user access. The Service Provider shall access such accounts and data only to the extent reasonably necessary to perform the agreed Services.
+
+11.7. Upon expiry or termination, the Service Provider shall, subject to applicable law, legitimate backup retention and any separately agreed transition arrangements, return or delete personal data in its possession that is no longer required for a lawful contractual purpose.
+
+11.8. The Parties shall agree any additional data-processing terms, subprocessors, retention periods or cross-border transfer arrangements required by applicable law or the actual technical architecture before the relevant processing begins.
+
+## 12. WARRANTIES AND DISCLAIMERS
+
+12.1. Each Party represents that it has the authority to enter into and perform this Agreement.
+
+12.2. The Service Provider warrants that it shall perform the Services with reasonable professional skill and care and that, to the best of its knowledge, it has authority to grant the intellectual property rights it expressly assigns, subject to disclosed third-party rights.
+
+12.3. During the Hypercare Period, the Service Provider shall correct qualifying defects in accordance with Clause 8.
+
+12.4. The Service Provider does not warrant that the Platform will be uninterrupted, entirely error-free, compatible with every third-party system, or capable of producing any particular commercial outcome.
+
+12.5. The Platform is an operational software tool. SweafEx remains responsible for its business decisions, shipment data, commercial quotations, freight margins, financial approvals, regulatory decisions and verification of operational records.
+
+12.6. The Service Provider shall not be responsible for errors caused by inaccurate Client-provided data, third-party system failures, unauthorised changes, misuse or circumstances outside its reasonable control, except to the extent caused by the Service Provider's breach of this Agreement.
+
+12.7. Except for express warranties in this Agreement and warranties that cannot lawfully be excluded, no additional implied warranty is created to the extent exclusion is permitted under applicable law.
+
+## 13. INDEMNITIES AND LIMITATION OF LIABILITY
+
+13.1. Each Party shall be responsible for direct losses arising from its breach of this Agreement, negligence, wilful misconduct or violation of applicable law, subject to the limitations and exclusions in this Clause.
+
+13.2. SweafEx shall indemnify the Service Provider against third-party claims to the extent arising from unlawful Client-provided content or data, SweafEx's infringement of third-party rights in materials it supplied, or SweafEx's unlawful use of the Platform, except to the extent the claim results from the Service Provider's breach or misconduct.
+
+13.3. The Service Provider shall indemnify SweafEx against third-party claims alleging that the Project-Specific Deliverables, as supplied by the Service Provider and used in accordance with this Agreement, infringe a third party's intellectual property rights, except to the extent the claim arises from Client materials, third-party components, unauthorised modifications, combinations not supplied or approved by the Service Provider, or use outside the agreed scope.
+
+13.4. A Party seeking indemnification shall promptly notify the other Party of the relevant claim, provide reasonable cooperation and allow the indemnifying Party reasonable control of the defence and settlement, provided that no settlement may impose an admission, payment or continuing obligation on the indemnified Party without its consent.
+
+13.5. Subject to Clause 13.7, the aggregate liability of either Party arising out of or in connection with this Agreement shall not exceed the total development fee of INR 3,00,000, excluding GST, actually paid or payable under this Agreement.
+
+13.6. To the extent permitted by law, neither Party shall be liable to the other for indirect or consequential loss, loss of anticipated profits, loss of business opportunity or loss of goodwill arising from this Agreement. This exclusion shall not apply to amounts payable to third parties under a valid indemnity to the extent expressly covered by this Agreement.
+
+13.7. The limitations in Clauses 13.5 and 13.6 shall not apply to fraud, wilful misconduct, deliberate misuse of the other Party's Confidential Information, or liabilities that cannot lawfully be excluded or limited. The treatment of intellectual property infringement, personal-data breaches, confidentiality breaches, gross negligence and unpaid fees under the liability cap must be specifically reviewed and agreed by the Parties before execution.
+
+13.8. Each Party shall take reasonable steps to mitigate losses for which it seeks recovery.
+
+13.9. Nothing in this Agreement excludes a remedy that cannot lawfully be excluded under applicable Indian law.
+
+## 14. SUSPENSION AND TERMINATION
+
+14.1. Either Party may terminate this Agreement by written notice if the other Party commits a material breach and fails to remedy that breach within fifteen (15) calendar days after receiving written notice specifying the breach and requiring its remedy.
+
+14.2. The Service Provider may suspend the Services in accordance with Clause 4.6 for non-payment.
+
+14.3. If a payment default continues for fifteen (15) calendar days after a written notice of default, the Service Provider may terminate this Agreement by further written notice, without prejudice to accrued payment rights.
+
+14.4. Either Party may terminate this Agreement by written notice if the other Party becomes insolvent or ceases business, to the extent permitted by applicable law.
+
+14.5. The Parties may terminate this Agreement at any time by mutual written agreement.
+
+14.6. On termination:
+
+(a) SweafEx shall pay all undisputed amounts due for accepted Milestones and Services performed up to the effective termination date, together with any other amount properly payable under the applicable termination provisions;
+
+(b) the Parties shall reconcile advance payments and amounts paid against work performed, taking account of accepted deliverables, work completed, accrued obligations and any recoverable amounts under applicable law;
+
+(c) the Service Provider shall provide the Project-Specific Deliverables to which SweafEx is entitled under the payment and intellectual property provisions of this Agreement;
+
+(d) each Party shall return or delete the other's Confidential Information where reasonably practicable, subject to lawful retention requirements; and
+
+(e) the Parties shall reasonably cooperate to protect SweafEx's data and production operations.
+
+14.7. No unearned future milestone fee shall automatically become payable merely because the Agreement is terminated. Any recovery for unperformed work, committed non-cancellable costs or other loss shall be determined under the express terms of this Agreement and applicable law.
+
+14.8. Any additional transition assistance, data migration, new documentation or technical work beyond the agreed handover scope may be charged separately if the Parties agree the scope and fee in writing.
+
+14.9. Clauses concerning accrued payment obligations, intellectual property, confidentiality, data protection, liability, dispute resolution and any other provision intended by its nature to survive shall survive termination.
+
+## 15. INCORPORATION AND TRANSFER TO THE REGISTERED OCTAGRAM ENTITY
+
+15.1. The Parties acknowledge that the Service Provider is entering into this Agreement in an individual capacity while the intended Octagram business entity is in the process of incorporation.
+
+15.2. Following incorporation, the Parties intend to transfer the Service Provider's rights and obligations under this Agreement to the registered entity intended to operate the Octagram business, subject to verification of its legal identity and execution of the required transfer documentation.
+
+15.3. The Parties shall use reasonable efforts to execute a tripartite deed of novation or other legally appropriate instrument among the Service Provider, SweafEx and the registered entity.
+
+15.4. The transfer instrument shall specify the effective transfer date, treatment of accrued liabilities, responsibility for future performance, transfer of project records and intellectual property rights, and whether the Service Provider is released from any obligations arising before or after the transfer.
+
+15.5. Unless and until the transfer documentation becomes effective, the individual named as Service Provider in this Agreement remains the contracting party and is responsible for its obligations under this Agreement.
+
+15.6. No provision of this Agreement shall be interpreted as automatically creating a separate legal entity before its incorporation or automatically releasing the individual from liability merely because the entity is subsequently incorporated.
+
+15.7. The transfer shall not alter the agreed development fee, Milestone payment schedule, approved scope, hypercare duration or intellectual property allocation unless expressly amended in writing by the Parties.
+
+## 16. FORCE MAJEURE
+
+16.1. Neither Party shall be liable for a failure or delay to the extent directly caused by an event beyond its reasonable control, including natural disasters, war, civil disturbance, government restrictions, widespread telecommunications failures or other comparable events that could not reasonably have been prevented.
+
+16.2. The affected Party shall notify the other Party within a reasonable time, explain the expected impact and take reasonable steps to mitigate the effects.
+
+16.3. Payment obligations for Services already performed and amounts otherwise due shall not be excused by force majeure.
+
+16.4. If a force majeure event materially prevents performance for more than sixty (60) consecutive calendar days, either Party may terminate the affected portion of the Services or this Agreement by written notice, subject to reconciliation of accrued payment obligations and work performed.
+
+## 17. DISPUTE RESOLUTION AND GOVERNING LAW
+
+17.1. This Agreement shall be governed by and construed in accordance with the laws of India.
+
+17.2. The Parties shall first attempt in good faith to resolve any dispute arising out of or in connection with this Agreement through discussions between their authorised representatives.
+
+17.3. If the dispute is not resolved within fifteen (15) calendar days after written notice of the dispute, either Party may refer the dispute to arbitration under the Arbitration and Conciliation Act, 1996, as amended.
+
+17.4. The arbitration shall be conducted by a sole arbitrator mutually appointed by the Parties. If the Parties cannot agree upon the arbitrator within thirty (30) calendar days after a written request for arbitration, either Party may seek appointment in accordance with applicable law.
+
+17.5. The legal seat and venue of arbitration shall be **Bangalore, Karnataka**. The arbitration proceedings shall be conducted in English.
+
+17.6. The arbitral tribunal may grant remedies and allocate costs in accordance with applicable law. The award shall be final and binding, subject to statutory rights of challenge or enforcement.
+
+17.7. Nothing in this Clause prevents a Party from seeking urgent interim or protective relief from a competent court where legally available.
+
+17.8. Subject to the arbitration agreement and applicable law, the courts at **Bangalore, Karnataka** shall have jurisdiction over court proceedings arising in connection with this Agreement.
+
+## 18. NOTICES
+
+18.1. Any formal notice under this Agreement shall be in writing and delivered by hand, recognised courier or email to the contact details specified below, or to any updated details notified in writing.
+
+**For the Service Provider**
+
+Name: Umesh Shetty
+
+Address: 841, 10th cross, 26th main, Sector-1, HSR Layout, Bangalore 560102
+
+Email: [Authorised Email Address]
+
+**For SweafEx**
+
+Legal entity: Sweaf Express Pvt Ltd
+
+Attention: [Authorised Representative]
+
+Address: [Registered Office Address]
+
+Email: [Authorised Email Address]
+
+18.2. Notices by email shall be deemed received when acknowledged by the recipient or when receipt is otherwise reliably evidenced, subject to applicable law. A routine project communication shall not amend this Agreement unless it satisfies the applicable amendment requirements.
+
+## 19. GENERAL PROVISIONS
+
+19.1. **Entire Agreement.** This Agreement and its schedules, together with any signed change requests, constitute the entire agreement between the Parties regarding the Services and supersede prior inconsistent proposals, communications and understandings.
+
+19.2. **Order of precedence.** In the event of conflict, the main body of this Agreement shall prevail over its schedules, except where a signed amendment expressly states otherwise. The approved scope schedule shall govern technical deliverables, while this Agreement shall govern payment, intellectual property, liability and other legal terms.
+
+19.3. **Amendments.** Any amendment to this Agreement must be in writing and signed or otherwise validly executed by authorised representatives of both Parties.
+
+19.4. **Assignment.** Neither Party may assign this Agreement without the prior written consent of the other Party, except for the incorporation-related transfer expressly contemplated in Clause 15, which remains subject to the required transfer documentation.
+
+19.5. **Independent parties.** Nothing in this Agreement creates a partnership, joint venture, employment relationship or agency between the Parties.
+
+19.6. **Severability.** If a provision is held invalid or unenforceable, it shall be modified to the minimum extent necessary where legally permissible, and the remaining provisions shall continue in effect.
+
+19.7. **Waiver.** A failure or delay in exercising a right shall not constitute a waiver of that right. Any waiver must be in writing.
+
+19.8. **Counterparts and electronic execution.** This Agreement may be executed in counterparts and by electronic means to the extent legally permissible, subject to applicable stamping, signature and evidentiary requirements.
+
+19.9. **Further assurances.** Each Party shall execute reasonable additional documents necessary to give effect to the terms expressly agreed under this Agreement.
+
+## SCHEDULE 1 — APPROVED PHASE 1 SCOPE
+
+The detailed functional scope shall be the final approved SweafEx Operations Platform Presentation and any subsequently signed technical specification or change request incorporated by reference and identified below.
+
+**Reference document:** SweafEx Operations Platform Presentation — Octagram, version/date: [insert final approved version/date].
+
+The intended scope includes the following functional areas, subject to the detailed requirements and exclusions in the approved proposal.
+
+### 1. Internal operations platform
+
+- Role-based access and user workspaces.
+- Customer master records and rate contract records.
+- Enquiry intake, quotations and agreed margin-protection workflows.
+- Order management and placement deadlines.
+- Transporter records, fleet information and agreed verification workflows.
+- Shipment and trip management with the agreed operational milestones.
+
+### 2. Documents and shipment lifecycle
+
+- Agreed TCN generation and delivery workflows.
+- POD submission, document handling and lifecycle tracking.
+- Agreed operational notifications and related record updates.
+
+### 3. Portals and reporting
+
+- Customer portal and driver/vendor-facing web portal, to the extent specified in the approved proposal.
+- Agreed role-specific views and permissions.
+- Master records, management dashboards, operational reporting and KPIs as specified in the approved proposal.
+
+### 4. Integrations
+
+- WhatsApp Business API integration to the extent technically available and specified in the approved requirements.
+- Agreed vehicle RC and driver DL verification API integrations.
+- Other integrations only where expressly identified in the approved scope or a signed change request.
+
+### 5. Testing, training and deployment
+
+- Agreed testing and defect correction before deployment.
+- Reasonable user training within the agreed scope.
+- Production deployment preparation and handover.
+- Delivery of the agreed source code, technical documentation and access arrangements following the applicable payment and intellectual property conditions.
+
+### 6. Exclusions and dependencies
+
+Unless expressly agreed in writing, the scope excludes:
+
+- A native Android or iOS application.
+- Additional modules or features not specified in the approved requirements.
+- Zoho Books integration beyond the expressly agreed scope.
+- Third-party subscription, hosting, storage, messaging, verification, email/SMS and domain charges.
+- Ongoing maintenance after the Hypercare Period.
+- Unlimited post-approval changes or additional functionality.
+- Any guarantee of third-party service availability or commercial business outcomes.
+
+The Parties shall complete the following document identification before execution:
+
+Approved proposal filename/version: [●]
+
+Approved technical specification, if any: [●]
+
+Date of final scope approval: [●]
+
+## SCHEDULE 2 — MILESTONE AND ACCEPTANCE REGISTER
+
+| Stage | Target period | Required deliverable | Fee |
+|---|---|---|---:|
+| Advance | Before commencement | Mobilisation and architecture initiation | ₹60,000 |
+| Milestone 1 | Indicatively Weeks 1–2 | Foundation and CRM | ₹48,000 |
+| Milestone 2 | Indicatively Weeks 3–4 | Operations and trips | ₹48,000 |
+| Milestone 3 | Indicatively Weeks 5–6 | Automation and APIs | ₹48,000 |
+| Milestone 4 | Indicatively Weeks 7–8 | POD lifecycle, accounts and management reporting | ₹48,000 |
+| Milestone 5 | Indicatively Weeks 9–10 | Portals, agreed integrations, testing, training and deployment preparation | ₹48,000 |
+
+The target periods are indicative and subject to Clauses 3, 4, 5 and 6.
+
+For each Milestone, the Service Provider shall record the demonstration date, review materials, acceptance or rejection notice, any agreed correction and payment date.
+
+No subsequent Milestone shall commence until the payment for the preceding Milestone has cleared.
+
+Production Go-Live and final handover shall occur only after the Milestone 5 payment has cleared and the agreed deployment conditions have been met.
+
+## SCHEDULE 3 — INTELLECTUAL PROPERTY REGISTER
+
+Before final handover, the Parties should identify, to the extent reasonably practicable:
+
+1. The Project-Specific Deliverables assigned to SweafEx.
+2. Any material Background Technology embedded in the Platform.
+3. Third-party and open-source components subject to separate licence terms.
+4. The source-code repositories and materials to be transferred.
+5. Any express restrictions or additional licences required for continued operation of the Platform.
+
+Any register prepared under this Schedule shall be consistent with Clause 9 and shall not transfer ownership of Background Technology or Third-Party Materials unless the relevant owner has expressly agreed in writing.
+
+## SCHEDULE 4 — THIRD-PARTY COSTS AND CLIENT DEPENDENCIES
+
+The Parties shall confirm the production providers, account owners, billing arrangements and access responsibilities before deployment.
+
+| Service | Responsibility to be confirmed |
+|---|---|
+| Cloud hosting and database | SweafEx-controlled account; provider and plan to be agreed |
+| Document storage and backups | Provider, retention policy and cost to be agreed |
+| Domain and DNS | Account owner and renewal responsibility to be confirmed |
+| WhatsApp Business API | Provider, account ownership and usage billing to be confirmed |
+| RC and DL verification APIs | Provider, credentials and per-lookup charges to be confirmed |
+| Email/SMS services | Provider and usage billing to be confirmed |
+
+Unless otherwise agreed, SweafEx shall bear approved third-party costs directly or reimburse them at actual cost, and shall provide the credentials, permissions and business information required for implementation.
+
+## SIGNATURES
+
+The Parties, through the undersigned, confirm that they have read and understood this Agreement and agree to be bound by its terms.
+
+### For the Service Provider — Individual
+
+Signature: ______________________________
+
+Full legal name: Umesh Shetty
+
+Proposed business name: Octagram
+
+Address: 841, 10th cross, 26th main, Sector-1, HSR Layout, Bangalore 560102
+
+Date: ______________________________
+
+Witness 1:
+
+Name: ______________________________
+
+Address: ____________________________
+
+Signature: ___________________________
+
+Witness 2:
+
+Name: ______________________________
+
+Address: ____________________________
+
+Signature: ___________________________
+
+### For SweafEx — Client
+
+Full legal name of contracting entity: Sweaf Express Pvt Ltd
+
+Trading name, if applicable: SweafEx
+
+Authorised signatory: ______________________________
+
+Designation: ______________________________
+
+Signature: ______________________________
+
+Date: ______________________________
+
+Company seal, if applicable: _______________________
+
+Witness 1:
+
+Name: ______________________________
+
+Address: ____________________________
+
+Signature: ___________________________
+
+Witness 2:
+
+Name: ______________________________
+
+Address: ____________________________
+
+Signature: ___________________________
+
+---
+
+**DRAFTING STATUS:** This is a working draft for review. All bracketed fields must be completed or expressly resolved before execution. The Parties should obtain Indian legal review of the pre-incorporation arrangement, intellectual property assignment, liability cap, data-protection provisions, stamp duty and execution formalities before signing.

@@ -1,0 +1,1632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>SweafEx Digital Operations Platform - Pricing & Commercial Proposal</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+  @page {
+    size: 297mm 210mm; /* A4 Landscape */
+    margin: 0;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: #e2e8f0;
+    background-color: #060911;
+    font-size: 10px;
+    line-height: 1.45;
+  }
+
+  .page {
+    width: 297mm;
+    height: 210mm;
+    max-height: 210mm;
+    position: relative;
+    padding: 8.5mm 14mm 8.5mm 14mm;
+    page-break-after: always;
+    page-break-inside: avoid;
+    overflow: hidden;
+    background: linear-gradient(135deg, #090e17 0%, #0f172a 60%, #1a2234 100%);
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Running Header & Footer */
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 1.8mm;
+    margin-bottom: 2mm;
+    font-size: 8.5px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+  }
+
+  .page-header .brand-tag {
+    color: #38bdf8;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  .page-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding-top: 1.8mm;
+    margin-top: 2mm;
+    font-size: 8px;
+    color: #64748b;
+  }
+
+  /* Headings */
+  .section-tag {
+    display: inline-block;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #38bdf8;
+    background: rgba(56, 189, 248, 0.12);
+    padding: 2.5px 7px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+  }
+
+  .page-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 17.5px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.2;
+    margin-bottom: 2px;
+    letter-spacing: -0.4px;
+  }
+
+  .page-subtitle {
+    font-size: 9.8px;
+    color: #94a3b8;
+    margin-bottom: 4.5px;
+    line-height: 1.38;
+  }
+
+  /* Content Containers */
+  .page-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Layout Grids */
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .grid-4 {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .grid-5 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 7px;
+  }
+
+  /* Cards */
+  .card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 7px;
+    padding: 10px 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  }
+
+  .card-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 11.5px;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 3.5px;
+  }
+
+  .card-desc {
+    font-size: 9.2px;
+    color: #cbd5e1;
+    line-height: 1.42;
+  }
+
+  /* Badges & Pills */
+  .badge {
+    display: inline-block;
+    padding: 2.5px 7px;
+    border-radius: 4px;
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+
+  .badge-blue { background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.35); }
+  .badge-emerald { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.35); }
+  .badge-amber { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.35); }
+  .badge-purple { background: rgba(167, 139, 250, 0.15); color: #c084fc; border: 1px solid rgba(167, 139, 250, 0.35); }
+  .badge-slate { background: rgba(255, 255, 255, 0.08); color: #94a3b8; border: 1px solid rgba(255, 255, 255, 0.15); }
+  .badge-red { background: rgba(248, 113, 113, 0.15); color: #f87171; border: 1px solid rgba(248, 113, 113, 0.35); }
+
+  .badge-confirm {
+    background: rgba(56, 189, 248, 0.15);
+    color: #38bdf8;
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    font-size: 8px;
+    font-weight: 700;
+    padding: 2.5px 7px;
+    border-radius: 4px;
+  }
+
+  .badge-discuss {
+    background: rgba(245, 158, 11, 0.12);
+    color: #fbbf24;
+    border: 1px dashed rgba(245, 158, 11, 0.5);
+    font-size: 7.8px;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+
+  /* Clean Lists */
+  ul.clean-list {
+    list-style: none;
+    padding: 0;
+  }
+
+  ul.clean-list li {
+    position: relative;
+    padding-left: 11px;
+    font-size: 8.8px;
+    color: #e2e8f0;
+    margin-bottom: 3.5px;
+    line-height: 1.38;
+  }
+
+  ul.clean-list li::before {
+    content: '•';
+    position: absolute;
+    left: 1px;
+    top: 0;
+    color: #38bdf8;
+    font-weight: 800;
+  }
+
+  /* Callout Box */
+  .callout-box {
+    background: rgba(255, 255, 255, 0.035);
+    border-left: 3.5px solid #38bdf8;
+    padding: 6px 10px;
+    border-radius: 0 5px 5px 0;
+    font-size: 8.8px;
+    color: #cbd5e1;
+    line-height: 1.4;
+  }
+
+  /* Tables */
+  table.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 9px;
+  }
+
+  table.custom-table th {
+    background: rgba(255, 255, 255, 0.07);
+    color: #f1f5f9;
+    font-weight: 700;
+    text-align: left;
+    padding: 5.5px 8px;
+    border-bottom: 1.5px solid rgba(255, 255, 255, 0.18);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 8.5px;
+  }
+
+  table.custom-table td {
+    padding: 5.5px 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+    color: #cbd5e1;
+    vertical-align: middle;
+    line-height: 1.36;
+  }
+
+  table.custom-table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.025);
+  }
+
+  /* Pricing Highlights */
+  .price-large {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.1;
+    letter-spacing: -0.5px;
+  }
+
+  .price-sub {
+    font-size: 8px;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ========================================================================= -->
+<!-- PAGE 1: COVER                                                             -->
+<!-- ========================================================================= -->
+<div class="page" style="justify-content: space-between; padding: 20mm 24mm 18mm 24mm;">
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 800; letter-spacing: -0.5px; color: #ffffff;">
+      OCTAGRAM<span style="color: #38bdf8;"> AI & SOFTWARE SOLUTIONS</span>
+    </div>
+    <div class="badge-confirm" style="padding: 5px 12px; font-size: 9px; letter-spacing: 0.5px;">
+      CONFIDENTIAL COMMERCIAL PROPOSAL • PHASE 1
+    </div>
+  </div>
+
+  <div style="margin: 10px 0;">
+    <div style="font-size: 11.5px; font-weight: 800; text-transform: uppercase; letter-spacing: 2.2px; color: #38bdf8; margin-bottom: 10px;">
+      COMMERCIAL INVESTMENT & IMPLEMENTATION PROPOSAL
+    </div>
+    <h1 style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 40px; font-weight: 800; line-height: 1.12; color: #ffffff; letter-spacing: -1px; margin-bottom: 14px;">
+      SWEAFEX<br><span style="color: #38bdf8;">Digital Operations Platform</span>
+    </h1>
+    <div style="font-size: 15px; font-weight: 700; color: #94a3b8; margin-bottom: 18px;">
+      Phase 1 &mdash; Core Operations, Connected Communication & External Portals
+    </div>
+    <p style="font-size: 13px; color: #cbd5e1; max-width: 880px; line-height: 1.55; margin-bottom: 24px;">
+      "One connected operational system for Sales, Placement, Operations, Customers and Vendors. Structuring and simplifying the way existing work gets done &mdash; eliminating administrative repetition, WhatsApp searching, and status chasing without disrupting core business relationships."
+    </p>
+
+    <div style="display: flex; gap: 16px;">
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 12px 18px;">
+        <div style="font-size: 8.8px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Client Organization</div>
+        <div style="font-size: 13px; font-weight: 700; color: #ffffff; margin-top: 3px;">Whooosh Networks Pvt Ltd (SweafEx)</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 12px 18px;">
+        <div style="font-size: 8.8px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Delivery Scope</div>
+        <div style="font-size: 13px; font-weight: 700; color: #38bdf8; margin-top: 3px;">Phase 1: Complete Operational Backbone</div>
+      </div>
+      <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12); border-radius: 6px; padding: 12px 18px;">
+        <div style="font-size: 8.8px; text-transform: uppercase; color: #94a3b8; font-weight: 700; letter-spacing: 0.5px;">Commercial Options</div>
+        <div style="font-size: 13px; font-weight: 700; color: #34d399; margin-top: 3px;">Standard vs Low-Upfront Models</div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 12px;">
+    <div>
+      <div style="font-size: 9.2px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Prepared For:</div>
+      <div style="font-size: 12.5px; font-weight: 700; color: #ffffff; margin-top: 2px;">SweafEx Management & Operations Leadership</div>
+    </div>
+    <div style="text-align: right;">
+      <div style="font-size: 9.2px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Prepared By: Octagram AI & Software Solutions</div>
+      <div style="font-size: 11px; font-weight: 600; color: #38bdf8; margin-top: 2px;">vishnu@octagramai.com • +91 9482090023 • www.octagramai.com</div>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 2: WHAT WE ARE BUILDING                                              -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Executive Summary • Operational Vision</span>
+    <span>Page 02</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Business Transformation</div>
+      <div class="page-title">From Fragmented Operations to One Connected Workflow</div>
+      <div class="page-subtitle">"We are not changing how SweafEx runs its business. We are structuring and simplifying the way the existing work gets done."</div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 3px; flex: 1; gap: 14px;">
+      <!-- LEFT: OPERATIONAL CONTEXT -->
+      <div class="card" style="border-top: 3.5px solid #38bdf8; display: flex; flex-direction: column; justify-content: space-between; padding: 13px 15px;">
+        <div>
+          <div class="card-title" style="font-size: 12.5px; margin-bottom: 5px;">Structuring the Proven Business Model</div>
+          <div class="card-desc" style="margin-bottom: 8px; font-size: 9.5px; line-height: 1.45;">
+            SweafEx operates a functioning freight brokerage business handling ~10 trips/day with a 10-person team. The objective of this project is not to disrupt proven vendor relationships or sales practices, but to eliminate the manual friction around daily execution.
+          </div>
+          
+          <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); border-radius: 5px; padding: 9px 12px; margin-bottom: 8px;">
+            <div style="font-size: 8.2px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 2px; letter-spacing: 0.5px;">THE CORE PHILOSOPHY</div>
+            <div style="font-size: 11px; font-weight: 700; color: #ffffff;">"The work does not disappear &mdash; the wasted work does."</div>
+            <div style="font-size: 9px; color: #94a3b8; margin-top: 3px; line-height: 1.4;">
+              Eliminates copying rates between sheets, re-typing vehicle numbers, chasing drivers on phone calls for basic milestones, and searching through WhatsApp for POD photos.
+            </div>
+          </div>
+
+          <div class="card-title" style="font-size: 11px; margin-top: 4px; margin-bottom: 4px;">Key Operational Outcomes:</div>
+          <ul class="clean-list" style="font-size: 9.2px;">
+            <li style="margin-bottom: 5px;"><strong>Single Source of Operational Truth:</strong> One central live master sheet replaces isolated desktop Excel files.</li>
+            <li style="margin-bottom: 5px;"><strong>Zero Duplicate Data Entry:</strong> Information entered at enquiry travels seamlessly to placement, TCN, and billing.</li>
+            <li style="margin-bottom: 5px;"><strong>Higher Operational Capacity:</strong> Creates additional operational capacity for the existing team by reducing repetitive administrative work as trip volume grows.</li>
+          </ul>
+        </div>
+
+        <div class="callout-box" style="margin-top: 6px; font-size: 9px;">
+          <strong>External Systems:</strong> Zoho Books continues independently as SweafEx's financial accounting system; the platform handles operational execution.
+        </div>
+      </div>
+
+      <!-- RIGHT: OPERATIONAL FLOW DIAGRAM -->
+      <div class="card" style="border-top: 3.5px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; padding: 13px 15px;">
+        <div>
+          <div class="card-title" style="font-size: 12.5px; margin-bottom: 5px;">The Unified End-to-End Operational Pipeline</div>
+          <div class="card-desc" style="margin-bottom: 8px; font-size: 9.5px;">Data entered once flows across every department and external touchpoint automatically:</div>
+
+          <!-- FLOW DIAGRAM -->
+          <div style="display: flex; flex-direction: column; gap: 5px; margin-bottom: 8px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(56, 189, 248, 0.09); border: 1px solid rgba(56, 189, 248, 0.25); padding: 6px 10px; border-radius: 5px;">
+              <div style="font-size: 9.2px; font-weight: 800; color: #38bdf8;">1. SALES & ENQUIRY</div>
+              <div style="font-size: 8.8px; color: #cbd5e1;">Customer Master &bull; ENQ Intake &bull; Margin Rate Board</div>
+            </div>
+            <div style="text-align: center; color: #64748b; font-size: 8px; margin: -3px 0;">↓</div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(56, 189, 248, 0.09); border: 1px solid rgba(56, 189, 248, 0.25); padding: 6px 10px; border-radius: 5px;">
+              <div style="font-size: 9.2px; font-weight: 800; color: #38bdf8;">2. PURCHASE & PLACEMENT</div>
+              <div style="font-size: 8.8px; color: #cbd5e1;">Transporter Matching &bull; RC/DL Checks &bull; 1-Click EXP Lock</div>
+            </div>
+            <div style="text-align: center; color: #64748b; font-size: 8px; margin: -3px 0;">↓</div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(52, 211, 153, 0.09); border: 1px solid rgba(52, 211, 153, 0.25); padding: 6px 10px; border-radius: 5px;">
+              <div style="font-size: 9.2px; font-weight: 800; color: #34d399;">3. TRAFFIC & MILESTONES</div>
+              <div style="font-size: 8.8px; color: #cbd5e1;">13 Operational Milestones &bull; WhatsApp Live Dispatch &bull; Exception Alerts</div>
+            </div>
+            <div style="text-align: center; color: #64748b; font-size: 8px; margin: -3px 0;">↓</div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(192, 132, 252, 0.09); border: 1px solid rgba(192, 132, 252, 0.25); padding: 6px 10px; border-radius: 5px;">
+              <div style="font-size: 9.2px; font-weight: 800; color: #c084fc;">4. TCN & POD LIFECYCLE</div>
+              <div style="font-size: 8.8px; color: #cbd5e1;">Auto-Generated Pre-filled TCN &bull; 5-Stage POD Verification &bull; Digital Vault</div>
+            </div>
+            <div style="text-align: center; color: #64748b; font-size: 8px; margin: -3px 0;">↓</div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(251, 191, 36, 0.09); border: 1px solid rgba(251, 191, 36, 0.25); padding: 6px 10px; border-radius: 5px;">
+              <div style="font-size: 9.2px; font-weight: 800; color: #fbbf24;">5. BILLING & MANAGEMENT</div>
+              <div style="font-size: 8.8px; color: #cbd5e1;">Cost Review Queue &bull; Master Sheet Multi-Filter Search &bull; Real-time Margin KPIs</div>
+            </div>
+          </div>
+
+          <!-- CONNECTED EXTERNAL LAYER -->
+          <div style="background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.18); border-radius: 5px; padding: 7px 10px; text-align: center;">
+            <div style="font-size: 8.2px; font-weight: 800; color: #38bdf8; margin-bottom: 2px; letter-spacing: 0.5px;">CONNECTED EXTERNAL INTERACTION LAYER</div>
+            <div style="font-size: 9.2px; color: #cbd5e1;">
+              <strong>Customer Web Portal</strong> &bull; <strong>Driver / Vendor Mobile Web</strong> &bull; <strong>WhatsApp Business API</strong>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-size: 8.8px; color: #94a3b8; text-align: center; margin-top: 6px;">
+          Seamless digital collaboration between internal staff, drivers, and client logistics teams.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 3: WHAT IS INCLUDED IN PHASE 1                                       -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Scope Specification • Deliverable Scope</span>
+    <span>Page 03</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Deliverable Scope</div>
+      <div class="page-title">Phase 1 — What SweafEx Receives</div>
+      <div class="page-subtitle">A comprehensive, end-to-end operational software backbone designed specifically for freight brokerage execution.</div>
+    </div>
+
+    <div class="grid-4" style="margin-top: 3px; flex: 1;">
+      <!-- CATEGORY 1: INTERNAL OPERATIONS -->
+      <div class="card" style="border-top: 3.5px solid #38bdf8; display: flex; flex-direction: column; justify-content: space-between; padding: 9px 10px;">
+        <div>
+          <div style="font-size: 8px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 2px;">CATEGORY 1</div>
+          <div class="card-title" style="font-size: 10.5px;">Internal Operations Platform</div>
+          <div class="card-desc" style="font-size: 8.5px; margin-bottom: 4px;">Role-based web app for all 10 SweafEx employees:</div>
+          <ul class="clean-list" style="font-size: 8.2px;">
+            <li>Role-Based Access (Sales, Traffic, Accounts, Mgmt)</li>
+            <li>Customer Master & Rate Contract Records</li>
+            <li>Enquiry Intake & Margin Protection Rate Board</li>
+            <li>Order Management & Placement Deadlines</li>
+            <li>Transporter Master & Historical Rate Profiles</li>
+            <li>Vehicle RC & Driver DL Document Vaults</li>
+            <li>1-Click Placement Matching & EXP ID Generation</li>
+            <li>Live Traffic Board with 13 Milestone Stages</li>
+            <li>Automated Pre-Filled TCN PDF Generation</li>
+            <li>5-Stage POD Lifecycle & Hard Copy Tracking</li>
+            <li>Accounts Commercial Review & Cost Queue</li>
+            <li>Universal Master Sheet with Multi-Filter Search</li>
+            <li>Real-Time Management KPI Dashboards</li>
+          </ul>
+        </div>
+        <div class="badge-blue" style="font-size: 7.5px; text-align: center; margin-top: 5px; padding: 2.5px 5px;">Core Operations Foundation</div>
+      </div>
+
+      <!-- CATEGORY 2: CUSTOMER EXPERIENCE -->
+      <div class="card" style="border-top: 3.5px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; padding: 9px 10px;">
+        <div>
+          <div style="font-size: 8px; font-weight: 800; color: #34d399; text-transform: uppercase; margin-bottom: 2px;">CATEGORY 2</div>
+          <div class="card-title" style="font-size: 10.5px;">Customer Portal</div>
+          <div class="card-desc" style="font-size: 8.5px; margin-bottom: 4px;">Secure, zero-install web tracking interface for clients:</div>
+          <ul class="clean-list" style="font-size: 8.2px;">
+            <li>1-Click Instant Access via Secure Link</li>
+            <li>Active Shipments Live Tracking Feed</li>
+            <li>Milestone Progression (Confirmed → Transit → POD)</li>
+            <li>Assigned Vehicle & Driver Contact Details</li>
+            <li>1-Click Download of Verified TCNs</li>
+            <li>Instant Download of Electronic PODs</li>
+            <li>Historical Shipment & Billing Document Vault</li>
+            <li>Strict Organization-Level Data Isolation</li>
+            <li>Eliminates routine daily client status calls</li>
+          </ul>
+        </div>
+        <div class="badge-emerald" style="font-size: 7.5px; text-align: center; margin-top: 5px; padding: 2.5px 5px;">Premium Brand Perception</div>
+      </div>
+
+      <!-- CATEGORY 3: DRIVER / VENDOR PORTAL -->
+      <div class="card" style="border-top: 3.5px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between; padding: 9px 10px;">
+        <div>
+          <div style="font-size: 8px; font-weight: 800; color: #fbbf24; text-transform: uppercase; margin-bottom: 2px;">CATEGORY 3</div>
+          <div class="card-title" style="font-size: 10.5px;">Driver & Vendor Mobile Web</div>
+          <div class="card-desc" style="font-size: 8.5px; margin-bottom: 4px;">Frictionless mobile web link (No app store install):</div>
+          <ul class="clean-list" style="font-size: 8.2px;">
+            <li>Zero App Store / Play Store installation</li>
+            <li>Opens directly from 1-click WhatsApp message</li>
+            <li>View Trip Loading / Unloading Dock Details</li>
+            <li>1-Tap Milestone Buttons ("At Dock", "Loaded", "Delivered")</li>
+            <li>Phone Camera Capture for Dock Weighbridge Slips</li>
+            <li>Direct Photo Upload of Physical Signed POD</li>
+            <li>Transporter Vehicle & Driver Assignment Form</li>
+            <li>Near-zero adoption barrier for 3rd-party drivers</li>
+          </ul>
+        </div>
+        <div class="badge-amber" style="font-size: 7.5px; text-align: center; margin-top: 5px; padding: 2.5px 5px;">Frictionless Field Compliance</div>
+      </div>
+
+      <!-- CATEGORY 4: WHATSAPP CONNECTIVITY -->
+      <div class="card" style="border-top: 3.5px solid #c084fc; display: flex; flex-direction: column; justify-content: space-between; padding: 9px 10px;">
+        <div>
+          <div style="font-size: 8px; font-weight: 800; color: #c084fc; text-transform: uppercase; margin-bottom: 2px;">CATEGORY 4</div>
+          <div class="card-title" style="font-size: 10.5px;">WhatsApp Business API</div>
+          <div class="card-desc" style="font-size: 8.5px; margin-bottom: 4px;">Automated operational messaging for Phase 1 workflows:</div>
+          <ul class="clean-list" style="font-size: 8.2px;">
+            <li>Automated Driver Trip Assignment Dispatch</li>
+            <li>1-Click Tokenized Mobile Update Links</li>
+            <li>Customer Shipment Confirmation Alerts</li>
+            <li>Automated TCN PDF Dispatch via WhatsApp</li>
+            <li>Milestone Progression Updates to Clients</li>
+            <li>Driver Reminders for Pending POD Upload</li>
+            <li>Automated 30-Day Vehicle/Driver Expiry Notices</li>
+            <li>Standardized Approved Business Templates</li>
+          </ul>
+        </div>
+        <div class="badge-purple" style="font-size: 7.5px; text-align: center; margin-top: 5px; padding: 2.5px 5px;">Automated Communication</div>
+      </div>
+    </div>
+
+    <div class="callout-box" style="margin-top: 4px; font-size: 8.5px;">
+      <strong>Essential Scope Clarification:</strong> WhatsApp acts as the rapid communication delivery channel; the central web platform remains the single operational source of truth.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 4: COMMERCIAL OVERVIEW — TWO INVESTMENT MODELS                       -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Commercial Structure • Investment Options</span>
+    <span>Page 04</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Investment Models</div>
+      <div class="page-title">Two Ways to Invest in the Platform</div>
+      <div class="page-subtitle">Both options provide <strong>100% identical Phase 1 functionality, scope, and deliverables</strong>. The difference is purely how the commercial investment is structured.</div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 3px; gap: 14px; flex: 1;">
+      <!-- OPTION A CARD -->
+      <div class="card" style="border-top: 4px solid #38bdf8; display: flex; flex-direction: column; justify-content: space-between; background: rgba(56, 189, 248, 0.03); padding: 12px 16px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <div style="font-size: 9px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.6px;">OPTION A &bull; STANDARD IMPLEMENTATION</div>
+            <span class="badge badge-blue">RECOMMENDED &mdash; LOWEST TOTAL COST</span>
+          </div>
+          <div class="card-title" style="font-size: 13.5px; margin-bottom: 6px;">Capital Development + Standard Maintenance</div>
+
+          <div class="grid-2" style="gap: 10px; margin-bottom: 8px;">
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 5px; padding: 7px 11px;">
+              <div class="price-sub">One-Time Development Fee</div>
+              <div class="price-large" style="color: #38bdf8; margin: 2px 0; font-size: 23px;">₹3,00,000</div>
+              <div style="font-size: 8.2px; color: #94a3b8;">Payable in 5 deliverable milestones</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 5px; padding: 7px 11px;">
+              <div class="price-sub">Application Maintenance & Support</div>
+              <div class="price-large" style="color: #ffffff; margin: 2px 0; font-size: 20px;">₹20,000 <span style="font-size: 10px; font-weight: 600; color: #94a3b8;">/ mo</span></div>
+              <div style="font-size: 8.2px; color: #94a3b8;">Commences post go-live acceptance</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 5px; padding: 7px 10px; margin-bottom: 6px;">
+            <div style="font-size: 8.5px; font-weight: 700; color: #38bdf8; margin-bottom: 3px;">Complete Included Deliverables (100% Parity):</div>
+            <ul class="clean-list" style="font-size: 8.5px;">
+              <li style="margin-bottom: 3px;">✓ Full 10-user Internal Operations Workspace (Sales, Traffic, Accounts, Mgmt)</li>
+              <li style="margin-bottom: 3px;">✓ Zero-Install Customer Live Tracking Web Portal & Document Center</li>
+              <li style="margin-bottom: 3px;">✓ Transporter & Driver Mobile Web Portal with Camera POD capture</li>
+              <li style="margin-bottom: 3px;">✓ WhatsApp Business API automated dispatch & notification triggers</li>
+            </ul>
+          </div>
+
+          <div class="card-desc" style="font-size: 8.8px; line-height: 1.4;">
+            <strong>Best Suited For:</strong> Businesses that prefer to complete the implementation investment upfront and continue with a lower, predictable monthly Application Maintenance & Support fee.
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.09); padding-top: 5px; margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 8.5px; color: #94a3b8;">Payment Structure:</span>
+          <strong style="color: #38bdf8; font-size: 9px;">Milestone-Linked Development</strong>
+        </div>
+      </div>
+
+      <!-- OPTION B CARD -->
+      <div class="card" style="border-top: 4px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; background: rgba(52, 211, 153, 0.03); padding: 12px 16px;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <div style="font-size: 9px; font-weight: 800; color: #34d399; text-transform: uppercase; letter-spacing: 0.6px;">OPTION B &bull; LOW UPFRONT PLAN</div>
+            <span class="badge badge-emerald">LOWER INITIAL INVESTMENT</span>
+          </div>
+          <div class="card-title" style="font-size: 13.5px; margin-bottom: 6px;">Reduced Initial Payment + 24-Month Subscription</div>
+
+          <div class="grid-2" style="gap: 10px; margin-bottom: 8px;">
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 5px; padding: 7px 11px;">
+              <div class="price-sub">Initial Development Payment (50%)</div>
+              <div class="price-large" style="color: #34d399; margin: 2px 0; font-size: 23px;">₹1,50,000</div>
+              <div style="font-size: 8.2px; color: #94a3b8;">Reduces initial capital outlay by 50%</div>
+            </div>
+            <div style="background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); border-radius: 5px; padding: 7px 11px;">
+              <div class="price-sub">Platform Subscription & Support</div>
+              <div class="price-large" style="color: #ffffff; margin: 2px 0; font-size: 20px;">₹30,000 <span style="font-size: 10px; font-weight: 600; color: #94a3b8;">/ mo</span></div>
+              <div style="font-size: 8.2px; color: #94a3b8;">24-month fixed commitment</div>
+            </div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07); border-radius: 5px; padding: 7px 10px; margin-bottom: 6px;">
+            <div style="font-size: 8.5px; font-weight: 700; color: #34d399; margin-bottom: 3px;">Complete Included Deliverables (100% Parity):</div>
+            <ul class="clean-list" style="font-size: 8.5px;">
+              <li style="margin-bottom: 3px;">✓ Full 10-user Internal Operations Workspace (Sales, Traffic, Accounts, Mgmt)</li>
+              <li style="margin-bottom: 3px;">✓ Zero-Install Customer Live Tracking Web Portal & Document Center</li>
+              <li style="margin-bottom: 3px;">✓ Transporter & Driver Mobile Web Portal with Camera POD capture</li>
+              <li style="margin-bottom: 3px;">✓ WhatsApp Business API automated dispatch & notification triggers</li>
+            </ul>
+          </div>
+
+          <div class="card-desc" style="font-size: 8.8px; line-height: 1.4;">
+            <strong>Best Suited For:</strong> Businesses that prefer to minimize initial investment and spread implementation recovery across a predictable 24-month subscription.
+          </div>
+        </div>
+
+        <div style="border-top: 1px solid rgba(255,255,255,0.09); padding-top: 5px; margin-top: 5px; display: flex; justify-content: space-between; align-items: center;">
+          <span style="font-size: 8.5px; color: #94a3b8;">Payment Structure:</span>
+          <strong style="color: #34d399; font-size: 9px;">Low Upfront + Monthly Subscription</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- WHAT YOU PAY FOR VISUAL -->
+    <div style="margin-top: 6px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 7px 11px;">
+      <div style="font-size: 8.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.6px;">WHAT YOU PAY FOR &mdash; COMMERCIAL BOUNDARY ARCHITECTURE</div>
+      <div class="grid-4" style="gap: 8px;">
+        <div style="background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 4px; padding: 5px 6px; text-align: center;">
+          <div style="font-size: 8.8px; font-weight: 800; color: #38bdf8;">1. DEVELOPMENT</div>
+          <div style="font-size: 8px; color: #cbd5e1; margin-top: 1.5px;">Build & deliver Phase 1 platform</div>
+        </div>
+        <div style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 4px; padding: 5px 6px; text-align: center;">
+          <div style="font-size: 8.8px; font-weight: 800; color: #34d399;">2. MONTHLY MAINTENANCE</div>
+          <div style="font-size: 8px; color: #cbd5e1; margin-top: 1.5px;">Keep existing platform operational & secure</div>
+        </div>
+        <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 4px; padding: 5px 6px; text-align: center;">
+          <div style="font-size: 8.8px; font-weight: 800; color: #fbbf24;">3. THIRD-PARTY COSTS</div>
+          <div style="font-size: 8px; color: #cbd5e1; margin-top: 1.5px;">External hosting, messaging & APIs at actuals</div>
+        </div>
+        <div style="background: rgba(192, 132, 252, 0.08); border: 1px solid rgba(192, 132, 252, 0.25); border-radius: 4px; padding: 5px 6px; text-align: center;">
+          <div style="font-size: 8.8px; font-weight: 800; color: #c084fc;">4. NEW DEVELOPMENT</div>
+          <div style="font-size: 8px; color: #cbd5e1; margin-top: 1.5px;">Separately estimated & quoted</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 5: OPTION A — STANDARD IMPLEMENTATION                                -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Commercial Deep-Dive • Option A</span>
+    <span>Page 05</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Option A Deep Dive</div>
+      <div class="page-title">Option A — Standard Implementation</div>
+      <div class="page-subtitle">Full upfront development investment with business-aligned milestone verification, followed by standard Application Maintenance & Support.</div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 3px; flex: 1; gap: 14px;">
+      <!-- LEFT: STRUCTURE & MILESTONES -->
+      <div class="card" style="border-top: 3.5px solid #38bdf8; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 14px;">
+        <div>
+          <div class="card-title" style="font-size: 12.5px; margin-bottom: 4px;">Commercial Fee Structure (5 Business Stages)</div>
+          <div class="card-desc" style="margin-bottom: 7px; font-size: 9.5px;">
+            The complete Phase 1 platform is delivered under a fixed development fee of ₹3,00,000 tied strictly to working demonstration milestones across 5 functional business stages.
+          </div>
+
+          <table class="custom-table" style="font-size: 9px; margin-bottom: 7px;">
+            <thead>
+              <tr>
+                <th style="padding: 6px 8px;">Stage</th>
+                <th style="padding: 6px 8px;">Business Functional Scope</th>
+                <th style="padding: 6px 8px;">Share</th>
+                <th style="padding: 6px 8px;">Amount</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 6px 8px;"><strong>Advance</strong></td>
+                <td style="padding: 6px 8px;">Project Initiation, Architecture Setup & Mobilization</td>
+                <td style="padding: 6px 8px;">20%</td>
+                <td style="padding: 6px 8px;"><strong>₹60,000</strong></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px;"><strong>Stage 1 (W1-2)</strong></td>
+                <td style="padding: 6px 8px;">Customer CRM & Sales Workspace (Enquiry/Rate Board/Orders)</td>
+                <td style="padding: 6px 8px;">16%</td>
+                <td style="padding: 6px 8px;"><strong>₹48,000</strong></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px;"><strong>Stage 2 (W3-4)</strong></td>
+                <td style="padding: 6px 8px;">Vendor CRM, Purchase & Placement Workspace (EXP Trips)</td>
+                <td style="padding: 6px 8px;">16%</td>
+                <td style="padding: 6px 8px;"><strong>₹48,000</strong></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px;"><strong>Stage 3 (W5-6)</strong></td>
+                <td style="padding: 6px 8px;">Operations, Traffic & Trip Management (13 Milestones/TCN)</td>
+                <td style="padding: 6px 8px;">16%</td>
+                <td style="padding: 6px 8px;"><strong>₹48,000</strong></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px;"><strong>Stage 4 (W7-8)</strong></td>
+                <td style="padding: 6px 8px;">POD Lifecycle, Accounts & Management Master Sheet/KPIs</td>
+                <td style="padding: 6px 8px;">16%</td>
+                <td style="padding: 6px 8px;"><strong>₹48,000</strong></td>
+              </tr>
+              <tr>
+                <td style="padding: 6px 8px;"><strong>Stage 5 (W9-10)</strong></td>
+                <td style="padding: 6px 8px;">Connected Portals, WhatsApp API, Testing, Training & Go-Live</td>
+                <td style="padding: 6px 8px;">16%</td>
+                <td style="padding: 6px 8px;"><strong>₹48,000</strong></td>
+              </tr>
+              <tr style="background: rgba(56, 189, 248, 0.12); font-weight: 700;">
+                <td colspan="2" style="padding: 6px 8px;">TOTAL DEVELOPMENT FEE (10 WEEKS)</td>
+                <td style="padding: 6px 8px;">100%</td>
+                <td style="color: #38bdf8; font-size: 10.5px; padding: 6px 8px;">₹3,00,000</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div style="font-size: 9.2px; color: #cbd5e1; margin-top: 4px;">
+            <strong>Application Maintenance & Support:</strong> ₹20,000 / month (Commences post go-live and 30-day hypercare period).
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 5px; padding: 6px 9px; font-size: 8.5px; color: #94a3b8; margin-top: 5px;">
+          * All milestone payments released only upon working software demonstration and client sign-off.
+        </div>
+      </div>
+
+      <!-- RIGHT: COMMERCIAL GOVERNANCE & TIMELINE -->
+      <div class="card" style="border-top: 3.5px solid #38bdf8; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 14px;">
+        <div>
+          <div class="card-title" style="font-size: 12.5px; margin-bottom: 4px;">Commercial Structure & Investment Terms</div>
+          <div class="card-desc" style="margin-bottom: 7px; font-size: 9.5px;">
+            Clear milestone-linked governance ensuring development payments are released only against verified delivery:
+          </div>
+
+          <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 9px 12px; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 9.2px;">
+              <span style="color: #cbd5e1;">Project Mobilization & Architecture (20%):</span>
+              <strong style="color: #ffffff;">₹60,000</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 9.2px;">
+              <span style="color: #cbd5e1;">5 Business Milestone Deliverables (16% × 5):</span>
+              <strong style="color: #ffffff;">₹2,40,000</strong>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 4px; display: flex; justify-content: space-between; font-size: 10.5px;">
+              <strong style="color: #38bdf8;">Total Implementation Fee:</strong>
+              <strong style="color: #38bdf8;">₹3,00,000 + taxes</strong>
+            </div>
+            <div style="margin-top: 4px; font-size: 8.8px; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Application Maintenance & Support:</span>
+              <span style="color: #cbd5e1; font-weight: 600;">₹20,000 / month</span>
+            </div>
+          </div>
+
+          <div class="card-title" style="font-size: 11px; margin-bottom: 3px;">10-Week Implementation & Support Lifecycle</div>
+          <div style="display: flex; align-items: center; justify-content: space-between; font-size: 8.5px; background: rgba(255,255,255,0.025); padding: 6px 9px; border-radius: 5px; border: 1px solid rgba(255,255,255,0.08); margin-bottom: 8px;">
+            <div style="text-align: center;">
+              <div style="font-weight: 800; color: #38bdf8;">WEEKS 1-10</div>
+              <div style="color: #94a3b8; font-size: 8px;">5 Stages (2 Wks Each)</div>
+            </div>
+            <div style="color: #64748b;">→</div>
+            <div style="text-align: center;">
+              <div style="font-weight: 800; color: #34d399;">30-DAY HYPERCARE</div>
+              <div style="color: #94a3b8; font-size: 8px;">Go-Live Stabilization</div>
+            </div>
+            <div style="color: #64748b;">→</div>
+            <div style="text-align: center;">
+              <div style="font-weight: 800; color: #c084fc;">MONTH 3+</div>
+              <div style="color: #94a3b8; font-size: 8px;">₹20,000/mo Support</div>
+            </div>
+          </div>
+
+          <div style="font-size: 9.2px; color: #cbd5e1; line-height: 1.42;">
+            <strong>Commercial Benefits:</strong> Complete software asset ownership from Day 1, transparent milestone approvals, standard ongoing support, and zero long-term subscription lock-in.
+          </div>
+        </div>
+
+        <div class="callout-box" style="margin-top: 5px; font-size: 8.8px;">
+          <strong>Strategic Value:</strong> Option A represents the traditional software implementation model with full upfront asset capitalization and ongoing maintenance flexibility.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 6: OPTION B — LOW UPFRONT INVESTMENT PLAN                            -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Commercial Deep-Dive • Option B</span>
+    <span>Page 06</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Option B Deep Dive</div>
+      <div class="page-title">Option B — Low Upfront Investment Plan</div>
+      <div class="page-subtitle">50% initial development payment with remaining implementation recovery structured into a 24-month subscription.</div>
+    </div>
+
+    <div class="grid-2" style="margin-top: 3px; flex: 1; gap: 14px;">
+      <!-- LEFT: STRUCTURE & MECHANICS -->
+      <div class="card" style="border-top: 3.5px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 14px;">
+        <div>
+          <div class="card-title" style="font-size: 12.5px; margin-bottom: 4px;">Commercial Fee Structure</div>
+          <div class="card-desc" style="margin-bottom: 8px; font-size: 9.5px;">
+            SweafEx pays an initial development fee of ₹1,50,000 (50% of standard development cost) at project initiation. The remaining implementation investment is incorporated into a 24-month Platform Subscription & Support commitment.
+          </div>
+
+          <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 9px 12px; margin-bottom: 8px;">
+            <div style="font-size: 8.8px; font-weight: 800; color: #34d399; text-transform: uppercase;">1. INITIAL DEVELOPMENT PAYMENT</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 800; color: #ffffff; margin: 2px 0;">₹1,50,000</div>
+            <div style="font-size: 8.5px; color: #94a3b8;">Paid at project kickoff to initiate full development squad & 10-week deployment</div>
+          </div>
+
+          <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 9px 12px; margin-bottom: 8px;">
+            <div style="font-size: 8.8px; font-weight: 800; color: #34d399; text-transform: uppercase;">2. MONTHLY PLATFORM SUBSCRIPTION & SUPPORT</div>
+            <div style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 19px; font-weight: 800; color: #ffffff; margin: 2px 0;">₹30,000 <span style="font-size: 10px; font-weight: 600; color: #94a3b8;">/ month</span></div>
+            <div style="font-size: 8.5px; color: #94a3b8;">24-month commitment commencing upon platform go-live</div>
+          </div>
+
+          <div class="card-desc" style="font-size: 9px; line-height: 1.42; margin-top: 4px;">
+            <strong>Scope Clarification:</strong> The monthly Platform Subscription & Support fee combines the deferred implementation investment with ongoing maintenance and technical support for the Phase 1 platform.
+          </div>
+        </div>
+
+        <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.08); border-radius: 5px; padding: 6px 9px; font-size: 8.5px; color: #94a3b8; margin-top: 5px;">
+          * Delivers 100% complete Phase 1 functionality with zero scope compromises across the 10-week roadmap.
+        </div>
+      </div>
+
+      <!-- RIGHT: CASH FLOW ADVANTAGES & PERSPECTIVE -->
+      <div class="card" style="border-top: 3.5px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; padding: 12px 14px;">
+        <div>
+          <div class="card-title" style="font-size: 12.5px; margin-bottom: 4px;">Commercial Model & Financial Advantages</div>
+          <div class="card-desc" style="margin-bottom: 7px; font-size: 9.5px;">
+            Structured to optimize upfront working capital while providing full ongoing platform support:
+          </div>
+
+          <div style="background: rgba(255,255,255,0.035); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 9px 12px; margin-bottom: 8px;">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 9.2px;">
+              <span style="color: #cbd5e1;">Initial Capital Outlay (50% Off Development):</span>
+              <strong style="color: #ffffff;">₹1,50,000</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px; font-size: 9.2px;">
+              <span style="color: #cbd5e1;">Platform Subscription & Support:</span>
+              <strong style="color: #34d399;">₹30,000 / month</strong>
+            </div>
+            <div style="border-top: 1px solid rgba(255,255,255,0.12); padding-top: 4px; display: flex; justify-content: space-between; font-size: 9.5px;">
+              <span style="color: #cbd5e1;">Commitment Term:</span>
+              <strong style="color: #ffffff;">24 Months</strong>
+            </div>
+            <div style="margin-top: 4px; font-size: 8.8px; color: #94a3b8; display: flex; justify-content: space-between;">
+              <span>Post-24 Month Ongoing Support:</span>
+              <span style="color: #34d399; font-weight: 600;">₹20,000 / month (Standard)</span>
+            </div>
+          </div>
+
+          <div class="card-title" style="font-size: 11px; margin-bottom: 3px;">Key Commercial Benefits</div>
+          <ul class="clean-list" style="font-size: 9px;">
+            <li style="margin-bottom: 4px;"><strong>Immediate Capital Relief:</strong> Saves ₹1,50,000 in initial project deployment cash.</li>
+            <li style="margin-bottom: 4px;"><strong>Predictable OpEx:</strong> Converts development capital into a steady, budgetable operational expense.</li>
+            <li style="margin-bottom: 4px;"><strong>Dedicated Platform Maintenance:</strong> Bundles deferred implementation recovery with dedicated platform maintenance.</li>
+            <li style="margin-bottom: 4px;"><strong>Post-Month 24 Transition:</strong> After completion of the 24-month commitment, the platform transitions to the standard Application Maintenance & Support rate of ₹20,000/month, subject to the maintenance terms applicable at that time.</li>
+          </ul>
+        </div>
+
+        <div class="callout-box" style="margin-top: 5px; font-size: 8.8px;">
+          <strong>Strategic Value:</strong> Option B is ideal for cash-flow preservation while immediately equipping SweafEx with the complete operational platform.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 7: SIDE-BY-SIDE COMPARISON & DECISION GUIDE                          -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Decision Matrix • Side-by-Side Comparison</span>
+    <span>Page 07</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Commercial Comparison</div>
+      <div class="page-title">Which Option Is Right for SweafEx?</div>
+      <div class="page-subtitle">A clear, transparent comparison to assist SweafEx leadership in selecting the ideal commercial structure.</div>
+    </div>
+
+    <div class="card" style="margin-top: 3px; margin-bottom: 6px; padding: 6px 10px;">
+      <table class="custom-table" style="font-size: 9.2px;">
+        <thead>
+          <tr>
+            <th style="width: 32%; padding: 5.5px 8px;">Commercial & Technical Attribute</th>
+            <th style="width: 34%; color: #38bdf8; padding: 5.5px 8px;">Option A &mdash; Standard Plan</th>
+            <th style="width: 34%; color: #34d399; padding: 5.5px 8px;">Option B &mdash; Low Upfront Plan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Initial Upfront Investment</strong></td>
+            <td style="padding: 5px 8px;"><strong style="color: #38bdf8;">₹3,00,000</strong> (Milestone-based across 5 stages)</td>
+            <td style="padding: 5px 8px;"><strong style="color: #34d399;">₹1,50,000</strong> (50% upfront reduction)</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Monthly Commitment Post-Launch</strong></td>
+            <td style="padding: 5px 8px;"><strong>₹20,000</strong> / month (Application Maintenance & Support)</td>
+            <td style="padding: 5px 8px;"><strong>₹30,000</strong> / month (Platform Subscription & Support)</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Contractual Commitment Period</strong></td>
+            <td style="padding: 5px 8px;">Standard ongoing maintenance</td>
+            <td style="padding: 5px 8px;"><strong>24-Month Subscription Commitment</strong></td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Post-24 Month Commitment Term</strong></td>
+            <td style="padding: 5px 8px;">Standard ongoing maintenance (₹20k/mo)</td>
+            <td style="padding: 5px 8px;">Transitions to standard maintenance (₹20k/mo)</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Phase 1 Functional Scope & Deliverables</strong></td>
+            <td style="padding: 5px 8px;"><span class="badge badge-blue" style="font-size: 8px; padding: 2px 6px;">Complete Phase 1 (100%)</span></td>
+            <td style="padding: 5px 8px;"><span class="badge badge-emerald" style="font-size: 8px; padding: 2px 6px;">Complete Phase 1 (100% Identical)</span></td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Implementation Roadmap & Timeline</strong></td>
+            <td style="padding: 5px 8px;">10 Weeks (5 Stages × 2 Weeks)</td>
+            <td style="padding: 5px 8px;">10 Weeks (5 Stages × 2 Weeks)</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Internal Operations Backbone (Sales, Ops, Accounts)</strong></td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Zero-Install Customer Web Tracking Portal</strong></td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Vendor & Driver Mobile Web Portal (Camera POD)</strong></td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>WhatsApp Business API Operational Integration</strong></td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+            <td style="color: #34d399; padding: 5px 8px;">Included</td>
+          </tr>
+          <tr>
+            <td style="padding: 5px 8px;"><strong>Third-Party Costs (WhatsApp msgs, hosting, APIs)</strong></td>
+            <td style="color: #94a3b8; padding: 5px 8px;">Separate at Actuals</td>
+            <td style="color: #94a3b8; padding: 5px 8px;">Separate at Actuals</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- DECISION GUIDANCE CARDS -->
+    <div class="grid-2" style="gap: 12px; flex: 1;">
+      <div class="card" style="border-top: 3.5px solid #38bdf8; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 14px;">
+        <div>
+          <div style="font-size: 10.5px; font-weight: 800; color: #38bdf8; margin-bottom: 4px;">CHOOSE OPTION A IF:</div>
+          <ul class="clean-list" style="font-size: 9px;">
+            <li style="margin-bottom: 4px;">You prefer completing software development investment upfront across the 10-week rollout.</li>
+            <li style="margin-bottom: 4px;">You have available capital budget for the upfront implementation.</li>
+            <li style="margin-bottom: 4px;">You want standard monthly support without a 24-month fixed contract commitment.</li>
+            <li style="margin-bottom: 4px;">You want complete asset capitalization from Day 1.</li>
+          </ul>
+        </div>
+        <div style="font-size: 8.5px; color: #38bdf8; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;">
+          Financial Profile: Upfront Capital • Lowest Cumulative Outlay • Monthly Support Flexibility
+        </div>
+      </div>
+
+      <div class="card" style="border-top: 3.5px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; padding: 10px 14px;">
+        <div>
+          <div style="font-size: 10.5px; font-weight: 800; color: #34d399; margin-bottom: 4px;">CHOOSE OPTION B IF:</div>
+          <ul class="clean-list" style="font-size: 9px;">
+            <li style="margin-bottom: 4px;">You prefer to minimize upfront cash outflow and conserve operational working capital.</li>
+            <li style="margin-bottom: 4px;">You prefer converting software implementation into predictable monthly operating expenses.</li>
+            <li style="margin-bottom: 4px;">You are comfortable with a 2-year partnership commitment for ongoing platform stability.</li>
+            <li style="margin-bottom: 4px;">You want deferred implementation recovery bundled directly into monthly platform support.</li>
+          </ul>
+        </div>
+        <div style="font-size: 8.5px; color: #34d399; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 4px;">
+          Financial Profile: Low Upfront Capital • Predictable Monthly OpEx • 24-Month Partnership
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 8: 10-WEEK IMPLEMENTATION ROADMAP                                      -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Implementation Roadmap • 10-Week Delivery</span>
+    <span>Page 08</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">10-Week Implementation Roadmap</div>
+      <div class="page-title">10-Week Implementation Roadmap &mdash; 5 Business-Aligned Stages</div>
+      <div class="page-subtitle">Divided according to <strong>business functions and departmental workflows</strong> rather than technical components &mdash; each stage executed over approximately 2 weeks.</div>
+    </div>
+
+    <!-- 5 BUSINESS STAGES HORIZONTAL GRID -->
+    <div class="grid-5" style="margin-top: 3px; margin-bottom: 4px; flex: 1;">
+      
+      <!-- STAGE 1 -->
+      <div class="card" style="border-top: 3.5px solid #38bdf8; padding: 10px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <span class="badge badge-blue" style="font-size: 7.5px; padding: 2px 5px;">STAGE 01</span>
+            <span style="font-size: 8.5px; font-weight: 800; color: #38bdf8;">WEEKS 1–2</span>
+          </div>
+          <div class="card-title" style="font-size: 10.5px; line-height: 1.25; margin-bottom: 4px; color: #ffffff;">Customer CRM & Sales</div>
+          <div style="background: rgba(56, 189, 248, 0.08); border-left: 2.5px solid #38bdf8; padding: 5px 6px; font-size: 8.2px; color: #cbd5e1; margin-bottom: 7px; line-height: 1.36;">
+            "Build the complete customer and sales workspace, giving the Sales team one place to manage customers, enquiries, rates, follow-ups and orders."
+          </div>
+          <ul class="clean-list" style="font-size: 8.4px;">
+            <li style="margin-bottom: 4.5px;">Customer Master & Contacts</li>
+            <li style="margin-bottom: 4.5px;">Customer Rate Contracts</li>
+            <li style="margin-bottom: 4.5px;">Enquiry Intake & Follow-ups</li>
+            <li style="margin-bottom: 4.5px;">Quote / Rate Board</li>
+            <li style="margin-bottom: 4.5px;">Margin Protection Preview</li>
+            <li style="margin-bottom: 4.5px;">Enquiry → Order Workflow</li>
+            <li style="margin-bottom: 4.5px;">Customer Document Vault</li>
+            <li style="margin-bottom: 4.5px;">Sales Workspace & Dashboard</li>
+          </ul>
+        </div>
+        <div style="background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 4px; padding: 5px 6px; font-size: 8.2px; color: #38bdf8; font-weight: 700; text-align: center; margin-top: 5px;">
+          Milestone 1 • 16% (₹48,000)
+        </div>
+      </div>
+
+      <!-- STAGE 2 -->
+      <div class="card" style="border-top: 3.5px solid #34d399; padding: 10px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <span class="badge badge-emerald" style="font-size: 7.5px; padding: 2px 5px;">STAGE 02</span>
+            <span style="font-size: 8.5px; font-weight: 800; color: #34d399;">WEEKS 3–4</span>
+          </div>
+          <div class="card-title" style="font-size: 10.5px; line-height: 1.25; margin-bottom: 4px; color: #ffffff;">Vendor CRM & Placement</div>
+          <div style="background: rgba(52, 211, 153, 0.08); border-left: 2.5px solid #34d399; padding: 5px 6px; font-size: 8.2px; color: #cbd5e1; margin-bottom: 7px; line-height: 1.36;">
+            "Build the vendor and placement workspace, allowing Purchase to manage transporters, vehicles and drivers while converting orders into trip placements."
+          </div>
+          <ul class="clean-list" style="font-size: 8.4px;">
+            <li style="margin-bottom: 4.5px;">Transporter / Vendor Master</li>
+            <li style="margin-bottom: 4.5px;">Vehicle & Driver Masters</li>
+            <li style="margin-bottom: 4.5px;">Vehicle RC / Driver DL Vaults</li>
+            <li style="margin-bottom: 4.5px;">Document Expiry Tracking</li>
+            <li style="margin-bottom: 4.5px;">Historical Vendor Rates</li>
+            <li style="margin-bottom: 4.5px;">Placement Workspace</li>
+            <li style="margin-bottom: 4.5px;">Vendor Matching & Selection</li>
+            <li style="margin-bottom: 4.5px;">1-Click EXP Trip Generation</li>
+          </ul>
+        </div>
+        <div style="background: rgba(52, 211, 153, 0.12); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 4px; padding: 5px 6px; font-size: 8.2px; color: #34d399; font-weight: 700; text-align: center; margin-top: 5px;">
+          Milestone 2 • 16% (₹48,000)
+        </div>
+      </div>
+
+      <!-- STAGE 3 -->
+      <div class="card" style="border-top: 3.5px solid #fbbf24; padding: 10px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <span class="badge badge-amber" style="font-size: 7.5px; padding: 2px 5px;">STAGE 03</span>
+            <span style="font-size: 8.5px; font-weight: 800; color: #fbbf24;">WEEKS 5–6</span>
+          </div>
+          <div class="card-title" style="font-size: 10.5px; line-height: 1.25; margin-bottom: 4px; color: #ffffff;">Operations & Traffic</div>
+          <div style="background: rgba(251, 191, 36, 0.08); border-left: 2.5px solid #fbbf24; padding: 5px 6px; font-size: 8.2px; color: #cbd5e1; margin-bottom: 7px; line-height: 1.36;">
+            "Build the central operations workspace where Traffic can monitor every active trip, update milestones, manage exceptions and maintain records."
+          </div>
+          <ul class="clean-list" style="font-size: 8.4px;">
+            <li style="margin-bottom: 4.5px;">Active Trip Workspace</li>
+            <li style="margin-bottom: 4.5px;">Live Traffic Board</li>
+            <li style="margin-bottom: 4.5px;">13 Operational Milestones</li>
+            <li style="margin-bottom: 4.5px;">Loading / Unloading Dock Info</li>
+            <li style="margin-bottom: 4.5px;">Exception & Delay Tracking</li>
+            <li style="margin-bottom: 4.5px;">Driver Assignment Visibility</li>
+            <li style="margin-bottom: 4.5px;">Pre-Filled TCN Workflow</li>
+            <li style="margin-bottom: 4.5px;">Operational Master Sheet</li>
+          </ul>
+        </div>
+        <div style="background: rgba(251, 191, 36, 0.12); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 4px; padding: 5px 6px; font-size: 8.2px; color: #fbbf24; font-weight: 700; text-align: center; margin-top: 5px;">
+          Milestone 3 • 16% (₹48,000)
+        </div>
+      </div>
+
+      <!-- STAGE 4 -->
+      <div class="card" style="border-top: 3.5px solid #c084fc; padding: 10px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <span class="badge badge-purple" style="font-size: 7.5px; padding: 2px 5px;">STAGE 04</span>
+            <span style="font-size: 8.5px; font-weight: 800; color: #c084fc;">WEEKS 7–8</span>
+          </div>
+          <div class="card-title" style="font-size: 10.5px; line-height: 1.25; margin-bottom: 4px; color: #ffffff;">POD, Accounts & Mgmt</div>
+          <div style="background: rgba(192, 132, 252, 0.08); border-left: 2.5px solid #c084fc; padding: 5px 6px; font-size: 8.2px; color: #cbd5e1; margin-bottom: 7px; line-height: 1.36;">
+            "Build the financial-control layer, giving Accounts and Management visibility over POD completion, trip costs, margins and operational KPIs."
+          </div>
+          <ul class="clean-list" style="font-size: 8.4px;">
+            <li style="margin-bottom: 4.5px;">5-Stage POD Lifecycle Hub</li>
+            <li style="margin-bottom: 4.5px;">POD Collection & Verification</li>
+            <li style="margin-bottom: 4.5px;">Pending POD Action Queue</li>
+            <li style="margin-bottom: 4.5px;">Commercial Review & Cost Log</li>
+            <li style="margin-bottom: 4.5px;">Margin Health Tracking</li>
+            <li style="margin-bottom: 4.5px;">Universal Multi-Filter Sheet</li>
+            <li style="margin-bottom: 4.5px;">Management KPI Dashboards</li>
+            <li style="margin-bottom: 4.5px;">Historical Data Migration</li>
+          </ul>
+        </div>
+        <div style="background: rgba(192, 132, 252, 0.12); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: 4px; padding: 5px 6px; font-size: 8.2px; color: #c084fc; font-weight: 700; text-align: center; margin-top: 5px;">
+          Milestone 4 • 16% (₹48,000)
+        </div>
+      </div>
+
+      <!-- STAGE 5 -->
+      <div class="card" style="border-top: 3.5px solid #f87171; padding: 10px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px;">
+            <span class="badge badge-red" style="font-size: 7.5px; padding: 2px 5px;">STAGE 05</span>
+            <span style="font-size: 8.5px; font-weight: 800; color: #f87171;">WEEKS 9–10</span>
+          </div>
+          <div class="card-title" style="font-size: 10.5px; line-height: 1.25; margin-bottom: 4px; color: #ffffff;">Portals, Automation & Go-Live</div>
+          <div style="background: rgba(248, 113, 113, 0.08); border-left: 2.5px solid #f87171; padding: 5px 6px; font-size: 8.2px; color: #cbd5e1; margin-bottom: 7px; line-height: 1.36;">
+            "Connect the platform with customers, vendors and drivers, activate WhatsApp workflows, complete end-to-end testing and launch to production."
+          </div>
+          <ul class="clean-list" style="font-size: 8.4px;">
+            <li style="margin-bottom: 4.5px;">Customer Web Tracking Portal</li>
+            <li style="margin-bottom: 4.5px;">Driver/Vendor Mobile Portal</li>
+            <li style="margin-bottom: 4.5px;">WhatsApp Business API Triggers</li>
+            <li style="margin-bottom: 4.5px;">RC/DL Verification API Hooks</li>
+            <li style="margin-bottom: 4.5px;">End-to-End System Testing</li>
+            <li style="margin-bottom: 4.5px;">Comprehensive Staff UAT</li>
+            <li style="margin-bottom: 4.5px;">Staff Training & Onboarding</li>
+            <li style="margin-bottom: 4.5px;">Production Go-Live & Launch</li>
+          </ul>
+        </div>
+        <div style="background: rgba(248, 113, 113, 0.12); border: 1px solid rgba(248, 113, 113, 0.3); border-radius: 4px; padding: 5px 6px; font-size: 8.2px; color: #f87171; font-weight: 700; text-align: center; margin-top: 5px;">
+          Milestone 5 • 16% (₹48,000)
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LIFECYCLE PROGRESSION BAR -->
+    <div style="background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.09); border-radius: 6px; padding: 6px 10px; margin-bottom: 3px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; font-size: 8.5px;">
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="badge badge-blue">WEEKS 1–10</span>
+          <strong style="color: #ffffff;">5 Business Stages Implementation</strong>
+        </div>
+        <span style="color: #64748b;">→</span>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="badge badge-emerald">GO-LIVE</span>
+          <strong style="color: #34d399;">Production Rollout</strong>
+        </div>
+        <span style="color: #64748b;">→</span>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="badge badge-amber">30-DAY HYPERCARE</span>
+          <strong style="color: #fbbf24;">Intensive Stabilization</strong>
+        </div>
+        <span style="color: #64748b;">→</span>
+        <div style="display: flex; align-items: center; gap: 5px;">
+          <span class="badge badge-purple">MONTHLY SUPPORT</span>
+          <strong style="color: #c084fc;">Option A: ₹20k/mo | Option B: ₹30k/mo</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE ASSUMPTIONS CAVEAT -->
+    <div class="callout-box" style="margin-top: 2px; font-size: 8px; line-height: 1.36;">
+      <strong>Timeline Notes:</strong> Estimated implementation timeline is 10 weeks across 5 business stages planned over approximately 2 weeks each. Timeline assumes timely access to required business data, approvals, third-party credentials/API access, and client-side UAT participation. Delays in external dependencies or approvals may affect the schedule.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 9: MAINTENANCE, SUPPORT & SERVICE COVERAGE                           -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Service Coverage • Application Maintenance</span>
+    <span>Page 09</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Service Coverage</div>
+      <div class="page-title">Maintenance, Support & Service Coverage</div>
+      <div class="page-subtitle">Keeping the SweafEx platform operational, secure and reliable after go-live.</div>
+    </div>
+
+    <!-- INTRO STATEMENT BANNER -->
+    <div style="background: rgba(56, 189, 248, 0.06); border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 5px; padding: 5px 9px; margin-bottom: 5px; font-size: 8.8px; color: #cbd5e1; line-height: 1.4;">
+      <strong style="color: #38bdf8;">Scope Principle:</strong> The monthly maintenance fee covers the ongoing upkeep and support of the Phase 1 platform delivered as part of this project. It is intended to keep the existing functionality reliable and operational after launch.
+    </div>
+
+    <!-- 4 CORE CATEGORIES GRID -->
+    <div class="grid-4" style="gap: 8px; margin-bottom: 5px;">
+      <!-- CAT 1: APPLICATION MAINTENANCE -->
+      <div class="card" style="border-top: 3px solid #38bdf8; padding: 8px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 8.5px; font-weight: 800; color: #38bdf8; text-transform: uppercase;">1. APPLICATION MAINTENANCE</div>
+          <ul class="clean-list" style="font-size: 8px; margin-top: 3px;">
+            <li>Bug identification & resolution</li>
+            <li>Fixing errors in existing functionality</li>
+            <li>Resolving workflow disruptions</li>
+            <li>Application availability monitoring</li>
+            <li>Database/application health checks</li>
+            <li>Maintenance updates deployment</li>
+            <li>Browser compatibility maintenance</li>
+            <li>Minor UI/UX text corrections</li>
+            <li>Security patches & dependency updates</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 3.5px 5px; font-size: 7.5px; color: #94a3b8; margin-top: 4px;">
+          <em>Example: Fixing a trip status display error is maintenance; adding a new trip module is new development.</em>
+        </div>
+      </div>
+
+      <!-- CAT 2: TECHNICAL SUPPORT -->
+      <div class="card" style="border-top: 3px solid #34d399; padding: 8px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 8.5px; font-weight: 800; color: #34d399; text-transform: uppercase;">2. TECHNICAL SUPPORT</div>
+          <ul class="clean-list" style="font-size: 8px; margin-top: 3px;">
+            <li>Investigation of reported software issues</li>
+            <li>Assistance with existing functionality</li>
+            <li>User / staff account access issues</li>
+            <li>Troubleshooting application errors</li>
+            <li>Existing system configuration help</li>
+            <li>Deployment-related support</li>
+            <li>Guidance on using existing features</li>
+            <li>Failure investigation for Phase 1 flows</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 3.5px 5px; font-size: 7.5px; color: #94a3b8; margin-top: 4px;">
+          <em>Support is intended for issues relating to the existing platform and agreed Phase 1 functionality.</em>
+        </div>
+      </div>
+
+      <!-- CAT 3: DATABASE & BACKUPS -->
+      <div class="card" style="border-top: 3px solid #fbbf24; padding: 8px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 8.5px; font-weight: 800; color: #fbbf24; text-transform: uppercase;">3. DATABASE & HEALTH</div>
+          <ul class="clean-list" style="font-size: 8px; margin-top: 3px;">
+            <li>Database health monitoring</li>
+            <li>Routine database index maintenance</li>
+            <li>Automated backup monitoring</li>
+            <li>Verification of backup processes</li>
+            <li>Storage utilization management</li>
+            <li>Database error investigation</li>
+            <li>Recovery assistance where feasible</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 3.5px 5px; font-size: 7.5px; color: #94a3b8; margin-top: 4px;">
+          <em>Covers routine platform upkeep and standard automated backup monitoring.</em>
+        </div>
+      </div>
+
+      <!-- CAT 4: SECURITY & UPDATES -->
+      <div class="card" style="border-top: 3px solid #c084fc; padding: 8px 9px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div style="font-size: 8.5px; font-weight: 800; color: #c084fc; text-transform: uppercase;">4. SECURITY & UPDATES</div>
+          <ul class="clean-list" style="font-size: 8px; margin-top: 3px;">
+            <li>Application security patches</li>
+            <li>Core dependency/library updates</li>
+            <li>Known vulnerability remediation</li>
+            <li>Authentication & access maintenance</li>
+            <li>SSL/security configuration upkeep</li>
+            <li>Application-level protection</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 4px; padding: 3.5px 5px; font-size: 7.5px; color: #94a3b8; margin-top: 4px;">
+          <em>Major architectural changes or cloud migrations require separate estimation.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- INTEGRATION SUPPORT & SUPPORT PRIORITY SECTION -->
+    <div class="grid-2" style="gap: 12px; flex: 1;">
+      <!-- WHATSAPP & PORTAL SUPPORT -->
+      <div class="card" style="border-top: 2.5px solid #38bdf8; padding: 8px 11px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-title" style="font-size: 10px; margin-bottom: 3px;">WhatsApp & Portal Integration Support</div>
+          <div style="font-size: 8.5px; color: #cbd5e1; line-height: 1.38; margin-bottom: 4px;">
+            <strong>WhatsApp Workflows:</strong> Maintenance covers agreed Phase 1 triggers (Trip assignment dispatch, Customer alerts, Portal access links, TCN dispatch, POD reminders, Approved templates). If an agreed workflow fails due to a software issue, resolution is covered. Additional flows or bots are new development.
+          </div>
+          <div style="font-size: 8.5px; color: #cbd5e1; line-height: 1.38;">
+            <strong>Customer & Vendor Portals:</strong> Maintenance covers existing Customer Web Portal and Driver Mobile Web (bug fixes, token access, document upload/download, milestone updates, mobile browser compatibility). New portal modules are new development.
+          </div>
+        </div>
+        <div style="font-size: 7.8px; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 3px;">
+          Note: WhatsApp messaging charges and cloud hosting are external third-party passthroughs.
+        </div>
+      </div>
+
+      <!-- SUPPORT PRIORITY GUIDANCE -->
+      <div class="card" style="border-top: 2.5px solid #34d399; padding: 8px 11px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div>
+          <div class="card-title" style="font-size: 10px; margin-bottom: 3px;">Support Priority Guidance (Business Support Hours)</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 5px; margin-top: 3px;">
+            <div style="background: rgba(248, 113, 113, 0.09); border: 1px solid rgba(248, 113, 113, 0.3); border-radius: 4px; padding: 4px 6px;">
+              <div style="font-size: 8px; font-weight: 800; color: #f87171;">CRITICAL PRIORITY</div>
+              <div style="font-size: 7.5px; color: #cbd5e1; line-height: 1.3;">System-wide outage or issue halting core operations &rarr; Immediate investigation.</div>
+            </div>
+            <div style="background: rgba(251, 191, 36, 0.09); border: 1px solid rgba(251, 191, 36, 0.3); border-radius: 4px; padding: 4px 6px;">
+              <div style="font-size: 8px; font-weight: 800; color: #fbbf24;">HIGH PRIORITY</div>
+              <div style="font-size: 7.5px; color: #cbd5e1; line-height: 1.3;">Major operational workflow impairment &rarr; High-priority investigation & resolution.</div>
+            </div>
+            <div style="background: rgba(56, 189, 248, 0.09); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 4px; padding: 4px 6px;">
+              <div style="font-size: 8px; font-weight: 800; color: #38bdf8;">NORMAL PRIORITY</div>
+              <div style="font-size: 7.5px; color: #cbd5e1; line-height: 1.3;">Individual bugs, UI issues or non-critical defects &rarr; Scheduled maintenance queue.</div>
+            </div>
+            <div style="background: rgba(192, 132, 252, 0.09); border: 1px solid rgba(192, 132, 252, 0.3); border-radius: 4px; padding: 4px 6px;">
+              <div style="font-size: 8px; font-weight: 800; color: #c084fc;">ENHANCEMENT</div>
+              <div style="font-size: 7.5px; color: #cbd5e1; line-height: 1.3;">Requests for new functionality &rarr; Treated as new development and separately quoted.</div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size: 7.8px; color: #94a3b8; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 3px;">
+          Support is provided during agreed standard business operating hours.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 10: NOT INCLUDED IN MAINTENANCE & SCOPE BOUNDARIES                   -->
+<!-- ========================================================================= -->
+<div class="page">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>Commercial Boundaries • Scope Protection</span>
+    <span>Page 10</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">Commercial Boundaries</div>
+      <div class="page-title">Not Included in Standard Maintenance</div>
+      <div class="page-subtitle">Clear definition of what constitutes new development versus standard operational maintenance.</div>
+    </div>
+
+    <!-- PROMINENT COMMERCIAL BOUNDARY BANNER -->
+    <div style="background: rgba(248, 113, 113, 0.07); border: 1.5px solid rgba(248, 113, 113, 0.35); border-radius: 6px; padding: 8px 12px; margin-bottom: 6px;">
+      <div style="font-size: 11px; font-weight: 800; color: #f87171; margin-bottom: 2px;">
+        "Maintenance keeps the agreed Phase 1 platform working. It does not represent unlimited future development."
+      </div>
+      <div style="font-size: 9px; color: #cbd5e1; line-height: 1.38;">
+        New functionality, major workflow changes, and new integrations will always be discussed, scoped, and approved separately before additional development begins.
+      </div>
+    </div>
+
+    <!-- 3 COLUMNS OF EXCLUDED SCOPE -->
+    <div class="grid-3" style="gap: 12px; flex: 1;">
+      <!-- COL 1: NEW FEATURES -->
+      <div class="card" style="border-top: 3.5px solid #f87171; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 13px;">
+        <div>
+          <div style="font-size: 9.8px; font-weight: 800; color: #f87171; text-transform: uppercase; margin-bottom: 4px;">1. NEW FEATURES & MODULES</div>
+          <div class="card-desc" style="font-size: 9px; margin-bottom: 6px;">Features and capabilities outside the agreed Phase 1 deliverable:</div>
+          <ul class="clean-list" style="font-size: 8.8px;">
+            <li style="margin-bottom: 4px;">New standalone modules & departmental workspaces</li>
+            <li style="margin-bottom: 4px;">New custom analytics dashboards & financial widgets</li>
+            <li style="margin-bottom: 4px;">New custom operational or financial report exports</li>
+            <li style="margin-bottom: 4px;">New automated workflows & multi-rule business logic</li>
+            <li style="margin-bottom: 4px;">New multi-level approval hierarchies & audit chains</li>
+            <li style="margin-bottom: 4px;">New user role profiles & granular permission sets</li>
+            <li style="margin-bottom: 4px;">New external portal capabilities or standalone portals</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 4px 7px; font-size: 8.2px; color: #94a3b8; margin-top: 5px;">
+          <em>Treated as standalone feature additions and quoted separately upon request.</em>
+        </div>
+      </div>
+
+      <!-- COL 2: NEW INTEGRATIONS -->
+      <div class="card" style="border-top: 3.5px solid #f87171; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 13px;">
+        <div>
+          <div style="font-size: 9.8px; font-weight: 800; color: #f87171; text-transform: uppercase; margin-bottom: 4px;">2. NEW INTEGRATIONS</div>
+          <div class="card-desc" style="font-size: 9px; margin-bottom: 6px;">Third-party software systems outside Phase 1 scope:</div>
+          <ul class="clean-list" style="font-size: 8.8px;">
+            <li style="margin-bottom: 4px;">Zoho Books direct two-way API synchronization</li>
+            <li style="margin-bottom: 4px;">New external accounting, tally or ERP connectors</li>
+            <li style="margin-bottom: 4px;">New external third-party freight software APIs</li>
+            <li style="margin-bottom: 4px;">New WhatsApp workflows outside agreed Phase 1 scope</li>
+            <li style="margin-bottom: 4px;">Conversational AI / interactive chatbot customer journeys</li>
+            <li style="margin-bottom: 4px;">Online payment gateway & payout integrations</li>
+            <li style="margin-bottom: 4px;">SMS, email marketing, or alternate notification gateways</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 4px 7px; font-size: 8.2px; color: #94a3b8; margin-top: 5px;">
+          <em>Evaluated as Phase 2 enhancement projects based on operational demand.</em>
+        </div>
+      </div>
+
+      <!-- COL 3: MAJOR CHANGES -->
+      <div class="card" style="border-top: 3.5px solid #f87171; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 13px;">
+        <div>
+          <div style="font-size: 9.8px; font-weight: 800; color: #f87171; text-transform: uppercase; margin-bottom: 4px;">3. MAJOR CHANGES & TECH</div>
+          <div class="card-desc" style="font-size: 9px; margin-bottom: 6px;">High-complexity structural architectural modifications:</div>
+          <ul class="clean-list" style="font-size: 8.8px;">
+            <li style="margin-bottom: 4px;">Major UI/UX redesigns or structural screen restyling</li>
+            <li style="margin-bottom: 4px;">Rebuilding existing core database schemas or models</li>
+            <li style="margin-bottom: 4px;">Major alterations to agreed business workflows</li>
+            <li style="margin-bottom: 4px;">Native Android & iOS App Store applications</li>
+            <li style="margin-bottom: 4px;">Real-time IoT hardware GPS telematics tracking</li>
+            <li style="margin-bottom: 4px;">AI algorithmic matching or machine learning models</li>
+            <li style="margin-bottom: 4px;">Major cloud infrastructure migrations or rebuilds</li>
+          </ul>
+        </div>
+        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 4px; padding: 4px 7px; font-size: 8.2px; color: #94a3b8; margin-top: 5px;">
+          <em>Requires detailed technical re-architecture and standalone estimation.</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- BOTTOM SUMMARY CALLOUT -->
+    <div class="callout-box" style="margin-top: 5px; font-size: 8.8px;">
+      <strong>Mutual Protection Principle:</strong> Requests that introduce new functionality or materially change the existing system will be reviewed, estimated and quoted separately before development begins. This protects SweafEx from unpredictable ongoing costs while preserving clear engineering standards.
+    </div>
+  </div>
+
+  <div class="page-footer">
+    <span>SweafEx Digital Operations Platform • Pricing & Commercial Proposal</span>
+    <span>Octagram AI & Software Solutions</span>
+  </div>
+</div>
+
+<!-- ========================================================================= -->
+<!-- PAGE 11: THIRD-PARTY SERVICES, COMMERCIAL TERMS & NEXT STEPS              -->
+<!-- ========================================================================= -->
+<div class="page" style="justify-content: space-between;">
+  <div class="page-header">
+    <span class="brand-tag">Octagram</span>
+    <span>External Costs & Mobilization • Governance</span>
+    <span>Page 11</span>
+  </div>
+
+  <div class="page-content">
+    <div>
+      <div class="section-tag">External Costs & Mobilization</div>
+      <div class="page-title">Third-Party Services, Commercial Terms & Next Steps</div>
+      <div class="page-subtitle">External infrastructure cost transparency, core commercial terms, and steps to project mobilization.</div>
+    </div>
+
+    <div class="grid-3" style="margin-top: 3px; flex: 1; gap: 12px;">
+      <!-- COL 1: THIRD-PARTY SERVICES -->
+      <div class="card" style="border-top: 3.5px solid #fbbf24; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 13px;">
+        <div>
+          <div style="font-size: 10px; font-weight: 800; color: #fbbf24; margin-bottom: 3px;">THIRD-PARTY SERVICES</div>
+          <div class="card-desc" style="font-size: 9px; margin-bottom: 6px;">
+            Third-party services are external operating costs and are <strong>NOT included</strong> in either the development fee or monthly maintenance:
+          </div>
+          <ul class="clean-list" style="font-size: 8.8px;">
+            <li style="margin-bottom: 4.5px;"><strong>WhatsApp / Meta Messaging:</strong> Conversation fees</li>
+            <li style="margin-bottom: 4.5px;"><strong>WhatsApp BSP Provider:</strong> Access charges if applicable</li>
+            <li style="margin-bottom: 4.5px;"><strong>Cloud Hosting & DB:</strong> VPS / AWS / DigitalOcean</li>
+            <li style="margin-bottom: 4.5px;"><strong>Cloud Document Storage:</strong> S3 / GCS for TCNs & PODs</li>
+            <li style="margin-bottom: 4.5px;"><strong>Domain Registration:</strong> Annual renewal charges</li>
+            <li style="margin-bottom: 4.5px;"><strong>Verification APIs:</strong> Vehicle RC & Driver DL lookups</li>
+            <li style="margin-bottom: 4.5px;"><strong>Email / SMS Services:</strong> Notification gateways</li>
+          </ul>
+        </div>
+        <div style="background: rgba(251, 191, 36, 0.08); border: 1px solid rgba(251, 191, 36, 0.25); border-radius: 4px; padding: 4px 7px; font-size: 8.2px; color: #fbbf24; margin-top: 5px;">
+          * Paid directly by SweafEx or billed at actual provider cost with zero markup.
+        </div>
+      </div>
+
+      <!-- COL 2: COMMERCIAL TERMS -->
+      <div class="card" style="border-top: 3.5px solid #34d399; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 13px;">
+        <div>
+          <div style="font-size: 10px; font-weight: 800; color: #34d399; margin-bottom: 3px;">CORE COMMERCIAL TERMS</div>
+          <div class="card-desc" style="font-size: 9px; margin-bottom: 6px;">Clear operational terms governing software delivery and support:</div>
+          <ul class="clean-list" style="font-size: 8.8px;">
+            <li style="margin-bottom: 4.5px;">All quoted prices exclusive of applicable GST (18%).</li>
+            <li style="margin-bottom: 4.5px;"><strong>Option A:</strong> ₹3,00,000 (5 milestones) + ₹20k/mo Application Maintenance & Support.</li>
+            <li style="margin-bottom: 4.5px;"><strong>Option B:</strong> ₹1,50,000 + ₹30k/mo (24-mo commitment) Platform Subscription & Support.</li>
+            <li style="margin-bottom: 4.5px;">Both options provide 100% identical Phase 1 functional deliverables.</li>
+            <li style="margin-bottom: 4.5px;">Third-party costs billed separately at actual provider rates.</li>
+            <li style="margin-bottom: 4.5px;">Ongoing support commences following UAT and 30-day go-live hypercare.</li>
+          </ul>
+        </div>
+        <div style="background: rgba(52, 211, 153, 0.08); border: 1px solid rgba(52, 211, 153, 0.25); border-radius: 4px; padding: 4px 7px; font-size: 8.2px; color: #34d399; margin-top: 5px;">
+          Transparent milestone governance with zero hidden charges.
+        </div>
+      </div>
+
+      <!-- COL 3: NEXT STEPS -->
+      <div class="card" style="border-top: 3.5px solid #c084fc; display: flex; flex-direction: column; justify-content: space-between; padding: 11px 13px;">
+        <div>
+          <div style="font-size: 10px; font-weight: 800; color: #c084fc; margin-bottom: 3px;">PROJECT MOBILIZATION</div>
+          <div class="card-desc" style="font-size: 9px; margin-bottom: 6px;">Standard onboarding path to initiate 10-week implementation:</div>
+          <ul class="clean-list" style="font-size: 8.8px;">
+            <li style="margin-bottom: 4.5px;"><strong>Step 1:</strong> Confirm preferred Commercial Option (Option A vs Option B).</li>
+            <li style="margin-bottom: 4.5px;"><strong>Step 2:</strong> Execute Master Service Agreement (MSA) & SOW.</li>
+            <li style="margin-bottom: 4.5px;"><strong>Step 3:</strong> Scope workshop: Finalize fields, master data & approved WhatsApp templates.</li>
+            <li style="margin-bottom: 4.5px;"><strong>Step 4:</strong> Kick off Stage 1 (Customer CRM & Sales Workspace).</li>
+          </ul>
+        </div>
+        <div style="background: rgba(192, 132, 252, 0.08); border: 1px solid rgba(192, 132, 252, 0.25); border-radius: 4px; padding: 4px 7px; font-size: 8.2px; color: #c084fc; margin-top: 5px;">
+          Estimated Timeline: 10 weeks to full production rollout.
+        </div>
+      </div>
+    </div>
+
+    <!-- CLOSING CALLOUT -->
+    <div style="background: rgba(56, 189, 248, 0.07); border: 1px solid rgba(56, 189, 248, 0.3); border-radius: 6px; padding: 6px 10px; margin-top: 5px;">
+      <div style="font-size: 9.8px; font-weight: 800; color: #ffffff; margin-bottom: 1.5px;">
+        "Built around how SweafEx already works &mdash; structuring daily freight execution to make your operations faster, clearer, and ready to scale."
+      </div>
+      <div style="font-size: 8.5px; color: #94a3b8;">
+        Octagram AI & Software Solutions is excited to partner with SweafEx / Whooosh Networks Pvt Ltd as your long-term technology partner.
+      </div>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(255,255,255,0.12); padding-top: 4px; margin-top: 2px;">
+    <div>
+      <div style="font-size: 8px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.5px;">Proposal Author</div>
+      <div style="font-size: 10px; font-weight: 700; color: #ffffff; margin-top: 1px;">Octagram AI & Software Solutions</div>
+    </div>
+    <div style="text-align: right; font-size: 9px; color: #38bdf8;">
+      <strong>Vishnu</strong> &bull; vishnu@octagramai.com &bull; +91 9482090023 &bull; www.octagramai.com
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
